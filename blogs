@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Rajesh Rapelli - Blogs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="page-wrapper">
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About Me</a>
+            <a href="index.html#resume">Resume</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="index.html#contact">Contact Me</a>
+        </nav>
+
+        <header id="header">
+            <div class="header-content">
+                <h1>My Blogs</h1>
+            </div>
+        </header>
+
+        <section id="blog-content" class="section">
+            <div class="content">
+                <article class="blog-post">
+                    <img src="images/understanding-human-decision-making.jpg" alt="Understanding Human Decision-Making in UX Design">
+                    <h2>Understanding Human Decision-Making in UX Design</h2>
+                    <p class="date">Jan 23, 2024</p>
+                    <p>Explore the intricate world of human decision-making and its profound impact on UX design. This blog post delves into the psychological principles that govern user choices and how designers can leverage this knowledge to create more intuitive and engaging interfaces.</p>
+                    <a href="#" class="button">Read More</a>
+                </article>
+                <!-- Add more blog posts here -->
+                <article class="blog-post">
+                    <img src="images/ux-trends-2024.jpg" alt="Top UX Design Trends for 2024">
+                    <h2>Top UX Design Trends for 2024</h2>
+                    <p class="date">Feb 15, 2024</p>
+                    <p>Stay ahead of the curve with our comprehensive overview of the most impactful UX design trends for 2024. From AI-driven personalization to immersive 3D interfaces, discover how these innovations are shaping the future of digital experiences.</p>
+                    <a href="#" class="button">Read More</a>
+                </article>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Sai Rajesh Rapelli | All Rights Reserved</p>
+        </footer>
+    </div>
+</body>
+</html>

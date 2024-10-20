@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Rajesh Rapelli - UI/UX Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        Custom animations
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0s ease-in-out;
+        }
+        .slide-up {
+            animation: slideUp 1.5s ease-in-out;
+        }
+        .hover-grow:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md fade-in">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-gray-800">SAI RAJESH RAPELLI</a>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#home" class="text-gray-600 hover:text-gray-800">Home</a>
+                <a href="#work" class="text-gray-600 hover:text-gray-800">Work</a>
+                <a href="blogs.html" class="text-gray-600 hover:text-gray-800">Blogs</a>
+                <a href="https://drive.google.com/file/d/18UpGMCrKigDo9NOhkvFQhU1h_HUmvMww/view?usp=drive_link" class="text-gray-600 hover:text-gray-800" target="_blank">Resume</a>
+
+
+                <a href="#contact" class="text-gray-600 hover:text-gray-800">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="bg-gray-800 text-white py-20 slide-up">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl font-bold mb-4 animate-bounce">Hey there!</h1>
+                <p class="text-xl mb-4"> <span class="bg-yellow-400 text-gray-800 px-2">I'm Sai Rajesh Rapelli</span>, an upcoming passionate UI/UX designer and researcher with a Master’s degree in Information Systems from the University of Maryland, Baltimore County.</p>
+                <p class="text-xl mb-4"><span class="bg-green-400 text-gray-800 px-2"><i>"I create, design, and explore".</i></span></p>
+                <p class="text-lg">With a keen eye for detail and a love for innovation, I strive to create designs that not only look great but also solve real problems. I specialize in user research, prototyping, and interaction design, with hands-on experience developing solutions. With a deep understanding of human-computer interaction and visual design principles, I’m eager to take on innovative projects that make a meaningful impact.</p>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="images/B17C2DCA-15FF-469D-B347-5A6197885BF7.JPG" alt="Sai Rajesh Rapelli" class="object-cover border-4 border-white shadow-lg hover-grow" style="width: 500px; height: 500px;">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <section id="work" class="mb-20">
+            <h2 class="text-3xl font-bold mb-8 text-center slide-up">Featured Work</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6 hover-grow">
+                    <h3 class="text-2xl font-bold mb-4">A Round Entertainment</h3>
+                    <p class="mb-4">Joopi, a dating app designed to enhance the dating experiences for its users. Fostering cultural exchanges between South Korea and the United States.</p>
+                    <p class="mb-4">Worked as an UI/UX Designer Intern, March 2024 - May 2024</p>
+                    <a href="case-study.html" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">View Case Study</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 hover-grow">
+                    <h3 class="text-2xl font-bold mb-4">Craigslist</h3>
+                    <p class="mb-4">Craigslist is an antiquated and straightforward classified ads website.</p>
+                    <p class="mb-4">Website redesign to enhance user experience by improving features and design layouts.</p>
+                    <p class="mb-4">Feb 2024 - May 2024</p>
+                    <a href="Craigslist.html" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">View Case Study</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white-200 rounded-lg p-8 slide-up">
+            <h2 class="text-3xl font-bold mb-6 text-center">Contact Me</h2>
+            <p class="text-center mb-4">Feel free to reach out to me for any inquiries.</p>
+            <p class="text-center mb-6">Maryland, 21227, USA</p>
+            <div class="flex justify-center space-x-4">
+                <a href="mailto:sairajr1@umbc.edu" class="text-blue-600 hover:text-blue-800">sairajr1@umbc.edu</a>
+                <span class="text-gray-600">|</span>
+                <span class="text-gray-600">+1 6672165059</span>
+                <span class="text-gray-600">|</span>
+                <a href="https://www.linkedin.com/in/rapellisairajesh" target="_blank" class="text-blue-600 hover:text-blue-800">LinkedIn</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 fade-in">
+        <div class="container mx-auto px-6 text-center">
+            <!-- <p>&copy; 2024 Sai Rajesh Rapelli. All rights reserved.</p> -->
+        </div>
+    </footer>
+</body>
+</html>
