@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Sai Rajesh Rapelli - UI/UX Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
@@ -15,6 +16,74 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         Custom animations
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0s ease-in-out;
+        }
+        .slide-up {
+            animation: slideUp 1.5s ease-in-out;
+        }
+        .hover-grow:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-gray-800">SAI RAJESH RAPELLI</a>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-gray-600 hover:text-gray-800">Home</a>
+                <a href="#work" class="text-red-600 hover:text-gray-800">Work</a>
+                <a href="blogs.html" class="text-gray-600 hover:text-gray-800">Blogs</a>
+                <a href="https://drive.google.com/file/d/1U-rVpuPi9PUYKn-wrj25xrIxgXQKpsC7/view?usp=drive_link" class="text-gray-600 hover:text-gray-800" target="_blank">Resume</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-gray-800">Contact Me</a>
+                
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Header Section -->
+    
+    <header class="bg-gray-800 text-white py-20 slide-up">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl font-bold mb-4 animate-bounce">Hey there!</h1>
+                <p class="text-xl mb-4"> <span class="bg-yellow-400 text-gray-800 px-2">I'm Sai Rajesh Rapelli</span>, an upcoming passionate UI/UX designer and researcher with a Master’s degree in Information Systems from the University of Maryland, Baltimore County.</p>
+                <p class="text-xl mb-4"><span class="bg-green-400 text-gray-800 px-2"><i>"I create, design, and explore".</i></span></p>
+                <p class="text-lg">With a keen eye for detail and a love for innovation, I strive to create designs that not only look great but also solve real problems. Specializing in user research, prototyping, and interaction design, I bring hands-on experience in developing solutions grounded in human-computer interaction and visual design principles. My evolution from tech to UX design hasn't been a departure, but an expansion—combining my technical foundation with design thinking to create impactful, purposeful projects that blend creativity with functionality.</p>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="images/B17C2DCA-15FF-469D-B347-5A6197885BF7.JPG" alt="Sai Rajesh Rapelli" class="object-cover border-4 border-white shadow-lg hover-grow" style="width: 500px; height: 500px;">
+            </div>
+        </div>
+    </header>
+<!-- Design Process Section -->
+
+    
+    <title>Sai Rajesh Rapelli - UI/UX Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -50,23 +119,82 @@
         </div>
     </nav>
 
-    <!-- Header Section -->
-    <header class="bg-gray-800 text-white py-20 slide-up">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-8 md:mb-0">
-                <h1 class="text-4xl font-bold mb-4 animate-bounce">Hey there!</h1>
-                <p class="text-xl mb-4"> <span class="bg-yellow-400 text-gray-800 px-2">I'm Sai Rajesh Rapelli</span>, an upcoming passionate UI/UX designer and researcher with a Master’s degree in Information Systems from the University of Maryland, Baltimore County.</p>
-                <p class="text-xl mb-4"><span class="bg-green-400 text-gray-800 px-2"><i>"I create, design, and explore".</i></span></p>
-                <p class="text-lg">With a keen eye for detail and a love for innovation, I strive to create designs that not only look great but also solve real problems. I specialize in user research, prototyping, and interaction design, with hands-on experience developing solutions. With a deep understanding of human-computer interaction and visual design principles, I’m eager to take on innovative projects that make a meaningful impact.</p>
+    <!-- Design Process Section -->
+    <main class="container mx-auto px-6 py-12">
+        <section id="design-process" class="bg-white rounded-lg shadow-md p-8 mb-20 slide-up">
+            <h2 class="text-3xl font-bold mb-6 text-center">My Design Process</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+                My systematic approach combines user-centered design principles with iterative development to create meaningful and impactful solutions.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Review Problem Statement -->
+                <div class="bg-blue-50 rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-3">REVIEW PROBLEM STATEMENT</h3>
+                    <ul class="text-left text-blue-600 text-sm space-y-2">
+                        <li>• Define project objectives and goals</li>
+                        <!-- <li>• Identify key stakeholders</li> -->
+                        <li>• Analyze existing pain points</li>
+                        <li>• Create problem framework</li>
+                    </ul>
+                </div>
+
+                <!-- Inspiration and Research -->
+                <div class="bg-green-50 rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-600 mb-3">INSPIRATION AND RESEARCH</h3>
+                    <ul class="text-left text-green-600 text-sm space-y-2">
+                        <li>• Conduct user interviews</li>
+                        <li>• Analyze market trends</li>
+                        <li>• Study competitor products</li>
+                        <li>• Create user personas</li>
+                    </ul>
+                </div>
+
+                <!-- Design Solutions -->
+                <div class="bg-purple-50 rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-purple-600 mb-3">DESIGN SOLUTIONS</h3>
+                    <ul class="text-left text-purple-600 text-sm space-y-2">
+                        <li>• Create wireframes</li>
+                        <li>• Develop prototypes</li>
+                        <!-- <li>• Design system implementation</li> -->
+                        <li>• Information architecture</li>
+                    </ul>
+                </div>
+
+                <!-- Iterate and Improve -->
+                <div class="bg-indigo-50 rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-indigo-600 mb-3">ITERATE AND IMPROVE</h3>
+                    <ul class="text-left text-indigo-600 text-sm space-y-2">
+                        <li>• Usability testing</li>
+                        <li>• Gather user feedback</li>
+                        <!-- <li>• Measure metrics</li> -->
+                        <li>• Continuous improvement</li>
+                    </ul>
+                </div>
             </div>
-            <div class="md:w-1/2 flex justify-center">
-                <img src="images/B17C2DCA-15FF-469D-B347-5A6197885BF7.JPG" alt="Sai Rajesh Rapelli" class="object-cover border-4 border-white shadow-lg hover-grow" style="width: 500px; height: 500px;">
-            </div>
-        </div>
-    </header>
+        </section>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12">
+   
         <section id="work" class="mb-20">
             <h2 class="text-3xl font-bold mb-8 text-center slide-up">Featured Work</h2>
             <div class="grid md:grid-cols-2 gap-8">
@@ -90,11 +218,11 @@
         <section id="contact" class="bg-white-200 rounded-lg p-8 slide-up">
             <h2 class="text-3xl font-bold mb-6 text-center">Contact Me</h2>
             <p class="text-center mb-4">Feel free to reach out to me for any inquiries.</p>
-            <p class="text-center mb-6">Maryland, 21227, USA</p>
+            <p class="text-center mb-6">Baltimore, Maryland, USA</p>
             <div class="flex justify-center space-x-4">
                 <a href="mailto:sairajr1@umbc.edu" class="text-blue-600 hover:text-blue-800">sairajr1@umbc.edu</a>
-                <span class="text-gray-600">|</span>
-                <span class="text-gray-600">+1 6672165059</span>
+                <!-- <span class="text-gray-600"></span> -->
+                <!-- <span class="text-gray-600">+1 6672165059</span> -->
                 <span class="text-gray-600">|</span>
                 <a href="https://www.linkedin.com/in/rapellisairajesh" target="_blank" class="text-blue-600 hover:text-blue-800">LinkedIn</a>
             </div>
