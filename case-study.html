@@ -14,6 +14,25 @@
             scroll-behavior: smooth;
         }
 
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
         .gradient-text {
             background: linear-gradient(90deg, #2563EB, #1D4ED8);
             -webkit-background-clip: text;
@@ -98,6 +117,33 @@
                        class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
                         Resume
                     </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-600" id="menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-8">
+                        <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                        <button class="text-gray-600" id="close-menu">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex flex-col space-y-6">
+                        <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
+                        <a href="#work" class="text-gray-600 hover:text-blue-600">Work</a>
+                        <a href="blogs.html" class="text-gray-600 hover:text-blue-600">Blogs</a>
+                        <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
+                           target="_blank"
+                           class="px-5 py-2 bg-blue-600 text-white rounded-full text-center hover:bg-blue-700 transition">
+                            Resume
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -279,5 +325,33 @@
             &copy; 2024 Sai Rajesh Rapelli. All rights reserved.
         </div>
     </footer>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const closeMenu = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.getElementsByTagName('a');
+            Array.from(mobileLinks).forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
