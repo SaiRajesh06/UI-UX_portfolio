@@ -58,7 +58,14 @@
         .nav-link {
             position: relative;
         }
-
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
         .nav-link::after {
             content: '';
             position: absolute;
@@ -220,11 +227,12 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8 desktop-nav">
                     <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
-                    <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
-                    <a href="blogs.html" class="nav-link text-gray-600 hover:text-blue-600">Blogs</a>
+                    <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <!-- <a href="blogs.html" class="nav-link text-gray-600 hover:text-blue-600">Blogs</a> -->
                     <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
                        target="_blank"
-                       class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                       class="nav-link text-gray-600 hover:text-blue-600 ">
                         Resume
                     </a>
                 </div>
@@ -253,7 +261,7 @@
                 <a href="blogs.html" class="text-xl text-gray-600 hover:text-blue-600">Blogs</a>
                 <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
                    target="_blank"
-                   class="text-xl text-center py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                   class="nav-link text-gray-600 hover:text-blue-600 ">
                     Resume
                 </a>
             </div>
@@ -269,12 +277,12 @@
     </script>
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
-        <h1 class="text-4xl font-bold mb-8 text-center section-heading">Craigslist Case Study</h1>
-        <img src="images/Craghome.png" alt="Figma Design" class="w-full rounded-xl shadow-lg mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-center section-heading mb-12">Craigslist Case Study</h1>
+        <img src="images/maincraig.png" alt="Figma Design" class="w-full rounded-xl shadow-lg mb-12">
 
         <!-- Project Overview -->
         <section class="mb-12">
-            <h2 class="text-3xl font-bold mb-6">OVERVIEW</h2>
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">OVERVIEW</h2>
             <p class="text-lg mb-4">At a glance, this website contains over 20 pages, and has a few functionally embedded elements. Its complex and confusing UI can make it challenging for visitors to browse and locate the content they're looking for. Individuals seeking to exchange, purchase, sell, or rent different products and services go to Craigslist to locate listings in their neighborhood.</p>
             
             <div class="grid md:grid-cols-3 gap-8 mb-12">
@@ -305,7 +313,7 @@
 
         <!-- Problem Statement -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
-            <h2 class="text-3xl font-bold mb-6">PROBLEM STATEMENT</h2>
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">PROBLEM STATEMENT</h2>
             <p class="text-lg mb-4">Users struggle with finding relevant listings as category mappings don't align with their expectations, while the lack of feedback mechanisms causes uncertainty in interactions. These issues hinder the overall user experience, making it difficult to efficiently browse and interact with the platform</p>
             <p class="text-lg mb-4 bg-yellow-100 p-4 rounded-lg italic">"How can Craigslist's user interface and experience be improved to enhance the visibility of critical information, provide clearer feedback to users, ensure intuitive affordances, and better align category structures with users' expectations, thereby making the site easier to navigate and use for its diverse audience?"</p>
             <p class="text-lg mb-4">It follows all the below issues present in the website as shows:<br>
@@ -324,18 +332,18 @@
 
         <!-- Work Flow Section -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
-            <h2 class="text-3xl font-bold mb-6">WORK FLOW</h2>
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">WORK FLOW</h2>
             <p class="text-lg mb-4">The UX design process I employed for this project follows a comprehensive, user-centered approach. It begins with in-depth research through user interviews, followed by a synthesis phase where I develop user personas. The ideation stage involves sketching potential screen designs, which are then refined based on feedback from initial user testing. This leads to the creation of high-fidelity wireframe prototypes. The process concludes with a cognitive walkthrough, involving detailed user testing to ensure the final design meets user needs and expectations. This iterative methodology ensures that user insights inform every stage of the design process, resulting in a product that truly resonates with its intended audience.</p>
             <img src="images/Flow.drawio.png" alt="Work Flow" class="w-full max-w-4xl mx-auto rounded-xl shadow-lg mb-8">
         </section>
 
         <!-- Interview Questions Section -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
-            <h2 class="text-3xl font-bold mb-6">INTERVIEW QUESTIONS</h2>
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">INTERVIEW QUESTIONS</h2>
             <p class="text-lg mb-4">I led the user interviews as the only member on the team with prior experience in conducting user research.</p>
             
             <div class="bg-gray-50 p-6 rounded-lg mb-6">
-                <h3 class="text-xl font-semibold mb-4 text-blue-600">Criteria</h3>
+                <h3 class="text-xl font-semibold mb-4 text-black-600">Criteria</h3>
                 <p class="text-gray-600">Participants were selected based on their frequent use of Craigslist for buying or selling items and their familiarity with similar online platforms.</p>
             </div>
             <p class="text-lg mb-4">I began the interviews with open-ended questions to understand users' general browsing and listing behaviors on Craigslist. This helped us explore their typical interactions with the platform, such as finding products, posting listings, or responding to ads. Next, I focused on their frustrations and expectations when using the site, aiming to uncover challenges like navigating categories, interacting with sellers, or managing listings.</p>
@@ -344,7 +352,7 @@
             <p class="text-lg mb-4">These questions were designed for collecting specific feedback and insights from participants, focusing on important areas of concern and potential improvement.</p>
 
             <div class="space-y-6 mb-8">
-                <h3 class="text-xl font-semibold text-blue-600">Key Questions</h3>
+                <h3 class="text-xl font-semibold text-black-600">Key Questions</h3>
                 <ul class="list-disc list-inside text-lg space-y-3 text-gray-600">
                     <li>Do you feel that users can easily find and purchase the products they are looking for on the website?</li>
                     <li>Were there any tasks you performed on the website that you found difficult or frustrating?</li>
@@ -359,7 +367,7 @@
 
         <!-- User Personas Section -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
-            <h2 class="text-3xl font-bold mb-6">USER PERSONAS</h2>
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">USER PERSONAS</h2>
             <p class="text-lg mb-6">The study focuses on two primary user groups: buyers seeking efficient communication and explorers looking for streamlined search functionality. By examining their unique needs, I aim to propose innovative solutions that enhance the user experience on Craigslist.</p>
             
             <div class="image-container mb-8">
@@ -373,38 +381,38 @@
 
         <!-- Prototypes Section -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
-            <h2 class="text-3xl font-bold mb-6">PROTOTYPES</h2>
-            <p class="text-lg mb-6">The prototype design looks to be a basic sketch or wireframe that depicts several layout and interaction aspects for a website or application. I started with a paper and pencil sketches for our screen designs. We wanted to map out what features each screen will have, the number of steps the user will have to take to achieve a goal and task flows.</p>
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">PROTOTYPES</h2>
+            <p class="text-lg mb-4">The prototype design looks to be a basic sketch or wireframe that depicts several layout and interaction aspects for a website or application. I started with a paper and pencil sketches for our screen designs. We wanted to map out what features each screen will have, the number of steps the user will have to take to achieve a goal and task flows.</p>
             
             <!-- Low Fidelity Prototyping -->
             <div class="mb-12">
-                <h3 class="text-2xl font-semibold mb-4 text-blue-600">Low Fidelity Prototyping</h3>
-                <p class="text-lg mb-6">The prototype design looks to be a basic sketch or wireframe that depicts several layout and interaction aspects for a website or application. I started with paper and pencil sketches for our screen designs.</p>
+                <h3 class="text-2xl font-semibold mb-4 text-black-600">Low Fidelity Prototyping</h3>
+                <p class="text-lg mb-4">The prototype design looks to be a basic sketch or wireframe that depicts several layout and interaction aspects for a website or application. I started with paper and pencil sketches for our screen designs.</p>
                 
                 <div class="bg-gray-50 p-6 rounded-lg mb-8">
-                    <h4 class="text-xl font-semibold mb-4">Task 1: Support Ticket Submission</h4>
+                    <h4 class="text-xl font-semibold mb-4 text-red-600">Task 1: Support Ticket Submission</h4>
                     <img src="images/WhatsApp Image 2024-04-07 at 21.42.55.jpeg" alt="Support Ticket Flow" class="w-full rounded-xl shadow-lg mb-4">
-                    <p class="text-gray-600">This prototype addresses a design issue found through heuristic review while also incorporating insights from competition analysis to ensure alignment with industry standards and user expectations. Screen 1 displays the home page, with options for assistance, safety, privacy, and terms. Clicking the assistance button takes you to screen 2, where you can "contact us" and "raise tickets" before moving on to screen 3, which has a form for entering personal information and a "Concern box". Following submission, the last screen shows the ticket number and feedback. 
+                    <p class="text-lg mb-4">This prototype addresses a design issue found through heuristic review while also incorporating insights from competition analysis to ensure alignment with industry standards and user expectations. Screen 1 displays the home page, with options for assistance, safety, privacy, and terms. Clicking the assistance button takes you to screen 2, where you can "contact us" and "raise tickets" before moving on to screen 3, which has a form for entering personal information and a "Concern box". Following submission, the last screen shows the ticket number and feedback. 
                         Finally, I find this to be the most effective website because many customers like a simple user experience, therefore creating a ticket may be the easiest approach. The simplicity of the design, with clearly labeled buttons and forms, reflects an understanding of users' preferences for straightforward navigation. </p>
                 </div>
             
                 <div class="bg-gray-50 p-6 rounded-lg">
-                    <h4 class="text-xl font-semibold mb-4">Task 2: Product Filtering Implementation</h4>
+                    <h4 class="text-xl font-semibold mb-4 text-red-600">Task 2: Product Filtering Implementation</h4>
                     <img src="images/WhatsApp Image 2024-10-14 at 23.24.49.jpeg" alt="Product Filtering Flow" class="w-full rounded-xl shadow-lg mb-4">
-                    <p class="text-gray-600">The design choices in the prototype were made intentionally to address specific design issues identified through competitive analysis. Many popular websites feature filtering tools that allow users to restrict their search parameters, making it easier to find relevant products or information. In this prototype, there are a total of three screens where 2 filters have been added. When the user goes to the services section. In screen 2 when the user clicks on the filters dropdown there are few options namely “low to high” and “newest to oldest”. This helps users to understand how to select the required products based on their interest. This method makes the prototype more accessible than other alternatives since it streamlines the user experience, allowing consumers to easily explore and obtain the information or items they require. The usage of filters demonstrates an awareness of user behavior and preferences, which improves the prototype's overall usability.</p>
+                    <p class="text-lg mb-4">The design choices in the prototype were made intentionally to address specific design issues identified through competitive analysis. Many popular websites feature filtering tools that allow users to restrict their search parameters, making it easier to find relevant products or information. In this prototype, there are a total of three screens where 2 filters have been added. When the user goes to the services section. In screen 2 when the user clicks on the filters dropdown there are few options namely “low to high” and “newest to oldest”. This helps users to understand how to select the required products based on their interest. This method makes the prototype more accessible than other alternatives since it streamlines the user experience, allowing consumers to easily explore and obtain the information or items they require. The usage of filters demonstrates an awareness of user behavior and preferences, which improves the prototype's overall usability.</p>
                 </div>
             </div>
 
             <!-- High Fidelity Prototyping -->
             <div>
-                <h3 class="text-2xl font-semibold mb-4 text-blue-600">High Fidelity Prototyping</h3>
+                <h3 class="text-2xl font-semibold mb-4 text-black-600">High Fidelity Prototyping</h3>
                 <p class="text-lg mb-6">These wireframes perform well during the design exploration stage. These assisted us in validating the design before proceeding to the visual design phase.</p>
 
                 <div class="space-y-8">
                     <!-- Prototype 1 -->
                     <div class="bg-gray-50 p-6 rounded-lg">
-                        <h4 class="text-xl font-semibold mb-4">Prototype 1: Live Chat Support</h4>
-                        <p class="text-gray-600 mb-6">Incorporating user feedback is critical for enhancing goods and ensuring they match customer expectations. Two users who previewed this prototype stressed the significance of improving the help and support settings. A popular request was to include a "live chat" option that would allow users to speak directly with support professionals in real time. Live chat may dramatically improve the user experience by giving prompt assistance when queries or problems arise. 
+                        <h4 class="text-xl font-semibold mb-4 text-green-600">Prototype 1: Live Chat Support</h4>
+                        <p class="text-lg mb-4">Incorporating user feedback is critical for enhancing goods and ensuring they match customer expectations. Two users who previewed this prototype stressed the significance of improving the help and support settings. A popular request was to include a "live chat" option that would allow users to speak directly with support professionals in real time. Live chat may dramatically improve the user experience by giving prompt assistance when queries or problems arise. 
                             Instead of perusing many help menus or waiting for email responses, customers may start a chat session and get immediate, tailored help from qualified support professionals. 
                             If necessary, the chat bot automatically issues tickets, which the user can cancel if he or she does not want to. This real-time engagement can help consumers swiftly solve problems, learn how to use specific features successfully, and clarify any confusing aspects of the product.
         
@@ -422,7 +430,7 @@
 
                     <!-- Prototype 2 -->
                     <div class="bg-gray-50 p-6 rounded-lg">
-                        <h4 class="text-xl font-semibold mb-4">Prototype 2: Enhanced Filtering</h4>
+                        <h4 class="text-xl font-semibold mb-4 text-green-600">Prototype 2: Enhanced Filtering</h4>
                         <p class="text-lg mb-4">Emphasizing the possibilities for improving the user experience, User 1 suggested adding a "location" filter option. This feature offers an easy way for people looking for goods or services in several locations by enabling customers to switch between them without any trouble at all. The location filter enables users to precisely customize their searches, whether they are looking to compare rates, look into local offerings, or just go for convenience. 
                             As users navigate different geographic locations, this functionality not only makes the search process more efficient but also meets the needs of a wide range of users. The incorporation of the location filter enhances the usefulness of the platform by providing users with increased flexibility and efficiency when attempting to locate items.
         
@@ -445,7 +453,7 @@
 
         <!-- Cognitive Walkthrough Section -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
-            <h2 class="text-3xl font-bold mb-6">COGNITIVE WALKTHROUGH</h2>
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">COGNITIVE WALKTHROUGH</h2>
             
             <ul class="list-disc list-inside text-lg mb-8 space-y-2">
                 <li>Given the user a task to do</li>
@@ -497,7 +505,7 @@
                 <li>Users looking for job listings could easily find the "Jobs" link, which matched their goal, and the search page indicated progress by displaying job listing placeholders.
                 </ul>
 
-                <p class="text-lg mb-4"><strong>Key Observations: </strong></p>
+                <p class="text-lg mb-4 text-black-600"><strong>Key Observations: </strong></p>
                 <ul class="list-disc list-inside text-lg mb-4 space-y-2">
                     <li>Users could find and use the necessary actions to achieve their goals.</li>
                     <li>Labels and actions consistently matched user expectations, ensuring ease of navigation and task completion.
@@ -508,7 +516,7 @@
 
         <!-- Learnings Section -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
-            <h2 class="text-3xl font-bold mb-6">MY LEARNINGS</h2>
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">MY LEARNINGS</h2>
             <p class="text-lg mb-6">Through this project, I deepened my understanding of user experience design and research. Leading user interviews helped me develop skills in gathering and analyzing user feedback, which I then applied to create more user-centered design solutions.</p>
             
             <ul class="list-disc list-inside text-lg mb-8 space-y-2">

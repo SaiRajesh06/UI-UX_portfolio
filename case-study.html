@@ -38,7 +38,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
         .nav-link {
             position: relative;
         }
@@ -111,10 +118,10 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
                     <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
-                    <a href="blogs.html" class="nav-link text-gray-600 hover:text-blue-600">Blogs</a>
+                    <!-- <a href="blogs.html" class="nav-link text-gray-600 hover:text-blue-600">Blogs</a> -->
                     <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
                        target="_blank"
-                       class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                       class="nav-link text-gray-600 hover:text-blue-600 ">
                         Resume
                     </a>
                 </div>
@@ -136,11 +143,12 @@
                     </div>
                     <div class="flex flex-col space-y-6">
                         <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
-                        <a href="#work" class="text-gray-600 hover:text-blue-600">Work</a>
-                        <a href="blogs.html" class="text-gray-600 hover:text-blue-600">Blogs</a>
+                        <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                        <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                        <!-- <a href="blogs.html" class="text-gray-600 hover:text-blue-600">Blogs</a> -->
                         <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
                            target="_blank"
-                           class="px-5 py-2 bg-blue-600 text-white rounded-full text-center hover:bg-blue-700 transition">
+                           class="nav-link text-gray-600 hover:text-blue-600 ">
                             Resume
                         </a>
                     </div>
@@ -150,7 +158,7 @@
     </nav>
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
-        <h1 class="text-4xl font-bold mb-8 text-center section-heading">Joopi Case Study</h1>
+        <h1 class="text-4xl md:text-5xl font-bold text-center section-heading mb-12">Joopi Case Study</h1>
         <img src="images/Joopi.png" alt="Figma Design" class="w-full rounded-xl shadow-lg mb-12 max-w-4xl mx-auto">
 
         <!-- Project Overview -->
@@ -170,14 +178,14 @@
 
             <div class="bg-white p-6 rounded-xl shadow-md">
                 <h2 class="text-2xl font-bold mb-4 text-blue-600">Project Overview</h2>
-                <p class="text-gray-600">
+                <p class="text-lg text-black-600">
                     Joopi emphasizes community-focused features for Asian(Korean) Americans, group events, and cultural activities that help users connect over shared interests and values. This not only helps in finding a partner but also in building a network of like-minded individuals.
                 </p>
             </div>
 
             <div class="bg-white p-6 rounded-xl shadow-md">
                 <h2 class="text-2xl font-bold mb-4 text-blue-600">Design Process</h2>
-                <p class="text-gray-600">
+                <p class="text-lg text-black-600">
                     The design process involved conducting extensive user research and testing to guide design decisions, ensuring that the app's features aligned with user needs and preferences. By gathering feedback through user interviews and usability testing, the team iterated on designs to improve the overall user experience.
                 </p>
             </div>
@@ -187,7 +195,7 @@
         <!-- Korean Popular Dating Apps -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-2xl font-bold mb-6 text-blue-600">Korean Popular Dating Apps 🇰🇷</h2>
-            <ol class="list-decimal list-inside space-y-2 text-gray-600">
+            <ol class="list-decimal list-inside space-y-2 text-lg text-black-600">
                 <li>Noondate 정오의 데이트: Focused on serious relationships</li>
                 <li>Amanda 아만다: Women-focused</li>
                 <li>Boo: Focus on personality compatibility in finding meaningful connections</li>
@@ -198,14 +206,14 @@
         <!-- Task 1: Profile Screens -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-2xl font-bold mb-6 text-blue-600">TASK 1: Initial task focussed on profile screens - March to April</h2>
-            <p class="text-gray-600 mb-6">
+            <p class="text-lg text-black-600">
                 This project showcases a comprehensive user profile system I designed for a mobile application. 
                 The screens demonstrate a thoughtful approach to gathering and displaying user information, with a focus on creating an intuitive and engaging user experience.
             </p>
-            <p class="text-gray-600 mb-6">
+            <p class="text-lg text-black-600">
                 The design includes various sections for users to input their personal details, preferences, and interests. Key features of the profile system include:
             </p>
-            <ul class="list-disc list-inside text-gray-600 mb-6 space-y-2">
+            <ul class="list-disc list-inside text-lg text-black-600 mb-6 space-y-2">
                 <li>Customizable photo gallery</li>
                 <li>Demographic information input (education, languages, ethnicity)</li>
                 <li>Interactive prompts to encourage user engagement</li>
@@ -219,8 +227,8 @@
         <!-- Competitive Analysis -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <div class="overflow-x-auto mb-8">
-            <h2 class="text-2xl font-bold mb-6 text-blue-600">Competitive Analysis 📊</h2>
-            <p class="text-gray-600">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">COMPETITIVE ANALYSIS 📊</h2>
+            <p class="text-lg text-black-600">
                 For the competitive analysis, I examined the websites and apps of several direct and indirect competitors, focusing on popular dating platforms as well as social networking apps with dating functionalities. 
                 I also explored trends in online dating, particularly the increasing demand for more personalized matches and enhanced safety features. 
                 The analysis aimed to uncover design strategies that effectively address common user pain points during the matchmaking and onboarding process, while identifying areas where competitors fall short in meeting user needs, such as better filtering options and improving user trust.
@@ -231,16 +239,16 @@
 
             <div class="grid md:grid-cols-2 gap-8 mb-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-800">Direct Competitors</h3>
-                    <p class="text-gray-600">
+                    <h3 class="text-xl font-bold mb-4 text-black-800">Direct Competitors</h3>
+                    <p class="text-lg text-black-600">
                         The direct competitors such as TanTan, 2RedBeans, and Lovevite are dating apps that target a specific demographic—Asian singles, offering various features to enhance the user experience for this group. 
                         The direct competition revealed strategies like a strong focus on user profiles, easy swiping mechanisms, and tailored search filters. 
                         However, there were areas for improvement, such as limited user engagement features and relatively basic interaction designs.
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-4 text-gray-800">Indirect Competitors</h3>
-                    <p class="text-gray-600">
+                    <h3 class="text-xl font-bold mb-4 text-black-800">Indirect Competitors</h3>
+                    <p class="text-lg text-black-600">
                         On the other hand, indirect competitors like Bumble, Tagged, and Badoo serve a broader dating audience but share similar functionalities. 
                         These apps highlight global trends in dating, such as the rising popularity of gamification, location-based matching, and community-oriented events. 
                         Their strengths include user-friendly interfaces, well-executed brand identity, and innovative features like Bumble's women-first approach and Badoo's integrated social networking aspects.
@@ -281,9 +289,10 @@
 <body class="bg-gray-50 p-8">
     <div class="max-w-7xl mx-auto">
         <!-- SWOT Analysis -->
-        <h2 class="text-2xl font-bold mb-6 text-blue-600">SWOT Analysis 📊</h2>
+        <section class="bg-white p-8 rounded-xl shadow-md mb-16">
+        <h2 class="text-2xl font-bold mb-6 text-blue-600">SWOT ANALYSIS 📊</h2>
         <img src="images/SWOT.png" alt="SWOT Analysis" class="w-full rounded-xl shadow-lg mb-8">
-        <p class="text-gray-600 mb-8">
+        <p class="text-lg text-black-600">
             The screenshots display interfaces from four dating apps—TanTan, Badoo, Bumble, and Tagged—highlighting various sections such as home screens, profiles, messages, and additional features. 
             Each app offers distinct user experiences: TanTan emphasizes communication with live chat and video options, Badoo focuses on social discovery through features like nearby users and "Encounters," Bumble stands out with its female-first messaging approach and versatile Bizz modes for dating, friendships, and professional networking, while Tagged blends social networking with dating, allowing for more profile customization and community interaction. 
             The designs vary in complexity, with Bumble and Badoo offering more streamlined, feature-rich interfaces, while Tagged and TanTan maintain simpler, communication-focused layouts.
@@ -442,10 +451,10 @@
             </table>
         </div>
 
-    
+    </section>
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
                 <h2 class="text-2xl font-bold mb-6 text-blue-600">User Review and Feedback Analysis</h2>
-                <p class="section-description">
+                <p class="text-lg text-black-600">
                     I conducted an in-depth user review analysis on popular dating apps—Badoo, Bumble, Tantan, and Tagged.
                     I systematically categorized the feedback to highlight areas of strength, such as user interface design and ease of use,
                     as well as areas that need improvement, like filtering options, performance, and user safety features.
@@ -480,7 +489,7 @@
         <!-- Pain Points Analysis -->
 <section class="bg-white p-8 rounded-xl shadow-md mb-16">
     <h2 class="text-2xl font-bold mb-6 text-blue-600">TASK 2: Pain point analysis and feature ideation - April to May</h2>
-    <p class = "text-gray-600 mb-6">
+    <p class="text-lg text-black-600">
         A comprehensive breakdown of the major issues affecting our dating app, including demographic imbalances, match quality concerns, safety issues, cost barriers, usability challenges, and social stigma.
     <div class="overflow-x-auto">
         <table class="w-full bg-white rounded-lg">
@@ -562,11 +571,11 @@
 
         <!-- Wireframing -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
-            <h2 class="text-2xl font-bold mb-6 text-blue-600">Wireframing</h2>
-            <p class="text-gray-600 mb-6">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">WIREFRAMING </h2>
+            <p class="text-lg text-black-600">
                 Based on one of the pain points like how to attract more female users. This wireframe description outlines how the dating app integrates a status feature to enhance user engagement and attract more users by providing familiar social media functionalities within the dating context.
             </p>
-            <p class = "text-gray-600 mb-6">
+            <p class="text-lg text-black-600">
                 Key aspects include the ability to share photos and short videos as status updates. Privacy controls ensure that users can see each other's status only after a match, providing a sense of security. Interactive elements, such as reactions and quick replies, foster engagement. This feature allows users to showcase their personality and hobbies in a fun way beyond profile photos, helping to build trust and a sense of community.</p>
           
             <img src="images/Homepage.png" alt="Wireframe" class="w-full rounded-xl shadow-lg mb-8">
@@ -574,22 +583,22 @@
 
         <!-- Conclusion -->
         <section class="bg-white p-8 rounded-xl shadow-md mb-16">
-            <h2 class="text-2xl font-bold mb-6 text-blue-600">Conclusion</h2>
-            <p class="text-gray-600 mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">CONCLUSION</h2>
+            <p class="text-lg text-black-600">
                 If the Joopi app intends to attract Asian Americans seeking long-term, serious relationships, it must navigate a competitive landscape dominated by established platforms known for fostering meaningful connections. 
                 To differentiate itself, Joopi should prioritize quality over quantity, leveraging innovative matching algorithms and effective engagement strategies that resonate with users in search of genuine, committed partnerships.
             </p>
-            <div class="flex justify-center gap-4">
-                <a href="index.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
-                    Back to Home
-                </a>
-                <a href="Craigslist.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
-                    View Craigslist Project
-                </a>
-            </div>
+            
         </section>
     </main>
-
+    <div class="flex justify-center gap-4 mt-12">
+        <a href="index.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+            Back to Home
+        </a>
+        <a href="Craigslist.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+            View Craigslist Project
+        </a>
+    </div>
     <footer class="bg-white py-8 mt-16">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
             &copy; 2024 Sai Rajesh Rapelli. All rights reserved.
