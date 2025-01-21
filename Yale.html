@@ -3,305 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yale school of Art Case Study - Sai Rajesh Rapelli</title>
+    <title>Yale School of Art Case Study - Sai Rajesh Rapelli</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: white;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #2563EB, #1D4ED8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #2563EB;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #2563EB;
+            margin: 1rem auto;
+        }
+
         .image-container {
             display: flex;
-            justify-content: center; /* Align images horizontally */
-            gap: 50px; /* Add space between images */
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin: 2rem 0;
         }
 
         .image-container img {
-            width: 400px; /* Set the width of each image */
-            height: auto; /* Maintain the aspect ratio */
-            border-radius: 10px; /* Optional: add rounded corners */
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .content-container {
-                                display: flex;
-                                align-items: flex-start; /* Align items to the top */
-                                gap: 50px; /* Add space between the text and image */
-                            }
-                        
-                            .content-container img {
-                                width: 400px; /* Adjust as needed */
-                                height: auto;
-                                border-radius: 8px; /* Optional: adds rounded corners */
-                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds shadow */
-                                margin-top: 20px; /* Adjust this value to control how much the image is lowered */
-                            }
-                        
-                            .content-container .text-content {
-                                flex: 1; /* Allow the text to take up available space */
-                            }
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .content-container img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-container .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+            }
+            
+            .content-container img {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .image-container {
+                gap: 20px;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-100 font-sans">
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold text-gray-800">SAI RAJESH RAPELLI</a>
-            <div class="flex items-center space-x-4">
-                <a href="index.html" class="text-gray-600 hover:text-gray-800">Home</a>
-                <a href="#work" class="text-red-600 hover:text-gray-800">Work</a>
-                <a href="blogs.html" class="text-gray-600 hover:text-gray-800">Blogs</a>
-                <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" class="text-gray-600 hover:text-gray-800" target="_blank">Resume</a>
-                <a href="index.html#contact" class="text-gray-600 hover:text-gray-800">Contact Me</a>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="index.html#about" class="nav-link text-gray-600 hover:text-blue-600">About</a>
+                    <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
+                       target="_blank"
+                       class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                        Resume
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-600" id="menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-2xl font-bold gradient-text">SR.</span>
+                    <button class="text-gray-600" id="close-menu">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-6">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="index.html#about" class="text-gray-600 hover:text-blue-600">About</a>
+                    <a href="index.html#work" class="text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
+                       target="_blank"
+                       class="px-5 py-2 bg-blue-600 text-white rounded-full text-center hover:bg-blue-700 transition">
+                        Resume
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="container mx-auto px-6 py-12">
-        <h1 class="text-4xl font-bold mb-8 text-center">Yale School of Art</h1>
-        <img src="images/Yalepic.png" alt="Figma Design" class="rounded-lg shadow-lg mb-8" style="width: 1000px; height: 680px; display: block; margin-left: auto; margin-right: auto;">
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <!-- Case Study Header -->
+        <h1 class="text-4xl font-bold text-center section-heading mb-12">Yale School of Art</h1>
+        
+        <img src="images/Yalepic.png" alt="Figma Design" class="rounded-lg shadow-lg mb-12 mx-auto max-w-4xl w-full">
+
+        <!-- Overview Section -->
         <section class="mb-12">
-            <h2 class="text-3xl font-bold mb-4">OVERVIEW</h2>
-            <p class="text-lg mb-4">At a glance, this website The Yale School of Art is a graduate school that confers MFAs in Graphic Design, Painting/Printmaking, Photography, and Sculpture; and offers undergraduate-level art courses to Yale College students.</p>
-            <p class="text-lg mb-4">Categories and subcategories may not always be clearly organized, making it difficult to find specific listings. This confuses the user and they might be unsure where to start, proceed, or focus their attention. So, systematic methods were used like interviews, personas, and heuristic evaluation in order to learn more about their opinions, experiences, and recommendations for enhancements.</p>
+            <h2 class="text-3xl font-bold mb-6">OVERVIEW</h2>
+            <p class="text-lg text-gray-600 mb-4">At a glance, this website The Yale School of Art is a graduate school that confers MFAs in Graphic Design, Painting/Printmaking, Photography, and Sculpture; and offers undergraduate-level art courses to Yale College students.</p>
+            <p class="text-lg text-gray-600 mb-8">Categories and subcategories may not always be clearly organized, making it difficult to find specific listings. This confuses the user and they might be unsure where to start, proceed, or focus their attention. So, systematic methods were used like interviews, personas, and heuristic evaluation in order to learn more about their opinions, experiences, and recommendations for enhancements.</p>
             
-           
-            <p class="text-2xl font-semibold mb-4">Focus areas</p>
-            <ul class="list-disc list-inside text-lg mb-4 space-y-2">
-            <li> UI design: Design system, typography, visual layouts</li>
-            <li> UX strategy: Personas, flowcharts, task flows, navigation system, usability testings
-            <li> User research: User interviews, market research, stakeholder interviews.
-         
-                
+            <h3 class="text-2xl font-semibold mb-4">Focus areas</h3>
+            <ul class="list-disc list-inside text-lg text-gray-600 mb-8 space-y-2">
+                <li>UI design: Design system, typography, visual layouts</li>
+                <li>UX strategy: Personas, flowcharts, task flows, navigation system, usability testings</li>
+                <li>User research: User interviews, market research, stakeholder interviews.</li>
             </ul>
-           
-            <p class="text-2xl font-semibold mb-4">Roles and responsibilities</p>
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-            
-                <div>
-            <p class="text-lg mb-4">Role: This is my academic project and I worked on the scripts of
-               logo designs, personas, sitemap, mood board and wireframing.</p>
-               </div>
-               <div>
-                <p class="text-lg mb-4">Design: I worked on the internal architecture
-                    of the application, wireframes, and both low &
-                    mid-fidelity prototypes.</p>
-                    </div>
-                    <div>
-                    <p class="text-lg mb-4">Skills and tools used: Prototyping, Figma, Notion, User Research, Wireframing, Justinmind. </p>
-                    
-                    
-                    </div>
-                    </div>
-                    <img src="images/napkin-selection (1).png" alt="Common Issues" class="rounded-lg shadow-lg mb-4" style="width: 1000px; height: 650px; display: block; margin-left: auto; margin-right: auto;">
+
+            <h3 class="text-2xl font-semibold mb-4">Roles and responsibilities</h3>
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div class="text-lg text-gray-600">
+                    <p>Role: This is my academic project and I worked on the scripts of logo designs, personas, sitemap, mood board and wireframing.</p>
+                </div>
+                <div class="text-lg text-gray-600">
+                    <p>Design: I worked on the internal architecture of the application, wireframes, and both low & mid-fidelity prototypes.</p>
+                </div>
+                <div class="text-lg text-gray-600">
+                    <p>Skills and tools used: Prototyping, Figma, Notion, User Research, Wireframing, Justinmind.</p>
+                </div>
+            </div>
+
+            <img src="images/napkin-selection (1).png" alt="Common Issues" class="rounded-lg shadow-lg mx-auto max-w-4xl w-full">
         </section>
 
+        <!-- Problem Statement Section -->
         <section class="mb-12">
             <h2 class="text-3xl font-bold mb-6">PROBLEM STATEMENT</h2>
-            <p class="text-lg mb-4">The Yale School of Art website currently lacks an intuitive structure, making it challenging for users to navigate between programs, exhibitions, and resources. Key information about the school, events, and application processes is not easily accessible, 
-                which limits engagement from prospective students, alumni, and art enthusiasts.</p>
-            <p class="text-lg mb-4"><span class="bg-yellow-400 text-gray-800 px-2"><i>"How can the Yale School of Art website be redesigned to create a more engaging, user-centered experience that highlights the school’s programs, events, and community, while providing clear navigation and accessible information for a diverse audience?"</i></span></p>
-            
+            <p class="text-lg text-gray-600 mb-4">The Yale School of Art website currently lacks an intuitive structure, making it challenging for users to navigate between programs, exhibitions, and resources. Key information about the school, events, and application processes is not easily accessible, which limits engagement from prospective students, alumni, and art enthusiasts.</p>
+            <p class="text-lg mb-4"><span class="bg-yellow-400 text-gray-800 px-2"><i>"How can the Yale School of Art website be redesigned to create a more engaging, user-centered experience that highlights the school's programs, events, and community, while providing clear navigation and accessible information for a diverse audience?"</i></span></p>
         </section>
 
+        <!-- Personas Section -->
         <section class="mb-12">
             <h2 class="text-3xl font-bold mb-6">PERSONAS</h2>
             <div class="image-container">
                 <img src="images/Persona 1.png" alt="Persona 1">
-                <img src="images/persona 2.png" alt="Persona 2">  
-                <img src="images/Persona 3.png" alt="Persona 3">  
+                <img src="images/persona 2.png" alt="Persona 2">
+                <img src="images/Persona 3.png" alt="Persona 3">
             </div>
         </section>
 
+        <!-- SWOT Analysis Section -->
         <section class="mb-12">
             <h2 class="text-3xl font-bold mb-6">SWOT ANALYSIS</h2>
-            <p class="text-lg mb-4">This portfolio presents a concise SWOT analysis of university fine arts programs, highlighting strengths, weaknesses, opportunities, and threats. Using Yale’s highly ranked program as an example, it identifies key factors affecting user experience, program reputation, and external challenges. The analysis also includes practical examples to show how strategic improvements can enhance engagement and program success.
-            </p>
-            <img src="images/SWOT Analysis.png" alt="Common Issues" class="rounded-lg shadow-lg mb-4" style="width: 1000px; height: auto; display: block; margin-left: auto; margin-right: auto;">
-    
-            </section>
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold mb-6">KEYWORDS</h2>
-                <p class="text-lg mb-4">
-                    My work on the Yale School of Art website redesign is rooted in a deep appreciation for creativity, education, and artistic excellence. This project embodies an exploration of innovative design that embraces diversity and showcases the vibrant artistic community. By integrating elements of aesthetics, craftsmanship, and visionary thinking, the redesign aims to create an engaging platform that celebrates cultural heritage and inclusivity. Through thoughtful design solutions, I strive to enhance user experience while maintaining the school’s legacy of talent, education, and the pursuit of excellence. The outcome is a digital space that fosters connection, learning, and artistic expression for all.
-                </p>
-                <img src="images/Words.png" alt="Common Issues" class="rounded-lg shadow-lg mb-4" style="width: 1000px; height: auto; display: block; margin-left: auto; margin-right: auto;">
-                <img src="images/descriptors.png" alt="Common Issues" class="rounded-lg shadow-lg mb-4" style="width: 1000px; height: auto; display: block; margin-left: auto; margin-right: auto;">
-        
-                </section>
-                <section class="mb-12 content-container">
-                    <img src="images/Harmony.png" alt="Common Issues">
-                    <div class="text-content">
-                        <h2 class="text-3xl font-bold mb-6">COLOUR HARMONY</h2>
-                        <p class="text-lg mb-4">
-                            The colour palette, based on split complementary harmony, was chosen to create visual balance and contrast, relating to the Yale School of Art's mission of blending tradition with creativity. The base colour, brown (#7F5539), symbolizes reliability and professionalism, fitting for an academic institution. The complementary colours, blue (#39557F) and green (#397F6B), offer contrast while maintaining harmony. Blue represents trust and intellect, used for the text, while green signifies creativity and growth, applied to the artistic symbols. This combination of warm and cool tones provides visual interest and reflects the institution’s emphasis on both stability and innovation in art.
-                        </p>
-                    </div>
-                </section>
-                
-                <section class="mb-12 content-container">
-                    <div class="text-content">
-                        <h2 class="text-3xl font-bold mb-6">LOGO AND TAGLINE</h2>
-                        <p class="text-lg mb-4">
-                            Initially there was no logo and I added the globe as main element to make it more impactful. The globe’s shape was also geometrically adjusted to give the design a more modern, structured feel. The palette was added and placed next to graduation cap were signified to mention the art education.
+            <p class="text-lg text-gray-600 mb-8">This portfolio presents a concise SWOT analysis of university fine arts programs, highlighting strengths, weaknesses, opportunities, and threats. Using Yale's highly ranked program as an example, it identifies key factors affecting user experience, program reputation, and external challenges. The analysis also includes practical examples to show how strategic improvements can enhance engagement and program success.</p>
+            <img src="images/SWOT Analysis.png" alt="SWOT Analysis" class="rounded-lg shadow-lg mx-auto max-w-4xl w-full">
+        </section>
 
-                            By adjusting the thickness and simplifying elements, I ensured the design works well across various mediums.
+        <!-- Keywords Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">KEYWORDS</h2>
+            <p class="text-lg text-gray-600 mb-8">My work on the Yale School of Art website redesign is rooted in a deep appreciation for creativity, education, and artistic excellence. This project embodies an exploration of innovative design that embraces diversity and showcases the vibrant artistic community. By integrating elements of aesthetics, craftsmanship, and visionary thinking, the redesign aims to create an engaging platform that celebrates cultural heritage and inclusivity.</p>
+            <img src="images/Words.png" alt="Keywords" class="rounded-lg shadow-lg mx-auto max-w-4xl w-full mb-8">
+            <img src="images/descriptors.png" alt="Descriptors" class="rounded-lg shadow-lg mx-auto max-w-4xl w-full">
+        </section>
 
-                            I chose a strong sans-serif font like Montserrat for the logotype because of its professional and modern appearance, which complements the educational theme. The Helvetica lighter-weight tagline, “Empowering through Knowledge” adds a softer tone while reinforcing the logo’s purpose.
-                        </p>
-                    </div>
-                    <img src="images/Logo.png" alt="Common Issues">
-                </section>
-                
-                <section class="mb-12">
-                    <h2 class="text-3xl font-bold mb-6">MOODBOARD</h2>
-                    <p class="text-lg mb-4">The mood board above reflects the Yale School of Art's rich history of fostering creativity, collaboration, and professional growth within the arts. Each image was carefully selected to represent the core values and experiences associated with the institution.</p>
-                    <p class="text-lg mb-4"> I chose brown as my base color because it is the dominant shade in my mood board, symbolizing warmth, reliability, and groundedness, which aligns with the values of the Yale School of Art. Brown is often associated with tradition and stability, making it a fitting choice for an institution steeped in history.</p>
-                    <img src="images/1.png" alt="Common Issues" class="rounded-lg shadow-lg mb-4" style="width: 800px; height: auto; display: block; margin-left: auto; margin-right: auto;">
-            
-                    </section>
-                    <section class="mb-12">
-                        <h2 class="text-3xl font-bold mb-6">SITEMAP</h2>
-                        <p class="text-lg mb-4">
-                            The Yale School of Art website is designed to serve as a comprehensive and user-friendly platform that reflects the school's commitment to excellence, creativity, and inclusivity. This structured sitemap provides clear navigation across essential sections, including information about the school’s mission, resources for current students and alumni, and detailed guidance for prospective applicants. Visitors can explore exhibitions, stay updated with news and events, access academic and public resources, and delve into the school's publications. The site emphasizes accessibility and engagement, ensuring a seamless experience for a diverse audience and fostering a deeper connection with the rich heritage and contemporary pursuits of the Yale School of Art.
-                        </p>
-                        <img src="images/Sitemap.png" alt="Common Issues" class="rounded-lg shadow-lg mb-4" style="width: 2000px; height: auto; display: block; margin-left: auto; margin-right: auto;">
-                
-                        </section>
+        <!-- Color Harmony Section -->
+        <section class="mb-12 content-container">
+            <img src="images/Harmony.png" alt="Color Harmony">
+            <div class="text-content">
+                <h2 class="text-3xl font-bold mb-6">COLOUR HARMONY</h2>
+                <p class="text-lg text-gray-600">The colour palette, based on split complementary harmony, was chosen to create visual balance and contrast, relating to the Yale School of Art's mission of blending tradition with creativity. The base colour, brown (#7F5539), symbolizes reliability and professionalism, fitting for an academic institution. The complementary colours, blue (#39557F) and green (#397F6B), offer contrast while maintaining harmony. Blue represents trust and intellect, used for the text, while green signifies creativity and growth, applied to the artistic symbols.</p>
+            </div>
+        </section>
 
-                    </section>
-                    <section class="mb-12">
-                        <h2 class="text-3xl font-bold mb-6">UX REWRITING</h2>
-                        <p class="text-2xl font-semibold mb-4"> Rewrite Text 1</p>
-                        <p class="text-lg mb-4">
-                            Before: "During exhibitions, Green Hall Gallery at 1156 Chapel Street is typically open to the
-                            public but due to COVID-19, it will remain open only to the Yale community until further
-                            notice."
-                            <p class="text-lg mb-4">After:<span class="bg-green-400 text-gray-800 px-2">"Green Hall Gallery at 1156 Chapel Street is open to the Yale community during
-                            exhibitions. Public access is currently restricted due to COVID-19. Updates will be provided
-                            as circumstances change."</span></p>
+        <!-- Logo and Tagline Section -->
+        <section class="mb-12 content-container">
+            <div class="text-content">
+                <h2 class="text-3xl font-bold mb-6">LOGO AND TAGLINE</h2>
+                <p class="text-lg text-gray-600">Initially there was no logo and I added the globe as main element to make it more impactful. The globe's shape was also geometrically adjusted to give the design a more modern, structured feel. The palette was added and placed next to graduation cap were signified to mention the art education. By adjusting the thickness and simplifying elements, I ensured the design works well across various mediums. I chose a strong sans-serif font like Montserrat for the logotype because of its professional and modern appearance, which complements the educational theme.</p>
+            </div>
+            <img src="images/Logo.png" alt="Logo Design">
+        </section>
 
-                            <p class="text-lg mb-4"> Explanation: I rewrote this passage to enhance clarity and conciseness, aligning with the
-                            user-first focus. The original sentence felt unnecessarily wordy and buried important
-                            information. The improved version separates key details—who can access the gallery and
-                            why—making it easier for users to quickly grasp the message. Additionally, removing "until
-                            further notice" eliminates ambiguity. Clear, actionable updates convey a more transparent
-                            and user-focused approach, following UX writing guidelines on providing information
-                            usefully without overwhelming the reader
-                            </p>
-                            <p class="text-2xl font-semibold mb-4"> Rewrite Text 2</p>
-                            <p class="text-lg mb-4">
-                                Before: Before: "For information on applications to the MFA program, please click the 'Graduate
-                                Admission' link below.
-                                The undergraduate admissions process is handled entirely through Yale College. Please
-                                refer all undergraduate admissions questions to the Yale College Undergraduate
-                                Admissions Office."
-                                <p class="text-lg mb-4">After: <span class="bg-green-400 text-gray-800 px-2">"Interested in our MFA program? Find application details under 'Graduate Admission'
-                                    below.
-                                    Office."
-                                    For undergraduate admissions, please contact the Yale College Undergraduate Admissions. </span></p>
-    
-                                <p class="text-lg mb-4"> Explanation: This revision aims to enhance conciseness and clarity by removing
-                                    redundancy and improving readability. The original text is too formal and verbose, which
-                                    could be off-putting or confusing for users. The rephrased version is more direct and
-                                    engaging, starting with an inviting tone that better aligns with the university's brand
-                                    definition. It also separates the two types of admissions clearly, ensuring that users quickly
-                                    find the relevant information. By focusing on brevity and clear calls to action, the new
-                                    passage improves user experience by offering clear paths without unnecessary complexity.
-                                </p>
-                        </section>
-
-                        <section class="mb-12">
-                            <h2 class="text-3xl font-bold mb-6">BUSINESS CARD</h2>
-                            <p class="text-lg mb-4">
-                                The card provides his contact information, including his phone number, email address, and the school's website. The design features the Yale School of Art logo, which includes an image of a globe, alongside the school's name and tagline "Empowering through Knowledge".
-                                The overall design is clean and professional, using a color scheme of brown, navy, and white. The layout is well-structured, with the key information clearly organized and easy to read. The inclusion of the school's website address and Sai Rajesh Rapelli's role as the School Director suggests this is a formal business card used for official communication and networking.
-                                This card would be a suitable addition to a professional portfolio, as it demonstrates a well-designed and informative business card that effectively conveys the necessary details about the Yale School of Art and its leadership.
-
-                            </p>
-                            <div class="image-container">
-                                <img src="images/front.png" alt="Persona 1">
-                                <img src="images/back.png" alt="Persona 2">  
-                                
-                            </div>
-                    
-                            </section>
-                        <section class="mb-12">
-                            <h2 class="text-3xl font-bold mb-6">LOW-FI WIREFRAMING</h2>
-                            <p class="text-lg mb-4">
-                               
-                            </p>
-                            <p class="text-lg mb-4">
-                               
-                            For the redesign of the Home, About, and Apply screens, I focused on developing the 
-                            experience specifically for a desktop site. Given that many students use this platform on a 
-                            large scale, optimizing for desktop ensures a more user-friendly and efficient experience.
-                            </p>
-                            <p class="text-2xl font-semibold mb-4"> Grid Structure</p>
-                           
-                            <p class="text-lg mb-4">Instead of the column grid, I chose a manuscript grid for this redesign. The manuscript grid 
-                            offers a unified, streamlined layout ideal for content-heavy pages, allowing users to scroll 
-                            through information with minimal distractions. Additionally, this grid structure provides 
-                            enhanced responsiveness, improving adaptability across various screen sizes and creating
-                            a cohesive experience on different devices.</p>
-                            <p class="text-lg mb-4">
-                           
-                            </p>
-                            <p class="text-lg mb-4">
-                               
-                            </p>
-                            <p class="text-lg mb-4">
-                               
-                            </p>
-                            <p class="text-lg mb-4">
-                               
-                            </p>
-                            <p class="text-lg mb-4">
-                               
-                            </p>
-                            <div class="image-container">
-                                <img src="images/home.jpeg" alt="Persona 1" class="rounded-lg shadow-lg mb-4" style="width: 200px; height: 600px; display: block; margin-left: auto; margin-right: auto;">
-                                <img src="images/aboutt.png" alt="Persona 2" class="rounded-lg shadow-lg mb-4" style="width: 300px; height: 600px; display: block; margin-left: auto; margin-right: auto;">  
-                                <img src="images/apply.jpeg" alt="Persona 3" class="rounded-lg shadow-lg mb-4" style="width: 300px; height: 600px; display: block; margin-left: auto; margin-right: auto;">  
-                            </div>
-                            <p class="text-lg mb-4">
-                               
-                            </p>
-                            
-                            <div class="image-container">
-                                <img src="images/HOME.png" alt="Persona 1">
-                                <img src="images/About.png" alt="Persona 2">  
-                                <img src="images/Apply.png" alt="Persona 3">  
-                            </div>
-                            <p class="text-lg mb-4">
-                               
-                            </p>
-                            </section>
-                            <section class="mb-12">
-                                <h2 class="text-3xl font-bold mb-6">HIGH-FI WIREFRAMING</h2>
-                                <p class="text-lg mb-4">
-                                    After designing the low-fidelity wireframes, I translated them into high-fidelity prototypes, ensuring a user-centered approach by incorporating the chosen color palette (#7F5539 and its complementary shades) and maintaining visual consistency throughout. The designs address user needs identified during research, with each screen tailored to specific personas. The homepage prioritizes an intuitive information hierarchy and streamlined navigation, while the user profile screen uses clean typography and card-based layouts for clarity. The search and filtering screen integrates dynamic filters and intuitive scrolling for ease of use. Feedback from usability testing of the low-fidelity designs informed improvements such as enhanced interaction feedback, clear affordances, and error validation. The high-fidelity prototypes are pixel-perfect and ready for development, adhering to responsive web design principles for seamless experiences across devices. Next, I plan to validate the designs through usability testing to refine them further and ensure they effectively meet user expectations.
-                                </p>
-
-                            <div class="image-container">
-                                <img src="images/HomeR1.png" alt="Persona 1">
-                                <img src="images/AboutR3.png" alt="Persona 2">  
-                                <img src="images/ApplyR2.png" alt="Persona 3">  
-                            </div>
-                        </section>
-
-                        <section class="mb-12">
-                            <h2 class="text-3xl font-bold mb-6">REFLECTIONS</h2>
-                            <p class="text-lg mb-4">
-                                Working on the Yale School of Art website redesign has been an enriching experience that enhanced my understanding of user-centered design principles. Through this project, I learned the importance of aligning design decisions with user research and stakeholder feedback to create intuitive and impactful digital experiences. The process of conducting interviews, crafting personas, and performing heuristic evaluations deepened my skills in identifying user pain points and translating them into actionable solutions.
-
-                                Developing low- and high-fidelity prototypes allowed me to refine my approach to wireframing, grid structures, and color harmony, ensuring consistency and accessibility. I gained hands-on experience in usability testing, which emphasized the iterative nature of design and the value of feedback in driving improvements.
-
-                                Overall, this project honed my ability to balance creativity with functionality, fostered a deeper appreciation for accessibility and inclusivity, and strengthened my skills in collaboration and problem-solving within the UI/UX domain.
-
-                            </p>
-                            
-                     
-                        
-                      
+        <!-- Moodboard Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">MOODBOARD</h2>
+            <p class="text-lg text-gray-600 mb-4">The mood board above reflects the Yale School of Art's rich history of fostering creativity, collaboration, and professional growth within the arts. Each image was carefully selected to represent the core values and experiences associated with the institution.</p>
+            <p class="text-lg text-gray-600 mb-8">I chose brown as my base color because it is the dominant shade in my mood board, symbolizing warmth, reliability, and groundedness, which aligns with the values of the

@@ -14,23 +14,10 @@
             scroll-behavior: smooth;
         }
 
-        .bg-gradient {
-            background: linear-gradient(120deg, #f8fafc 0%, #e2e8f0 100%);
-        }
-
-        .text-gradient {
-            background: linear-gradient(120deg, #1a365d 0%, #2563eb 100%);
+        .gradient-text {
+            background: linear-gradient(90deg, #2563EB, #1D4ED8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .project-card {
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
         }
 
         .nav-link {
@@ -41,10 +28,10 @@
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
+            height: 1px;
             bottom: -2px;
             left: 0;
-            background-color: #2563eb;
+            background-color: #2563EB;
             transition: width 0.3s ease;
         }
 
@@ -52,133 +39,159 @@
             width: 100%;
         }
 
-        /* Mobile menu animation */
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
         }
 
         .mobile-menu {
-            display: none;
-            animation: slideIn 0.3s ease-out;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
         }
 
         .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeUp {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .section-heading::after {
+            content: '';
             display: block;
-        }
-
-        /* Fade in animation for sections */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        .section-delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .section-delay-2 {
-            animation-delay: 0.4s;
+            width: 60px;
+            height: 3px;
+            background: #2563EB;
+            margin: 1rem auto;
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-white text-gray-800">
     <!-- Navigation -->
     <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a href="#" class="text-2xl font-bold text-gradient">SR.</a>
+                <a href="#" class="text-2xl font-bold gradient-text">SR.</a>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-900">About</a>
-                    <a href="#work" class="nav-link text-gray-600 hover:text-gray-900">Work</a>
-                    <a href="#process" class="nav-link text-gray-600 hover:text-gray-900">Process</a>
-                    <a href="#contact" class="nav-link text-gray-600 hover:text-gray-900">Contact</a>
+                    <a href="#home" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-blue-600">About</a>
+                    <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
                     <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
                        target="_blank"
-                       class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
+                       class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
                         Resume
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden text-gray-600 focus:outline-none" id="menuButton">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
+                <button class="md:hidden text-gray-600" id="menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Navigation -->
-        <div class="mobile-menu md:hidden bg-white border-t" id="mobileMenu">
-            <div class="px-4 pt-2 pb-4 space-y-3">
-                <a href="#about" class="block py-2 text-gray-600 hover:text-gray-900">About</a>
-                <a href="#work" class="block py-2 text-gray-600 hover:text-gray-900">Work</a>
-                <a href="#process" class="block py-2 text-gray-600 hover:text-gray-900">Process</a>
-                <a href="#contact" class="block py-2 text-gray-600 hover:text-gray-900">Contact</a>
-                <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
-                   target="_blank"
-                   class="block py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 text-center">
-                    Resume
-                </a>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-2xl font-bold gradient-text">SR.</span>
+                    <button class="text-gray-600" id="close-menu">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-6">
+                    <a href="#home" class="text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-blue-600">About</a>
+                    <a href="#work" class="text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
+                       target="_blank"
+                       class="px-5 py-2 bg-blue-600 text-white rounded-full text-center hover:bg-blue-700 transition">
+                        Resume
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="about" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="home" class="pt-24 md:pt-32 pb-16 md:pb-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-1/2 mb-12 md:mb-0 fade-in">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                        UI/UX Designer <span class="text-blue-600">&</span><br/>
-                        Researcher
+                <div class="md:w-1/2 animate-fadeUp">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                        UX Designer & <span class="gradient-text">Researcher</span>
                     </h1>
                     <p class="text-lg text-gray-600 mb-8 max-w-lg">
-                        Hello! I'm Sai Rajesh, a UX designer passionate about creating meaningful digital experiences through research-driven design solutions.
+                        Creating meaningful digital experiences through research-driven design. Currently based in Baltimore, Maryland.
                     </p>
-                    <div class="flex space-x-4">
+                    <div class="flex flex-wrap gap-4">
                         <a href="#work" 
-                           class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
+                           class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
                             View Projects
                         </a>
                         <a href="#contact" 
-                           class="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition duration-300">
+                           class="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">
                             Get in Touch
                         </a>
                     </div>
                 </div>
-                <div class="md:w-1/2 fade-in section-delay-1">
+                <div class="md:w-1/2 mt-12 md:mt-0">
                     <img src="images/B17C2DCA-15FF-469D-B347-5A6197885BF7.JPG" 
                          alt="Sai Rajesh Rapelli" 
-                         class="rounded-2xl shadow-2xl mx-auto max-w-md w-full h-auto object-cover">
+                         class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl shadow-xl mx-auto">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">About Me</h2>
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-lg text-gray-600 mb-6">
+                    I'm a UI/UX designer and researcher with a Master's degree in Information Systems from the University of Maryland, Baltimore County. My approach combines analytical thinking with creative problem-solving to deliver user-centered designs.
+                </p>
+                <p class="text-lg text-gray-600">
+                    With expertise in user research, prototyping, and interaction design, I focus on creating intuitive and impactful digital experiences that solve real user problems.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Work Section -->
-    <section id="work" class="py-20 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-16">Featured Work</h2>
+    <section id="work" class="py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Selected Works</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
-                    <div class="relative">
-                        <img src="/api/placeholder/400/300" alt="A Round Entertainment" 
-                             class="w-full h-48 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    </div>
+                <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <img src="/api/placeholder/400/300" 
+                         alt="A Round Entertainment" 
+                         class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">A Round Entertainment</h3>
+                        <h3 class="text-xl font-bold mb-3">A Round Entertainment</h3>
                         <p class="text-gray-600 mb-4">
-                            Dating app UI/UX design fostering cultural exchange between South Korea and USA
+                            A dating app facilitating cultural exchange between South Korea and the United States.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">UX Research</span>
@@ -187,80 +200,85 @@
                         <a href="case-study.html" 
                            class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
                             View Case Study 
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
+                            <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
-                </div>
+                </article>
 
                 <!-- Project 2 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
-                    <div class="relative">
-                        <img src="/api/placeholder/400/300" alt="Craigslist Redesign" 
-                             class="w-full h-48 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    </div>
+                <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <img src="/api/placeholder/400/300" 
+                         alt="Craigslist Redesign" 
+                         class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Craigslist Redesign</h3>
+                        <h3 class="text-xl font-bold mb-3">Craigslist Redesign</h3>
                         <p class="text-gray-600 mb-4">
-                            Modernizing the classic platform with improved user experience and interface
+                            Modernizing the classic platform for enhanced user experience and functionality.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Redesign</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Prototyping</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">User Testing</span>
                         </div>
                         <a href="Craigslist.html" 
                            class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
                             View Case Study 
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
+                            <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
-                </div>
+                </article>
 
                 <!-- Project 3 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
-                    <div class="relative">
-                        <img src="/api/placeholder/400/300" alt="Yale School of Art" 
-                             class="w-full h-48 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    </div>
+                <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <img src="/api/placeholder/400/300" 
+                         alt="Yale School of Art" 
+                         class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Yale School of Art</h3>
+                        <h3 class="text-xl font-bold mb-3">Yale School of Art</h3>
                         <p class="text-gray-600 mb-4">
-                            Reimagining the digital presence of a prestigious art institution
+                            Reimagining the digital presence of a prestigious art institution.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Web Design</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">UX Research</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Visual Design</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Information Architecture</span>
                         </div>
                         <a href="Yale.html" 
                            class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
                             View Case Study 
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
+                            <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Let's Connect</h2>
+            <div class="max-w-xl mx-auto text-center">
+                <p class="text-lg text-gray-600 mb-8">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to collaborate.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="mailto:sairajjesh@gmail.com" 
+                       class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Email Me
+                    </a>
+                    <a href="https://www.linkedin.com/in/rapellisairajesh" 
+                       target="_blank"
+                       class="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">
+                        <i class="fab fa-linkedin mr-2"></i>
+                        LinkedIn
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section id="process" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-16">Design Process</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Step 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-magnifying-glass text-blue-600 text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Research</h3>
-                    <p class="text-gray-600">
-                        Deep dive into user needs, market analysis, and competitive research to inform design decisions.
-                    </p>
-                </div
+    <!-- Footer -->
+    <footer class="py-8 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-600">
+                &copy; 2024
