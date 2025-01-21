@@ -56,161 +56,169 @@
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .image-container {
-            display: flex;
-            justify-content: center; /* Align images horizontally */
-            gap: 0px; /* Add space between images */
-        }
+        /* Base styles for desktop */
+.image-container {
+  display: flex;
+  justify-content: center;
+  gap: 0px;
+  width: 100%;
+}
 
-        .image-container img {
-            width: 400px; /* Set the width of each image */
-            height: auto; /* Maintain the aspect ratio */
-            border-radius: 10px; /* Optional: add rounded corners */
-        }
-        .content-container {
-                                display: flex;
-                                align-items: flex-start; /* Align items to the top */
-                                gap: 50px; /* Add space between the text and image */
-                            }
-                        
-                            .content-container img {
-                                width: 400px; /* Adjust as needed */
-                                height: auto;
-                                border-radius: 8px; /* Optional: adds rounded corners */
-                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds shadow */
-                                margin-top: 20px; /* Adjust this value to control how much the image is lowered */
-                            }
-                        
-                            .content-container .text-content {
-                                flex: 1; /* Allow the text to take up available space */
-                            }
+.image-container img {
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
 
-        .content-container .text-content {
-            flex: 1;
-            min-width: 300px;
-        }
+.content-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  width: 100%;
+  margin: 0 auto;
+}
 
-        .mobile-menu {
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: white;
-            z-index: 50;
-            padding: 1.5rem;
-            overflow-y: auto;
-        }
+.content-container img {
+  width: 400px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
 
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
+.content-container .text-content {
+  flex: 1;
+  min-width: 300px;
+}
 
-        @media (max-width: 768px) {
-            .content-container {
-                flex-direction: column;
-                padding: 0 1rem;
-            }
-            
-            .content-container img {
-                width: 100%;
-                margin: 0 auto;
-                order: -1;
-            }
+/* Mobile menu styles */
+.mobile-menu {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  z-index: 50;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
 
-            .image-container {
-                gap: 20px;
-                padding: 0 1rem;
-            }
+.mobile-menu.active {
+  transform: translateX(0);
+}
 
-            .section-heading::after {
-                margin: 0.75rem auto;
-            }
+.mobile-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
 
-            h1 {
-                font-size: 2rem;
-                line-height: 2.5rem;
-                padding: 0 1rem;
-            }
+.mobile-nav-link {
+  font-size: 1.125rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
 
-            h2 {
-                font-size: 1.75rem;
-                line-height: 2.25rem;
-                padding: 0 1rem;
-            }
+/* Responsive styles */
+@media (max-width: 768px) {
+  /* Container adjustments */
+  .content-container {
+    flex-direction: column;
+    padding: 0 1rem;
+    gap: 20px;
+  }
 
-            h3 {
-                font-size: 1.5rem;
-                line-height: 2rem;
-                padding: 0 1rem;
-            }
+  .content-container img {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    order: -1;
+  }
 
-            p {
-                font-size: 1rem;
-                line-height: 1.625rem;
-                padding: 0 1rem;
-            }
+  .image-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 1rem;
+  }
 
-            .mobile-menu-items {
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
-                margin-top: 2rem;
-            }
+  .image-container img {
+    width: 100%;
+    max-width: 100%;
+  }
 
-            .mobile-nav-link {
-                font-size: 1.125rem;
-                padding: 0.75rem 0;
-                border-bottom: 1px solid #e5e7eb;
-            }
+  /* Typography adjustments */
+  h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    padding: 0 1rem;
+  }
 
-            section {
-                margin-bottom: 3rem;
-                padding: 0 1rem;
-            }
+  h2 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    padding: 0 1rem;
+  }
 
-            img {
-                width: 100%;
-                height: auto;
-                margin: 1rem 0;
-            }
+  h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding: 0 1rem;
+  }
 
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
+  p {
+    font-size: 1rem;
+    line-height: 1.625rem;
+    padding: 0 1rem;
+  }
 
-            button, 
-            a {
-                min-height: 44px;
-                padding: 0.75rem 1rem;
-            }
+  /* Layout adjustments */
+  section {
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
 
-            .text-lg {
-                font-size: 1rem;
-                line-height: 1.625;
-            }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 
-            ul {
-                padding-left: 1.5rem;
-            }
+  /* Component adjustments */
+  button,
+  a {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+  }
 
-            li {
-                margin-bottom: 0.75rem;
-            }
+  .text-lg {
+    font-size: 1rem;
+    line-height: 1.625;
+  }
 
-            .project-card {
-                margin-bottom: 1.5rem;
-            }
-        }
+  ul {
+    padding-left: 1.5rem;
+  }
 
-        @supports (-webkit-touch-callout: none) {
-            .mobile-menu {
-                height: -webkit-fill-available;
-            }
-        }
+  li {
+    margin-bottom: 0.75rem;
+  }
+
+  .project-card {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* iOS-specific fix for mobile menu height */
+@supports (-webkit-touch-callout: none) {
+  .mobile-menu {
+    height: -webkit-fill-available;
+  }
+}
     </style>
 </head>
 <body class="bg-gray-50">
