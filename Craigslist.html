@@ -247,23 +247,25 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <div class="flex justify-end mb-8">
-                <button onclick="toggleMobileMenu()">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="flex flex-col space-y-6">
-                <a href="index.html" class="text-xl text-gray-600 hover:text-blue-600">Home</a>
-                <a href="#work" class="text-xl text-gray-600 hover:text-blue-600">Work</a>
-                <a href="blogs.html" class="text-xl text-gray-600 hover:text-blue-600">Blogs</a>
-                <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
-                   target="_blank"
-                   class="nav-link text-gray-600 hover:text-blue-600 ">
-                    Resume
-                </a>
+        <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                    <button class="text-gray-600" id="close-menu">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-6">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <!-- <a href="blogs.html" class="text-gray-600 hover:text-blue-600">Blogs</a> -->
+                    <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
+                       target="_blank"
+                       class="nav-link text-gray-600 hover:text-blue-600 ">
+                        Resume
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
