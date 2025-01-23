@@ -17,19 +17,12 @@
 
         /* Mobile menu styles */
         .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;
-            z-index: 100;
-            padding: 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
         }
 
         .mobile-menu.active {
-            display: block;
+            transform: translateX(0);
         }
 
         /* Hamburger menu icon */
@@ -225,10 +218,9 @@
                 <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
                 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8 desktop-nav">
+                <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
-                    <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
-                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
                     <!-- <a href="blogs.html" class="nav-link text-gray-600 hover:text-blue-600">Blogs</a> -->
                     <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
                        target="_blank"
@@ -238,44 +230,61 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="hamburger md:hidden" onclick="toggleMobileMenu()">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+                <button class="md:hidden text-gray-600" id="menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
-        </div>
 
-        <!-- Mobile Menu -->
-        <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-8">
-                    <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
-                    <button class="text-gray-600" id="close-menu">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="flex flex-col space-y-6">
-                    <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
-                    <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
-                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
-                    <!-- <a href="blogs.html" class="text-gray-600 hover:text-blue-600">Blogs</a> -->
-                    <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
-                       target="_blank"
-                       class="nav-link text-gray-600 hover:text-blue-600 ">
-                        Resume
-                    </a>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-8">
+                        <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                        <button class="text-gray-600" id="close-menu">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex flex-col space-y-6">
+                        <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
+                        <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                        <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                        <!-- <a href="blogs.html" class="text-gray-600 hover:text-blue-600">Blogs</a> -->
+                        <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
+                           target="_blank"
+                           class="nav-link text-gray-600 hover:text-blue-600 ">
+                            Resume
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
     <script>
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const closeMenu = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.getElementsByTagName('a');
+            Array.from(mobileLinks).forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        });
     </script>
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
