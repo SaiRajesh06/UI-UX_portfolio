@@ -95,35 +95,14 @@
 
 /* Mobile menu styles */
 .mobile-menu {
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: white;
-  z-index: 50;
-  padding: 1.5rem;
-  overflow-y: auto;
-}
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
 
-.mobile-menu.active {
-  transform: translateX(0);
-}
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
 
-.mobile-menu-items {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.mobile-nav-link {
-  font-size: 1.125rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #e5e7eb;
-}
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -222,8 +201,8 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+       <!-- Navigation -->
+       <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
@@ -231,9 +210,8 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
-                    <!-- <a href="index.html#about" class="nav-link text-gray-600 hover:text-blue-600">About</a> -->
-                    <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
-                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                    <!-- <a href="blogs.html" class="nav-link text-gray-600 hover:text-blue-600">Blogs</a> -->
                     <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
                        target="_blank"
                        class="nav-link text-gray-600 hover:text-blue-600 ">
@@ -242,30 +220,32 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden text-gray-600 p-2" id="menu-toggle">
+                <button class="md:hidden text-gray-600" id="menu-toggle">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
-        </div>
 
-        <!-- Mobile Menu -->
-        <div class="mobile-menu md:hidden" id="mobile-menu">
-            <div class="flex justify-between items-center mb-8">
-                <span class="text-2xl font-bold gradient-text">SR.</span>
-                <button class="text-gray-600 p-2" id="close-menu">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            <div class="flex flex-col space-y-6">
-                <a href="index.html" class="mobile-nav-link text-gray-600 hover:text-blue-600">Home</a>
-                <a href="index.html#about" class="mobile-nav-link text-gray-600 hover:text-blue-600">About</a>
-                <!-- <a href="index.html#work" class="mobile-nav-link text-gray-600 hover:text-blue-600">Work</a> -->
-                <a href="index.html#contact" class="mobile-nav-link text-gray-600 hover:text-blue-600">Contact</a>
-                <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
-                   target="_blank"
-                   class="nav-link text-gray-600 hover:text-blue-600 ">
-                    Resume
-                </a>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-8">
+                        <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                        <button class="text-gray-600" id="close-menu">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex flex-col space-y-6">
+                        <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
+                        <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                        <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                        <!-- <a href="blogs.html" class="text-gray-600 hover:text-blue-600">Blogs</a> -->
+                        <a href="https://drive.google.com/file/d/1E_LD5uHo6vlTZwk5gJvyzhViAGqwS8uO/view?usp=share_link" 
+                           target="_blank"
+                           class="nav-link text-gray-600 hover:text-blue-600 ">
+                            Resume
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -501,33 +481,26 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
             const closeMenu = document.getElementById('close-menu');
-            
-            function toggleMenu() {
-                mobileMenu.classList.toggle('active');
-                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-            }
+            const mobileMenu = document.getElementById('mobile-menu');
 
-            menuToggle?.addEventListener('click', toggleMenu);
-            closeMenu?.addEventListener('click', toggleMenu);
-
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (mobileMenu?.classList.contains('active') && 
-                    !mobileMenu.contains(e.target) && 
-                    !menuToggle.contains(e.target)) {
-                    toggleMenu();
-                }
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
 
-            // Handle iOS Safari 100vh issue
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
+            closeMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
 
-            window.addEventListener('resize', () => {
-                const vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.getElementsByTagName('a');
+            Array.from(mobileLinks).forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
             });
         });
     </script>
