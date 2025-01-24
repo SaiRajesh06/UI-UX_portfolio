@@ -54,6 +54,41 @@
             transform: translateY(-8px);
         }
 
+        /* Updated image container styles */
+        .project-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 66.67%; /* 3:2 aspect ratio */
+            overflow: hidden;
+        }
+
+        .project-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Hero image responsive styles */
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
         .mobile-menu {
             transform: translateX(-100%);
             transition: transform 0.3s ease-in-out;
@@ -150,53 +185,39 @@
                     <p class="text-lg text-gray-600 mb-8 max-w-lg">
                         Creating meaningful digital experiences through research-driven design.
                         With expertise in user research, prototyping, and interaction design, I focus on creating intuitive and impactful digital experiences that solve real user problems.
-                        
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="#work" 
-                           class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                        <a href="#work" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
                             View Projects
                         </a>
-                        <a href="#contact" 
-                           class="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">
+                        <a href="#contact" class="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">
                             Get in Touch
                         </a>
                     </div>
                 </div>
                 <div class="md:w-1/2 mt-12 md:mt-0">
-                    <img src="images/B17C2DCA-15FF-469D-B347-5A6197885BF7.JPG" 
-                         alt="Sai Rajesh Rapelli" 
-                         class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl shadow-xl mx-auto">
+                    <div class="hero-image-container">
+                        <img src="images/B17C2DCA-15FF-469D-B347-5A6197885BF7.JPG" 
+                             alt="Sai Rajesh Rapelli" 
+                             class="hero-image">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 md:py-24 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">About Me</h2>
-            <div class="max-w-3xl mx-auto text-center">
-                <p class="text-lg text-gray-600 mb-6">
-                    Hey there! I'm a UI/UX designer and researcher with a Master's degree in Information Systems from the University of Maryland, Baltimore County. My approach combines analytical thinking with creative problem-solving to deliver user-centered designs.
-                </p>
-                <p class="text-lg text-gray-600">
-                    My evolution from tech to UX design hasn't been a departure, but an expansion—combining my technical foundation with design thinking to create impactful, purposeful projects that blend creativity with functionality.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Section -->
     <section id="work" class="py-16 md:py-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Selected Works</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg"> 
-                    <img src="/images/coverjoopi.png"
-                         alt="A Round Entertainment" 
-                         class="w-full h-48 object-cover">
+                <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="project-image-container">
+                        <img src="/images/coverjoopi.png"
+                             alt="A Round Entertainment"
+                             class="project-image">
+                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">A Round Entertainment</h3>
                         <p class="text-gray-600 mb-4">
@@ -204,7 +225,7 @@
                         </p>
                         <p class="text-gray-600 mb-4">
                             Role: UX Designer & Researcher Intern
-                            </p>
+                        </p>
                         <p class="text-gray-600 mb-4">
                             Duration: March 2024 - May 2024
                         </p>
@@ -212,8 +233,7 @@
                             <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">UX Research</span>
                             <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">UI Design</span>
                         </div>
-                        <a href="case-study.html" 
-                           class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                        <a href="case-study.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
                             View Case Study 
                             <i class="fas fa-arrow-right ml-2"></i>
                         </a>
@@ -222,14 +242,16 @@
 
                 <!-- Project 2 -->
                 <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
-                    <img src="/images/covercraig.png" 
-                         alt="Craigslist Redesign" 
-                         class="w-full h-48 object-cover">
+                    <div class="project-image-container">
+                        <img src="/images/covercraig.png"
+                             alt="Craigslist Redesign"
+                             class="project-image">
+                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Craigslist Redesign</h3>
                         <p class="text-gray-600 mb-4">
                             Craigslist is an antiquated and classified ads website.
-                            </p>
+                        </p>
                         <p class="text-gray-600 mb-4">
                             Modernizing the platform for enhanced user experience and functionality.
                         </p>
@@ -240,8 +262,7 @@
                             <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Redesign</span>
                             <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">User Testing</span>
                         </div>
-                        <a href="Craigslist.html" 
-                           class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                        <a href="Craigslist.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
                             View Case Study 
                             <i class="fas fa-arrow-right ml-2"></i>
                         </a>
@@ -250,9 +271,11 @@
 
                 <!-- Project 3 -->
                 <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
-                    <img src="/images/coveryale.png" 
-                         alt="Yale School of Art" 
-                         class="w-full h-48 object-cover">
+                    <div class="project-image-container">
+                        <img src="/images/coveryale.png"
+                             alt="Yale School of Art"
+                             class="project-image">
+                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-3">Yale School of Art</h3>
                         <p class="text-gray-600 mb-4">
@@ -260,8 +283,6 @@
                         </p>
                         <p class="text-gray-600 mb-4">
                             Focused on transforming the digital presence with intuitive navigation and visually engaging layouts.
-
-
                         </p>
                         <p class="text-gray-600 mb-4">
                             Duration: Sept 2024 - Dec 2024
@@ -270,8 +291,7 @@
                             <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Visual Design</span>
                             <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Graphic Design</span>
                         </div>
-                        <a href="Yale.html" 
-                           class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                        <a href="Yale.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
                             View Case Study 
                             <i class="fas fa-arrow-right ml-2"></i>
                         </a>
