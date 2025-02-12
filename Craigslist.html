@@ -116,11 +116,34 @@
 
         .image-container1 img {
             width: 260px;
-            height: 600px;
+            height: auto;
+            max-height: 800px;
             margin: 0;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 10px;
         }
+
+        .image-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 0;
+}
+
+.image-row img {
+    width: 200px;  /* Adjusted width to fit all images in one row */
+    height: auto;
+    max-height: 800px;
+    flex-shrink: 0;  /* Prevents images from shrinking */
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 
         @media (max-width: 768px) {
             .image-container1 img {
@@ -468,10 +491,12 @@
                             Furthermore, the rating system encourages merchants to maintain high levels of service and reliability. With this update, consumers can confidently traverse the marketplace, knowing they have access to relevant information to help them make informed purchasing decisions.
                         </p>
         
-                        <div class="image-container1">
-                            <img src="images/Screen1.jpg" alt="Screen 1" class="rounded-xl shadow-lg">
-                            <img src="images/Screen2.jpg" alt="Screen 2" class="rounded-xl shadow-lg">
-                            <img src="images/Screen8.jpg" alt="Screen 8" class="rounded-xl shadow-lg">
+                        <div class="image-row">
+                            <img src="images/Screen1.jpg" alt="Screen 1">
+                            <img src="images/Screen2.jpg" alt="Screen 2">
+                            <img src="images/screen3.png" alt="Screen 3">
+                            <img src="images/screen4.png" alt="Screen 4">
+                            <img src="images/screen5.png" alt="Screen 5">
                         </div>
                     </div>
                 </div>
