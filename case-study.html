@@ -623,29 +623,131 @@ html {
  <!-- Mobile Menu JavaScript -->
  <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.getElementById('menu-toggle');
-        const closeMenu = document.getElementById('close-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
+// Your existing mobile menu code
+const menuToggle = document.getElementById('menu-toggle');
+const closeMenu = document.getElementById('close-menu');
+const mobileMenu = document.getElementById('mobile-menu');
 
-        menuToggle.addEventListener('click', function() {
-            mobileMenu.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
+menuToggle.addEventListener('click', function() {
+    mobileMenu.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
 
-        closeMenu.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
+closeMenu.addEventListener('click', function() {
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
 
-        // Close menu when clicking on a link
-        const mobileLinks = mobileMenu.getElementsByTagName('a');
-        Array.from(mobileLinks).forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
+// Close menu when clicking on a link
+const mobileLinks = mobileMenu.getElementsByTagName('a');
+Array.from(mobileLinks).forEach(link => {
+    link.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
     });
+});
+
+// FIXED SIDE NAVIGATION HIGHLIGHTING
+
+// Get all sections that need to be observed
+const sections = document.querySelectorAll('section[id]');
+
+// Get all navigation links in the side nav
+const sideNavLinks = document.querySelectorAll('.side-nav a');
+
+// Function to highlight active link
+function setActiveLink() {
+    // Get current scroll position
+    let scrollPosition = window.scrollY;
+    
+    // Find the section that's currently in view
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100; // Adjust offset as needed
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        // Check if user has scrolled to this section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            // Remove active class from all links
+            sideNavLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to corresponding link
+            const activeLink = document.querySelector(`.side-nav a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+    
+    // Handle case where user is at the bottom of the page
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+        // We're at the bottom of the page - highlight the last link
+        sideNavLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+        sideNavLinks[sideNavLinks.length - 1].classList.add('active');
+    }
+}
+
+// Initial call to set the active link based on the current position
+setActiveLink();
+
+// Add scroll event listener
+window.addEventListener('scroll', setActiveLink);
+
+// Add click event listeners to nav links for smooth scrolling
+sideNavLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            // Remove active class from all links first
+            sideNavLinks.forEach(link => link.classList.remove('active'));
+            
+            // Add active class to clicked link
+            this.classList.add('active');
+            
+            // Scroll to the target element
+            window.scrollTo({
+                top: targetElement.offsetTop - 80, // Adjust offset based on fixed header height
+                behavior: 'smooth'
+            });
+            
+            // Update URL without page refresh
+            history.pushState(null, null, `#${targetId}`);
+        }
+    });
+});
+
+// Add style for active nav link
+const style = document.createElement('style');
+style.textContent = `
+    .side-nav a.active {
+        color: #2563EB !important;
+        font-weight: 600;
+        position: relative;
+    }
+    
+    .side-nav a.active::before {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 16px;
+        background-color: #2563EB;
+        border-radius: 2px;
+    }
+`;
+document.head.appendChild(style);
+});
 </script>
 </body>
 </html>
+    
