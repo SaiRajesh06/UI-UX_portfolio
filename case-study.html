@@ -190,7 +190,7 @@ html {
     <!-- Side Navigation -->
     <div class="side-nav hidden md:block">
         <a href="#overview" class="font-medium">Project Overview</a>
-        <a href="#skills-tools" class="font-medium">Skills & Tools</a>
+        <!-- <a href="#skills-tools" class="font-medium">Skills & Tools</a> -->
         <a href="#korean-apps" class="font-medium">Korean Dating Apps</a>
         <a href="#task1" class="font-medium">Task 1: Profile Screens</a>
         <a href="#competitive-analysis" class="font-medium">Competitive Analysis</a>
@@ -206,9 +206,14 @@ html {
         <img src="images/Joopi.png" alt="Figma Design" class="w-full rounded-xl shadow-lg mb-12 max-w-4xl mx-auto">
 
         <!-- Project Overview -->
+        <section id="overview" class="bg-white p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">OVERVIEW</h2>
+                <p class="text-lg text-black-600">
+                    Joopi emphasizes community-focused features for Asian(Korean) Americans, group events, and cultural activities that help users connect over shared interests and values. This not only helps in finding a partner but also in building a network of like-minded individuals.
+                </p>
         <div id="overview" class="grid md:grid-cols-3 gap-8 mb-16">
             <div id="skills-tools" class="bg-white p-6 rounded-xl shadow-md">
-                <h2 class="text-2xl font-bold mb-4 text-blue-600">Skills & Tools Used</h2>
+                <h3 class="text-xl font-bold mb-4 text-black-600">Skills & Tools Used</h2>
                 <ul class="space-y-2">
                     <li class="flex items-center"><span class="mr-2">🎨</span> Prototyping</li>
                     <li class="flex items-center"><span class="mr-2">💻</span> Figma</li>
@@ -221,19 +226,13 @@ html {
             </div>
 
             <div class="bg-white p-6 rounded-xl shadow-md">
-                <h2 class="text-2xl font-bold mb-4 text-blue-600">Project Overview</h2>
-                <p class="text-lg text-black-600">
-                    Joopi emphasizes community-focused features for Asian(Korean) Americans, group events, and cultural activities that help users connect over shared interests and values. This not only helps in finding a partner but also in building a network of like-minded individuals.
-                </p>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-md">
-                <h2 class="text-2xl font-bold mb-4 text-blue-600">Design Process</h2>
+                <h3 class="text-xl font-bold mb-4 text-black-600">Design Process</h2>
                 <p class="text-lg text-black-600">
                     The design process involved conducting extensive user research and testing to guide design decisions, ensuring that the app's features aligned with user needs and preferences. By gathering feedback through user interviews and usability testing, the team iterated on designs to improve the overall user experience.
                 </p>
             </div>
         </div>
+    </section>
 
         <!-- Korean Popular Dating Apps -->
         <section id="korean-apps" class="bg-white p-8 rounded-xl shadow-md mb-16">
@@ -622,180 +621,130 @@ html {
     </footer>
  <!-- Mobile Menu JavaScript -->
  <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Your existing mobile menu code
-    const menuToggle = document.getElementById('menu-toggle');
-    const closeMenu = document.getElementById('close-menu');
-    const mobileMenu = document.getElementById('mobile-menu');
+ document.addEventListener('DOMContentLoaded', function() {
+// Your existing mobile menu code
+const menuToggle = document.getElementById('menu-toggle');
+const closeMenu = document.getElementById('close-menu');
+const mobileMenu = document.getElementById('mobile-menu');
 
-    menuToggle.addEventListener('click', function() {
-        mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
+menuToggle.addEventListener('click', function() {
+    mobileMenu.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
 
-    closeMenu.addEventListener('click', function() {
+closeMenu.addEventListener('click', function() {
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+// Close menu when clicking on a link
+const mobileLinks = mobileMenu.getElementsByTagName('a');
+Array.from(mobileLinks).forEach(link => {
+    link.addEventListener('click', function() {
         mobileMenu.classList.remove('active');
         document.body.style.overflow = 'auto';
     });
+});
 
-    // Close menu when clicking on a link
-    const mobileLinks = mobileMenu.getElementsByTagName('a');
-    Array.from(mobileLinks).forEach(link => {
-        link.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-    });
+// FIXED SIDE NAVIGATION HIGHLIGHTING
+
+// Get all sections that need to be observed
+const sections = document.querySelectorAll('section[id]');
+
+// Get all navigation links in the side nav
+const sideNavLinks = document.querySelectorAll('.side-nav a');
+
+// Function to highlight active link
+function setActiveLink() {
+    // Get current scroll position
+    let scrollPosition = window.scrollY;
     
-    // FIXED NAVIGATION HIGHLIGHTING FOR EXACT SECTIONS
-    
-    // Get all sections that need to be observed
-    const sections = document.querySelectorAll('section[id]');
-    
-    // Get all navigation links in the side nav
-    const sideNavLinks = document.querySelectorAll('.side-nav a');
-    
-    // Create a map to link nav items directly to their target sections
-    const navMap = {};
-    sideNavLinks.forEach(link => {
-        const targetId = link.getAttribute('href').substring(1);
-        navMap[targetId] = link;
-    });
-    
-    // Function to highlight active link based on current section
-    function highlightActiveSection() {
-        // Get current scroll position (add header offset)
-        const scrollPosition = window.scrollY + 120;
+    // Find the section that's currently in view
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100; // Adjust offset as needed
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
         
-        // Find the section that's currently in view
-        let currentSectionId = null;
-        
-        // Check each section's position
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            
-            // If the current scroll position is within this section
-            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                currentSectionId = section.id;
-            }
-        });
-        
-        // If we're at the bottom of the page, highlight the last section
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
-            const lastSection = sections[sections.length - 1];
-            if (lastSection) {
-                currentSectionId = lastSection.id;
-            }
-        }
-        
-        // Clear all active classes
-        sideNavLinks.forEach(link => link.classList.remove('active'));
-        
-        // Set active class for the current section's link
-        if (currentSectionId && navMap[currentSectionId]) {
-            navMap[currentSectionId].classList.add('active');
-        }
-    }
-    
-    // Call once on page load
-    highlightActiveSection();
-    
-    // Add scroll event listener
-    let isScrolling = false;
-    window.addEventListener('scroll', function() {
-        // Throttle the scroll event
-        if (!isScrolling) {
-            window.requestAnimationFrame(function() {
-                highlightActiveSection();
-                isScrolling = false;
+        // Check if user has scrolled to this section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            // Remove active class from all links
+            sideNavLinks.forEach(link => {
+                link.classList.remove('active');
             });
-            isScrolling = true;
-        }
-    }, { passive: true });
-    
-    // Improve smooth scrolling for nav links
-    sideNavLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
             
-            // Get target section
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            
-            if (targetSection) {
-                // Clear all active classes first
-                sideNavLinks.forEach(link => link.classList.remove('active'));
-                
-                // Set this link as active
-                this.classList.add('active');
-                
-                // Calculate position with offset for fixed header
-                const targetPosition = targetSection.offsetTop - 80;
-                
-                // Smooth scroll to target
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Update URL
-                history.pushState(null, null, `#${targetId}`);
+            // Add active class to corresponding link
+            const activeLink = document.querySelector(`.side-nav a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
             }
-        });
-    });
-    
-    // Add explicit highlighting for direct section clicks
-    const navLinkMap = {};
-    // Build a map of section ids to their corresponding nav links
-    sideNavLinks.forEach(link => {
-        const targetId = link.getAttribute('href').substring(1);
-        navLinkMap[targetId] = link;
-    });
-    
-    // Function to check URL hash and highlight corresponding nav item
-    function checkHash() {
-        const hash = window.location.hash.substring(1);
-        if (hash && navLinkMap[hash]) {
-            // Clear all active states
-            sideNavLinks.forEach(link => link.classList.remove('active'));
-            // Set active state for the link matching the hash
-            navLinkMap[hash].classList.add('active');
         }
+    });
+    
+    // Handle case where user is at the bottom of the page
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+        // We're at the bottom of the page - highlight the last link
+        sideNavLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+        sideNavLinks[sideNavLinks.length - 1].classList.add('active');
+    }
+}
+
+// Initial call to set the active link based on the current position
+setActiveLink();
+
+// Add scroll event listener
+window.addEventListener('scroll', setActiveLink);
+
+// Add click event listeners to nav links for smooth scrolling
+sideNavLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            // Remove active class from all links first
+            sideNavLinks.forEach(link => link.classList.remove('active'));
+            
+            // Add active class to clicked link
+            this.classList.add('active');
+            
+            // Scroll to the target element
+            window.scrollTo({
+                top: targetElement.offsetTop - 80, // Adjust offset based on fixed header height
+                behavior: 'smooth'
+            });
+            
+            // Update URL without page refresh
+            history.pushState(null, null, `#${targetId}`);
+        }
+    });
+});
+
+// Add style for active nav link
+const style = document.createElement('style');
+style.textContent = `
+    .side-nav a.active {
+        color: #2563EB !important;
+        font-weight: 600;
+        position: relative;
     }
     
-    // Check hash on page load
-    checkHash();
-    
-    // Listen for hash changes
-    window.addEventListener('hashchange', checkHash);
-    
-    // Add style for active nav link
-    const style = document.createElement('style');
-    style.textContent = `
-        .side-nav a.active {
-            color: #2563EB !important;
-            font-weight: 600;
-            position: relative;
-        }
-        
-        .side-nav a.active::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 16px;
-            background-color: #2563EB;
-            border-radius: 2px;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-    `;
-    document.head.appendChild(style);
+    .side-nav a.active::before {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 16px;
+        background-color: #2563EB;
+        border-radius: 2px;
+    }
+`;
+document.head.appendChild(style);
 });
 </script>
 </body>
