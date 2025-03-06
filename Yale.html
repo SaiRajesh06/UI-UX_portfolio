@@ -645,221 +645,127 @@
 
      <!-- Mobile Menu JavaScript -->
      <script>
-       document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
     // Your existing mobile menu code
     const menuToggle = document.getElementById('menu-toggle');
     const closeMenu = document.getElementById('close-menu');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    if (menuToggle && closeMenu && mobileMenu) {
-        menuToggle.addEventListener('click', function() {
-            mobileMenu.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
+    menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
 
-        closeMenu.addEventListener('click', function() {
+    closeMenu.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    // Close menu when clicking on a link
+    const mobileLinks = mobileMenu.getElementsByTagName('a');
+    Array.from(mobileLinks).forEach(link => {
+        link.addEventListener('click', function() {
             mobileMenu.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
-
-        // Close menu when clicking on a link
-        const mobileLinks = mobileMenu.getElementsByTagName('a');
-        Array.from(mobileLinks).forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
-    }
+    });
     
-    // DEBUG: Log elements to console to check what's being found
-    console.log("Side nav links:", document.querySelectorAll('.side-nav a'));
+    // FIXED SIDE NAVIGATION HIGHLIGHTING
     
-    // Get the side navigation links - try multiple selectors to ensure we find them
-    const sideNavLinks = document.querySelectorAll('.side-nav a, nav a, .sidebar a, #sidebar a');
-    console.log("Found navigation links:", sideNavLinks.length);
+    // Get all sections that need to be observed
+    const sections = document.querySelectorAll('section[id]');
     
-    if (sideNavLinks.length === 0) {
-        // If we can't find links with class selectors, try getting all links from the left side of page
-        const allLinks = document.querySelectorAll('a');
-        const leftSideLinks = Array.from(allLinks).filter(link => {
-            const rect = link.getBoundingClientRect();
-            // Consider links on the left side (adjust the threshold as needed)
-            return rect.left < window.innerWidth * 0.3;
+    // Get all navigation links in the side nav
+    const sideNavLinks = document.querySelectorAll('.side-nav a');
+    
+    // Function to highlight active link
+    function setActiveLink() {
+        // Get current scroll position
+        let scrollPosition = window.scrollY;
+        
+        // Find the section that's currently in view
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 100; // Adjust offset as needed
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            // Check if user has scrolled to this section
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                // Remove active class from all links
+                sideNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to corresponding link
+                const activeLink = document.querySelector(`.side-nav a[href="#${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
         });
         
-        if (leftSideLinks.length > 0) {
-            console.log("Using left side links instead:", leftSideLinks.length);
-            handleNavigation(leftSideLinks);
-        } else {
-            console.log("No navigation links found");
-        }
-    } else {
-        handleNavigation(sideNavLinks);
-    }
-    
-    function handleNavigation(navLinks) {
-        // Function to highlight active link based on current URL or section
-        function highlightActive() {
-            // Clear all active classes first
-            navLinks.forEach(link => {
+        // Handle case where user is at the bottom of the page
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+            // We're at the bottom of the page - highlight the last link
+            sideNavLinks.forEach(link => {
                 link.classList.remove('active');
-                link.style.color = '';
-                link.style.fontWeight = '';
-                
-                // Remove any existing highlight indicator
-                const indicator = link.querySelector('.highlight-indicator');
-                if (indicator) {
-                    indicator.remove();
-                }
             });
-            
-            // Get current URL path or hash
-            const currentPath = window.location.pathname;
-            const currentHash = window.location.hash;
-            
-            // Find the matching link
-            let activeLink = null;
-            
-            // First try to match by hash if it exists
-            if (currentHash) {
-                activeLink = Array.from(navLinks).find(link => 
-                    link.getAttribute('href') === currentHash || 
-                    link.getAttribute('href') === currentHash.substring(1)
-                );
-            }
-            
-            // If no match by hash, try to match by path
-            if (!activeLink) {
-                activeLink = Array.from(navLinks).find(link => {
-                    const href = link.getAttribute('href');
-                    return href === currentPath || 
-                           currentPath.endsWith(href) || 
-                           (href.includes('#') && currentPath.endsWith(href.split('#')[0]));
-                });
-            }
-            
-            // If we found a matching link, highlight it
-            if (activeLink) {
-                activeLink.classList.add('active');
-                activeLink.style.color = '#2563EB';
-                activeLink.style.fontWeight = '600';
-                
-                // Create and add a highlight indicator element
-                const indicator = document.createElement('span');
-                indicator.className = 'highlight-indicator';
-                indicator.style.position = 'absolute';
-                indicator.style.left = '-10px';
-                indicator.style.top = '50%';
-                indicator.style.transform = 'translateY(-50%)';
-                indicator.style.width = '4px';
-                indicator.style.height = '16px';
-                indicator.style.backgroundColor = '#2563EB';
-                indicator.style.borderRadius = '2px';
-                
-                // Make sure the link has position relative for absolute positioning of the indicator
-                activeLink.style.position = 'relative';
-                
-                // Add the indicator to the link
-                activeLink.appendChild(indicator);
-            }
+            sideNavLinks[sideNavLinks.length - 1].classList.add('active');
         }
-        
-        // Initial call to highlight active link
-        highlightActive();
-        
-        // Add click handlers to all nav links
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Get the target from the href
-                const href = this.getAttribute('href');
-                
-                // If it's a hash link, handle it
-                if (href && href.startsWith('#')) {
-                    e.preventDefault();
-                    
-                    const targetId = href.substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        // Scroll to the element
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update URL without reload
-                        history.pushState(null, null, href);
-                        
-                        // Update active state
-                        navLinks.forEach(link => link.classList.remove('active'));
-                        this.classList.add('active');
-                        
-                        // Manually highlight this link
-                        highlightActive();
-                    }
-                } else {
-                    // Normal link - will navigate to a new page
-                    // The highlighting will be handled on page load
-                }
-            });
-        });
-        
-        // Listen for hash changes
-        window.addEventListener('hashchange', highlightActive);
-        
-        // Listen for scrolling
-        window.addEventListener('scroll', function() {
-            // Get all sections
-            const sections = document.querySelectorAll('section[id], div[id]');
-            if (sections.length > 0) {
-                // Get current scroll position
-                const scrollPosition = window.scrollY + 100;
-                
-                // Find the current section
-                let currentSection = null;
-                sections.forEach(section => {
-                    if (section.offsetTop <= scrollPosition && 
-                        section.offsetTop + section.offsetHeight > scrollPosition) {
-                        currentSection = section;
-                    }
-                });
-                
-                if (currentSection) {
-                    const sectionId = currentSection.getAttribute('id');
-                    
-                    // Find the corresponding nav link
-                    const matchingLink = Array.from(navLinks).find(link => {
-                        const href = link.getAttribute('href');
-                        return href === `#${sectionId}` || href === sectionId;
-                    });
-                    
-                    if (matchingLink) {
-                        // Clear all active classes
-                        navLinks.forEach(link => link.classList.remove('active'));
-                        
-                        // Set this link as active
-                        matchingLink.classList.add('active');
-                        
-                        // Highlight again
-                        highlightActive();
-                    }
-                }
-            }
-        }, { passive: true });
     }
     
-    // Add the CSS styles
+    // Initial call to set the active link based on the current position
+    setActiveLink();
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', setActiveLink);
+    
+    // Add click event listeners to nav links for smooth scrolling
+    sideNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                // Remove active class from all links first
+                sideNavLinks.forEach(link => link.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Scroll to the target element
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Adjust offset based on fixed header height
+                    behavior: 'smooth'
+                });
+                
+                // Update URL without page refresh
+                history.pushState(null, null, `#${targetId}`);
+            }
+        });
+    });
+    
+    // Add style for active nav link
     const style = document.createElement('style');
     style.textContent = `
-        .side-nav a.active, nav a.active, .sidebar a.active, #sidebar a.active {
+        .side-nav a.active {
             color: #2563EB !important;
-            font-weight: 600 !important;
+            font-weight: 600;
             position: relative;
         }
         
-        html {
-            scroll-behavior: smooth;
+        .side-nav a.active::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 16px;
+            background-color: #2563EB;
+            border-radius: 2px;
         }
     `;
     document.head.appendChild(style);
