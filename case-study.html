@@ -509,91 +509,187 @@ html {
                 </div>
             </section>
             
-            
-        <!-- Pain Points Analysis -->
+<!-- Pain Points Analysis -->
 <section id="task2" class="bg-white p-8 rounded-xl shadow-md mb-16">
     <h2 class="text-2xl font-bold mb-6 text-red-600">TASK 2: Pain point analysis and feature ideation - April to May</h2>
-    <h2 class="text-2xl font-bold mb-6 text-blue-600">PAIN POINTS</h2>
-    <p class="text-lg text-black-600">
-        A comprehensive breakdown of the major issues affecting our dating app, including demographic imbalances, match quality concerns, safety issues, cost barriers, usability challenges, and social stigma.
-    <div class="overflow-x-auto">
-        <table class="w-full bg-white rounded-lg">
-            <thead>
-                <tr class="bg-blue-50 text-blue-600">
-                    <th class="py-4 px-6 text-left border-b">Pain Point</th>
-                    <th class="py-4 px-6 text-left border-b">Description</th>
-                    <th class="py-4 px-6 text-left border-b">Potential Solutions</th>
-                </tr>
-            </thead>
-            <tbody class="text-gray-600">
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">Imbalance Demographic 🚹🚺</span></td>
-                    <td class="py-4 px-6">More Male than Female Users. Male users have lower match rate and success rate.</td>
-                    <td class="py-4 px-6">
-                        <ul class="list-disc list-inside">
-                            <li>Targeted marketing to attract more female users</li>
-                            <li>Partnerships with female-centric platforms</li>
-                            <li>Address gender inclusivity by expanding gender options</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">Poor User (Match) Quality</span></td>
-                    <td class="py-4 px-6">
-                        <ul class="list-disc list-inside">
-                            <li>Frustration with match quality</li>
-                            <li>Misleading profile photos</li>
-                            <li>Dishonesty in personal details</li>
-                            <li>Deceptive intentions</li>
-                            <li>Ghosting</li>
-                            <li>Choice paradox</li>
-                        </ul>
-                    </td>
-                    <td class="py-4 px-6">
-                        <ul class="list-disc list-inside">
-                            <li>Enhance profile credibility with professional information</li>
-                            <li>Improve algorithms</li>
-                            <li>Provide detailed user profiles</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">Safety Issues</span></td>
-                    <td class="py-4 px-6">
-                        <ul class="list-disc list-inside">
-                            <li>Catfishing, harassment, physical safety concerns</li>
-                            <li>Higher harassment rates among women</li>
-                            <li>Fake profiles and romance scams</li>
-                        </ul>
-                    </td>
-                    <td class="py-4 px-6">
-                        <ul class="list-disc list-inside">
-                            <li>Opt-in background checks</li>
-                            <li>Methods for identifying fake profiles</li>
-                            <li>Real-name registration or selfie verification</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">Subscription Cost</span></td>
-                    <td class="py-4 px-6">Cost of premium features can be a barrier.</td>
-                    <td class="py-4 px-6">Provide value for money and allow testing of full capabilities before committing to premium features.</td>
-                </tr>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">In-app Navigation and Usability</span></td>
-                    <td class="py-4 px-6">Sign-up process is time-consuming.</td>
-                    <td class="py-4 px-6">Streamline the sign-up process and improve Facebook integration.</td>
-                </tr>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">Stereotypes Associated with Online Dating</span></td>
-                    <td class="py-4 px-6">Stigma associated with using dating apps.</td>
-                    <td class="py-4 px-6">Better branding and marketing messages to combat the stigma and encourage a positive perception.</td>
-                </tr>
-            </tbody>
-        </table>
+    
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-blue-500">PAIN POINTS</h2>
+        <p class="text-lg text-gray-600 mb-6">
+            A comprehensive breakdown of the major issues affecting our dating app, including demographic imbalances, match quality concerns, safety issues, cost barriers, usability challenges, and social stigma.
+        </p>
+    </div>
+    
+    <!-- Cards for pain points instead of table -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Imbalance Demographic Card -->
+        <div class="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class=" text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                    <span class="mr-2">🚹🚺</span> Imbalance Demographic
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">More Male than Female Users. Male users have lower match rate and success rate.</p>
+                <div class="border-t border-black-200 pt-4">
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Targeted marketing to attract more female users</li>
+                        <li>Partnerships with female-centric platforms</li>
+                        <li>Address gender inclusivity by expanding gender options</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Poor User Match Quality Card -->
+        <div class=" rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class=" text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                    <span class="mr-2">🔍</span> Poor User Match Quality
+                </h3>
+            </div>
+            <div class="p-5">
+                <div class="text-gray-700 mb-4">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Frustration with match quality</li>
+                        <li>Misleading profile photos</li>
+                        <li>Dishonesty in personal details</li>
+                        <li>Deceptive intentions</li>
+                        <li>Ghosting</li>
+                        <li>Choice paradox</li>
+                    </ul>
+                </div>
+                <div class="border-t border-black-200 pt-4">
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Enhance profile credibility with professional information</li>
+                        <li>Improve algorithms</li>
+                        <li>Provide detailed user profiles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Safety Issues Card -->
+        <div class="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                    <span class="mr-2">🛡️</span> Safety Issues
+                </h3>
+            </div>
+            <div class="p-5">
+                <div class="text-gray-700 mb-4">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Catfishing, harassment, physical safety concerns</li>
+                        <li>Higher harassment rates among women</li>
+                        <li>Fake profiles and romance scams</li>
+                    </ul>
+                </div>
+                <div class="border-t border-black-200 pt-4">
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Opt-in background checks</li>
+                        <li>Methods for identifying fake profiles</li>
+                        <li>Real-name registration or selfie verification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Subscription Cost Card -->
+        <div class="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                    <span class="mr-2">💰</span> Subscription Cost
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">Cost of premium features can be a barrier.</p>
+                <div class="border-t border-black-200 pt-4">
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <p class="text-gray-700">Provide value for money and allow testing of full capabilities before committing to premium features.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- In-app Navigation and Usability Card -->
+        <div class="rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                    <span class="mr-2">📱</span> In-app Navigation and Usability
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">Sign-up process is time-consuming.</p>
+                <div class="border-t border-black-200 pt-4">
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <p class="text-gray-700">Streamline the sign-up process and improve Facebook integration.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stereotypes Card -->
+        <div class="ounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                    <span class="mr-2">💭</span> Stereotypes Associated with Online Dating
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">Stigma associated with using dating apps.</p>
+                <div class="border-t border-black-200 pt-4">
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <p class="text-gray-700">Better branding and marketing messages to combat the stigma and encourage a positive perception.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Metrics visualization -->
+    <div >
+        <h3 class="text-xl font-bold mb-4 text-blue-500">Key Pain Point Metrics</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <span class="text-3xl font-bold text-blue-400">67%</span>
+                <p class="text-gray-600 mt-2">of female users report safety concerns</p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <span class="text-3xl font-bold text-blue-400">3:1</span>
+                <p class="text-gray-600 mt-2">Male to female user ratio</p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <span class="text-3xl font-bold text-blue-400">58%</span>
+                <p class="text-gray-600 mt-2">of users abandon sign-up process</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Feature Ideation Section -->
+    <div>
+        <h3 class="text-xl font-bold mb-4 text-blue-500">Feature Ideation</h3>
+        <p class="text-gray-600 mb-4">Based on our pain point analysis, we've developed the following feature ideas to address user concerns:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Enhanced Verification System</h4>
+                <p class="text-gray-600">Multi-level verification including photo, ID, and social media to reduce fake profiles</p>
+            </div>
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Community Events</h4>
+                <p class="text-gray-600">Group meetups and cultural activities to attract more female users</p>
+            </div>
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Progressive Onboarding</h4>
+                <p class="text-gray-600">Step-by-step profile completion that allows users to start matching immediately</p>
+            </div>
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Premium Trial Weekends</h4>
+                <p class="text-gray-600">Weekend access to premium features to demonstrate value before subscription</p>
+            </div>
+        </div>
     </div>
 </section>
-
         <!-- Wireframing -->
         <section id="wireframing" class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-2xl font-bold mb-6 text-blue-600">WIREFRAMING </h2>
