@@ -258,6 +258,55 @@
                 width: 100%;
             }
         }
+
+        /* Adjust the main container positioning */
+.container {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fix the side navigation */
+.side-nav {
+    position: fixed;
+    left: 0;
+    top: 100px;
+    width: 200px;
+    padding: 20px;
+    background-color: white;
+    z-index: 100;
+    border-right: 1px solid #f0f0f0;
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+}
+
+/* Main content positioning to avoid overlap with side nav */
+main.container {
+    margin-left: 220px; /* Width of side-nav + some padding */
+    width: calc(100% - 220px);
+    overflow-x: hidden;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .side-nav {
+        display: none; /* Hide side nav on mobile */
+    }
+    
+    main.container {
+        margin-left: 0;
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+}
+
+/* Ensure all content stays within viewport */
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
     </style>
 </head>
     </style>
@@ -634,6 +683,15 @@
             <p class="text-lg mb-4">Developing low- and high-fidelity prototypes allowed me to refine my approach to wireframing, grid structures, and color harmony, ensuring consistency and accessibility. I gained hands-on experience in usability testing, which emphasized the iterative nature of design and the value of feedback in driving improvements.</p>
             <p class="text-lg">Overall, this project honed my ability to balance creativity with functionality, fostered a deeper appreciation for accessibility and inclusivity, and strengthened my skills in collaboration and problem-solving within the UI/UX domain.</p>
         </section>
+
+        <div class="flex justify-center gap-4 mt-12">
+            <a href="index.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                Back to Home
+            </a>
+            <a href="Emrapp.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                View EMR Health APP 
+            </a>
+        </div>
     </main>
 
     <!-- Footer -->

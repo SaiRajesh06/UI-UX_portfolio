@@ -267,6 +267,62 @@
         .usability-table tr:hover {
             background-color: #edf2f7;
         }
+
+        /* Add these styles to your CSS to fix the side navigation gap */
+
+/* Adjust the side navigation width and positioning */
+/* Fix the side navigation */
+.side-nav {
+    position: fixed;
+    left: 0;
+    top: 100px;
+    width: 200px;
+    padding: 20px;
+    background-color: white;
+    z-index: 100;
+    border-right: 1px solid #f0f0f0;
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+}
+
+/* Main content positioning to avoid overlap with side nav */
+main.container {
+    margin-left: 220px; /* Width of side-nav + some padding */
+    width: calc(100% - 220px);
+    overflow-x: hidden;
+}
+
+
+/* For mobile, reset these values */
+@media (max-width: 768px) {
+    main.container {
+        margin-left: 0;
+    }
+    
+    .side-nav {
+        display: none;
+    }
+}
+
+/* Make sure the side-nav content is properly aligned */
+.side-nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Add gap between icon and text */
+    width: 100%;
+    padding: 8px 0;
+    color: #4B5563;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Fix icon alignment if needed */
+.side-nav a img, 
+.side-nav a i {
+    width: 20px; /* Consistent width for icons */
+    text-align: center;
+}
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
