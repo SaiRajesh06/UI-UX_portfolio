@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yale School of Art Case Study - Sai Rajesh Rapelli</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #2563EB, #1D4ED8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #2563EB;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #2563EB;
+            margin: 1rem auto;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add scroll margin to section headings */
+        section {
+            scroll-margin-top: 100px; /* This creates space above the section when scrolled to */
+        }
+
+        /* Image containers */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            object-fit: contain;
+        }
+
+        /* Content containers with text and image */
+        .content-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            width: 100%;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .content-container img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .content-container .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Side navigation styles */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 100px;
+            width: 250px;
+            padding: 20px;
+            z-index: 100;
+        }
+        
+        .side-nav a {
+            display: block;
+            padding: 8px 0;
+            color: #4B5563;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .side-nav a:hover, .side-nav a.active {
+            color: #2563EB;
+        }
+        
+        .side-nav a.sub-link {
+            padding-left: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .content-container {
+                gap: 20px;
+            }
+            
+            .content-container img {
+                max-width: 350px;
+            }
+            
+            .side-nav {
+                width: 200px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Container adjustments */
+            .content-container {
+                flex-direction: column;
+                padding: 0 1rem;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .content-container img {
+                width: 100%;
+                max-width: 100%;
+                margin: 1rem auto;
+                order: -1;
+            }
+
+            .content-container .text-content {
+                width: 100%;
+            }
+
+            .image-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .image-container img {
+                max-width: 100%;
+            }
+
+            /* Typography adjustments */
+            h1 {
+                font-size: 2rem;
+                line-height: 2.5rem;
+                padding: 0 1rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+                line-height: 2.25rem;
+                padding: 0 1rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                line-height: 2rem;
+                padding: 0 1rem;
+            }
+
+            p {
+                font-size: 1rem;
+                line-height: 1.625rem;
+                padding: 0 1rem;
+            }
+
+            /* Layout adjustments */
+            section {
+                margin-bottom: 3rem;
+                padding: 0 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .side-nav {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .image-container img {
+                max-width: 90%;
+            }
+            
+            section.bg-white {
+                padding: 1.5rem;
+            }
+            
+            .mx-auto.max-w-4xl {
+                width: 100%;
+                overflow-x: hidden;
+            }
+            
+            .mx-auto.max-w-4xl img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="https://drive.google.com/file/d/1eDAVk59CxYivPIE__pNj0H10hKn1bhjR/view?usp=share_link" 
+                       target="_blank"
+                       class="nav-link text-gray-600 hover:text-blue-600">
+                        Resume
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-600" id="menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+                <div class="p-4">
+                    <div class="flex justify-between items-center mb-8">
+                        <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                        <button class="text-gray-600" id="close-menu">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex flex-col space-y-4">
+                        <a href="index.html" class="text-gray-600 hover:text-blue-600 py-2">Home</a>
+                        <a href="index.html#work" class="text-gray-600 hover:text-blue-600 py-2">Work</a>
+                        <a href="index.html#contact" class="text-gray-600 hover:text-blue-600 py-2">Contact</a>
+                        <a href="https://drive.google.com/file/d/1eDAVk59CxYivPIE__pNj0H10hKn1bhjR/view?usp=share_link" 
+                           target="_blank"
+                           class="text-gray-600 hover:text-blue-600 py-2">
+                            Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Navigation -->
+    <div class="side-nav hidden md:block">
+        <a href="#overview" class="font-medium">Overview & Problem</a>
+        <a href="#design-process" class="font-medium">Design Process</a>
+        <a href="#problem-statement" class="font-medium">Problem Statement</a>
+        <a href="#personas" class="font-medium">User Research & Survey</a>
+        <a href="#pain-points" class="font-medium">Key Challenges</a>
+        <!-- <a href="#swot-analysis" class="font-medium">SWOT Analysis</a> -->
+        <a href="#keywords" class="font-medium">Visual Flow</a>
+        <!-- <a href="#colour-harmony" class="font-medium">Colour Harmony</a> -->
+        <!-- <a href="#logo-tagline" class="font-medium">Logo and Tagline</a>
+        <a href="#moodboard" class="font-medium">Moodboard</a>
+        <a href="#typography" class="font-medium">Typography</a>
+        <a href="#sitemap" class="font-medium">Sitemap</a>
+        <a href="#ux-rewriting" class="font-medium">UX Rewriting</a>
+        <a href="#business-card" class="font-medium">Business Card</a>
+        <a href="#low-fi" class="font-medium">Low-Fi Wireframing</a>
+        <a href="#high-fi" class="font-medium">High-Fi Wireframing</a>
+        <a href="#reflections" class="font-medium">Reflections</a> -->
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:ml-64 overflow-x-hidden">
+        <!-- Case Study Header -->
+        <h1 class="text-4xl md:text-5xl font-bold text-center section-heading mb-12">EMR Health App</h1>
+        
+        <div class="w-full max-w-6xl mx-auto">
+            <!-- <img src="images/mainyale.png" alt="Figma Design" class="w-full rounded-xl shadow-lg mb-12"> -->
+        </div>
+        
+        <!-- Overview Section -->
+        <section id="overview" class="bg-white p-6 md:p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">OVERVIEW</h2>
+            <p class="text-lg mb-4">As a UI React Intern at Soaper, I contribute to the development of mobile applications that streamline patient management while ensuring efficient compensation processes for healthcare providers. By designing and optimizing key interfaces such as patient appointment schedulers, insurance and billing screens, medication trackers, and home dashboards, the platform facilitates accurate and timely compensation for hospitals, ensuring fair and transparent remuneration for doctors and nurses. 
+                The goal is to create a seamless user experience that not only enhances patient care but also supports equitable financial distribution within the healthcare system.</p>
+           
+            </p>
+                
+            <h2 id="goal" class="text-xl font-bold mb-4">Focus Areas</h2>
+            <ul class="list-disc list-inside text-lg mb-8 space-y-2">
+                <li>Frontend Development: Creating interactive and responsive UI components.</li>
+                <li>Backend & Database Management: Handling authentication and data operations using PostgreSQL.</li>
+                <li>User research: User interviews, market research, stakeholder interviews.
+                </li>
+            </ul>
+                
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Roles and responsibilities</h3>
+                    <p class="text-gray-600">My primary responsibility is to implement interactive and responsive UI components, ensuring smooth functionality across different devices. 
+                        Additionally, I contribute to the backend, working with PostgreSQL to manage user authentication and database operations.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Design</h3>
+                    <p class="text-gray-600">I worked on the internal architecture of the application, wireframes, and both low & mid-fidelity prototypes.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-black-600">Skills & Tools</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center"><span class="mr-2">🎨</span> Tailwind CSS/li>
+                        <li class="flex items-center"><span class="mr-2">💻</span> React Native</li>
+                        <li class="flex items-center"><span class="mr-2">📝</span> Frondend</li>
+                        <li class="flex items-center"><span class="mr-2">🔍</span> PostgreSQL</li>
+                        <li class="flex items-center"><span class="mr-2">✏️</span> Database Management</li>
+                        <li class="flex items-center"><span class="mr-2">🛠️</span> SQL Queries</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mx-auto max-w-4xl">
+            </div>
+        </section>
+
+        <section id="design-process" class="bg-white p-6 md:p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">DESIGN PROCESS</h2>
+            <p id="users-feel" class="text-lg mb-4">The redesign of the Yale School of Art website followed a structured, user-centered design process to enhance usability and accessibility. It began with in-depth research, including user interviews, competitive analysis, and heuristic evaluations, to identify key pain points. Based on these insights, detailed user personas were created to represent different stakeholders, guiding design decisions. A new sitemap was developed to improve navigation, followed by mood board design to establish the website's visual identity. Low-fidelity wireframes were then crafted to structure content and refine user flow. Internal architecture was mapped out to streamline content organization, ensuring scalability. Interactive low-fidelity prototypes were tested for usability, leading to mid-fidelity prototypes that incorporated refined layouts and visual elements. 
+                This iterative approach ensured a modern, intuitive, and engaging website that reflects the artistic excellence of the Yale School of Art.</p>
+            <div class="mx-auto max-w-4xl">
+                <img src="images/visual design.png" alt="Common Issues">
+            </div>
+        </section>
+
+        <!-- Problem Statement Section -->
+        <section id="problem-statement" class="bg-white p-6 md:p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">PROBLEM STATEMENT</h2>
+            <p class="text-lg mb-4">In the healthcare industry, mobile applications play a critical role in streamlining patient management, yet many existing solutions suffer from poor user experience, slow performance, and inefficient data handling. 
+                Patients and healthcare providers require a seamless, responsive, and secure platform for scheduling appointments, tracking medications, managing insurance and billing, and accessing personalized dashboards. 
+                Additionally, ensuring smooth user authentication and efficient database management is crucial to maintaining data security and accessibility. 
+                The challenge is to design a visually appealing, scalable, and high-performing mobile application that addresses these needs while providing an intuitive and effortless user experience.</p>
+            <p class="text-lg mb-4 bg-green-100 p-4 rounded-lg italic">"How can we design a seamless, responsive, and secure mobile application that enhances the user experience for patients and healthcare providers while efficiently managing authentication, scheduling, billing, and medication tracking?"</p>
+        </section>
+
+        <!-- Survey Section -->
+        <section id="personas" class="bg-white p-6 md:p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">USER RESEARCH & SURVEY</h2>
+            <p class="text-lg mb-4">The design of our EMR Health App was firmly rooted in comprehensive user research conducted across multiple stakeholder groups. Our survey methodology targeted patients, healthcare providers, and hospital administrators to identify critical pain points and opportunities for improvement.</p>
+            <p class="text-lg mb-4">For patients, we discovered significant emotional impacts related to managing their health information, with many expressing frustration about disjointed systems that failed to provide adequate support networks. 
+                Healthcare providers highlighted challenges with scheduling and appointment management, noting how inefficient workflows reduced time available for patient care. 
+                Hospital administrators expressed serious concerns about data security and privacy protocols in existing EMR systems, emphasizing the need for more robust protection of sensitive patient information.</p>
+            <p class="text-lg mb-4">The feedback loop component of our research revealed limited understanding of billing and compensation processes among all user groups, highlighting a critical area for improved transparency and communication. 
+                These insights directly informed our design decisions, resulting in a more intuitive interface that addresses the specific needs of each user group while maintaining security and efficiency. 
+                By centering our development process around these research findings, we created an EMR solution that not only streamlines healthcare management but also provides meaningful emotional support throughout the patient journey.</p>
+                <div class="mx-auto max-w-4xl">
+                    <img src="images/User Research & Surveys - visual selection.png"alt="Common Issues">
+                </div>
+        </section>
+
+        <!-- Pain Points Section -->
+<!-- Pain Points Section -->
+<section id="pain-points" class="bg-white p-6 md:p-8 rounded-xl shadow-md mb-16">
+    <h2 class="text-3xl font-bold mb-6 text-blue-600">KEY CHALLENGES</h2>
+    
+    <p class="text-lg mb-8">Our research identified critical pain points that negatively impacted both patient experience and provider efficiency. These challenges formed the foundation of our design approach and solution strategy.</p>
+    
+    <!-- Patient Pain Points -->
+    <div class="mb-12">
+        <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold">Patient Experience Issues</h3>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="text-red-500 text-2xl font-bold mb-2">01</div>
+                <h4 class="font-bold text-lg mb-3">Confusing Navigation</h4>
+                <p class="text-gray-700">Patients struggle to find appointment schedules and medication history due to cluttered UI, causing frustration and missed appointments.</p>
+            </div>
+            <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="text-red-500 text-2xl font-bold mb-2">02</div>
+                <h4 class="font-bold text-lg mb-3">Lack of Real-time Updates</h4>
+                <p class="text-gray-700">No instant notifications for upcoming appointments or prescription refills, leading to treatment delays and medication gaps.</p>
+            </div>
+            <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="text-red-500 text-2xl font-bold mb-2">03</div>
+                <h4 class="font-bold text-lg mb-3">Complicated Billing</h4>
+                <p class="text-gray-700">Patients find it difficult to understand billing breakdowns and insurance claim statuses, creating financial anxiety.</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="text-red-500 text-2xl font-bold mb-2">04</div>
+                <h4 class="font-bold text-lg mb-3">Limited Customization</h4>
+                <p class="text-gray-700">No personalized dashboard for tracking health statistics, making it difficult for patients to monitor their progress and take ownership of their health journey.</p>
+            </div>
+            <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="text-red-500 text-2xl font-bold mb-2">05</div>
+                <h4 class="font-bold text-lg mb-3">Security Concerns</h4>
+                <p class="text-gray-700">Fear of data breaches due to weak authentication measures, causing patients to withhold sensitive health information and limiting the effectiveness of care.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Healthcare Provider Pain Points -->
+    <div>
+        <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-yellow -100 rounded-full flex items-center justify-center mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold">Healthcare Provider Challenges</h3>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl shadow-sm shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="text-yellow-500 text-2xl font-bold mb-2">01</div>
+                <h4 class="font-bold text-lg mb-3">Inefficient Scheduling</h4>
+                <p class="text-gray-700">Difficulty managing patient appointments due to overlapping or double-booking issues, resulting in wasted clinical time and resources.</p>
+            </div>
+            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl shadow-sm shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="text-yellow-500 text-2xl font-bold mb-2">02</div>
+                <h4 class="font-bold text-lg mb-3">Performance Issues</h4>
+                <p class="text-gray-700">Excessive lag in accessing patient records, leading to delays in consultations and reduced patient face time.</p>
+            </div>
+            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl shadow-sm shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="text-yellow-500 text-2xl font-bold mb-2">03</div>
+                <h4 class="font-bold text-lg mb-3">Poor EMR Integration</h4>
+                <p class="text-gray-700">Lack of compatibility with existing hospital systems causes redundant data entry, increasing administrative burden and error risk.</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl shadow-sm shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="text-yellow-500 text-2xl font-bold mb-2">04</div>
+                <h4 class="font-bold text-lg mb-3">Limited Mobile Support</h4>
+                <p class="text-gray-700">Doctors need to rely on desktops for key functionalities, making on-the-go access difficult and reducing operational flexibility during rounds and emergencies.</p>
+            </div>
+            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl shadow-sm shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="text-yellow-500 text-2xl font-bold mb-2">05</div>
+                <h4 class="font-bold text-lg mb-3">Lack of Role-based Access</h4>
+                <p class="text-gray-700">Nurses, doctors, and administrators all see the same information, causing workflow inefficiencies and overwhelming staff with irrelevant data.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Impact Statement -->
+
+</section>
+
+        <!-- SWOT Analysis Section -->
+        <!-- <section id="swot-analysis" class="bg-white p-6 md:p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">SWOT ANALYSIS</h2>
+            <p class="text-lg mb-8">This portfolio presents a concise SWOT analysis of university fine arts programs, highlighting strengths, weaknesses, opportunities, and threats. Using Yale's highly ranked program as an example, it identifies key factors affecting user experience, program reputation, and external challenges.
+                The analysis also includes practical examples to show how strategic improvements can enhance engagement and program success.
+            </p>
+            <div class="mx-auto max-w-4xl overflow-x-auto">
+                <img src="images/SWOT Analysis.png" alt="SWOT Analysis" class="rounded-lg shadow-lg w-full">
+            </div>
+        </section> -->
+
+        <!-- Information Architecture Section -->
+        <!-- <section id="info-architecture" class="bg-white p-6 md:p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">INFORMATION ARCHITECTURE</h2>
+            <p class="text-lg mb-4">A comprehensive information architecture was developed to ensure logical content organization and intuitive navigation paths.</p>
+        </section> -->
+
+        <!-- Keywords Section -->
+        <section id="keywords" class="bg-white p-6 md:p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">VISUAL FLOW</h2>
+
+            <div class="content-container">
+                <div class="text-content">
+                   
+                    
+                    <p class="text-lg">A soothing landscape that inspires well-being and mindfulness. The gentle curves of rolling hills create a sense of calm and continuity, perfect for a health-focused application.</p>
+                <br>
+                <p class="text-lg">The background features three primary colors that work in perfect harmony:</p>
+                
+                <ul>
+                    <li><strong>Mint Green (#42A08A):</strong> <p class="text-lg"> This calming shade evokes feelings of freshness and natural wellness, creating a foundation of tranquility throughout the interface. As it is darker in nature, it provides excellent contrast and accessibility for primary buttons, making key actions stand out with clarity and purpose.</li>
+                    <br>
+                    <li><strong>Soft Coral (#F8A387):</strong> <p class="text-lg"> This nurturing tone creates a sense of comfort and encouragement, ideal for motivating health-conscious actions. The gentle coral hue is perfect for icons throughout the app, providing visual cues that are both intuitive and inviting, while creating moments of delight during user interaction.</li>
+                    <br>
+                    <li><strong>Light Sage (#B4D6A8):</strong> <p class="text-lg">This gentle hue complements the palette while providing visual breathing space across different sections of the app. Its lighter value makes it ideal for secondary buttons and supporting elements, creating hierarchy without competing with primary actions.</li>
+                </ul>
+                
+                </div>
+                <img src="images/Visual colours.png" alt="Logo Design" class="rounded-lg shadow-lg">
+            </div>
+        </section>
+
+        <!-- Logo and Tagline Section -->
+     
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">IN PROGRESS!!</h2>
+            
+
+        
+    <!-- Footer -->
+    <footer class="py-8 bg-white mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+            <p>&copy; 2024 Sai Rajesh Rapelli. All rights reserved.</p>
+        </div>
+    </footer>
+
+     <!-- Mobile Menu JavaScript -->
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Your existing mobile menu code
+    const menuToggle = document.getElementById('menu-toggle');
+    const closeMenu = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeMenu.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    // Close menu when clicking on a link
+    const mobileLinks = mobileMenu.getElementsByTagName('a');
+    Array.from(mobileLinks).forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
+    
+    // FIXED SIDE NAVIGATION HIGHLIGHTING
+    
+    // Get all sections that need to be observed
+    const sections = document.querySelectorAll('section[id]');
+    
+    // Get all navigation links in the side nav
+    const sideNavLinks = document.querySelectorAll('.side-nav a');
+    
+    // Function to highlight active link
+    function setActiveLink() {
+        // Get current scroll position
+        let scrollPosition = window.scrollY;
+        
+        // Find the section that's currently in view
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 100; // Adjust offset as needed
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            // Check if user has scrolled to this section
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                // Remove active class from all links
+                sideNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to corresponding link
+                const activeLink = document.querySelector(`.side-nav a[href="#${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+        
+        // Handle case where user is at the bottom of the page
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+            // We're at the bottom of the page - highlight the last link
+            sideNavLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            sideNavLinks[sideNavLinks.length - 1].classList.add('active');
+        }
+    }
+    
+    // Initial call to set the active link based on the current position
+    setActiveLink();
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', setActiveLink);
+    
+    // Add click event listeners to nav links for smooth scrolling
+    sideNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                // Remove active class from all links first
+                sideNavLinks.forEach(link => link.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Scroll to the target element
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Adjust offset based on fixed header height
+                    behavior: 'smooth'
+                });
+                
+                // Update URL without page refresh
+                history.pushState(null, null, `#${targetId}`);
+            }
+        });
+    });
+    
+    // Add style for active nav link
+    const style = document.createElement('style');
+    style.textContent = `
+        .side-nav a.active {
+            color: #2563EB !important;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .side-nav a.active::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 16px;
+            background-color: #2563EB;
+            border-radius: 2px;
+        }
+    `;
+    document.head.appendChild(style);
+});
+    </script>
+</body>
+</html>
+        
