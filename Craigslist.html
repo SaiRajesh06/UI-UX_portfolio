@@ -124,57 +124,26 @@
         }
 
         .image-row {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-            overflow-x: auto;
-            padding: 20px 0;
-        }
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 0;
+}
 
-        .image-row img {
-            width: 200px;  /* Adjusted width to fit all images in one row */
-            height: auto;
-            max-height: 800px;
-            flex-shrink: 0;  /* Prevents images from shrinking */
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.image-row img {
+    width: 200px;  /* Adjusted width to fit all images in one row */
+    height: auto;
+    max-height: 800px;
+    flex-shrink: 0;  /* Prevents images from shrinking */
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        /* Side navigation styles */
-        .side-nav {
-            position: fixed;
-            left: 0;
-            top: 100px;
-            width: 250px;
-            padding: 20px;
-            z-index: 100;
-        }
-        
-        .side-nav a {
-            display: block;
-            padding: 8px 0;
-            color: #4B5563;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .side-nav a:hover, .side-nav a.active {
-            color: #2563EB;
-        }
-        
-        .side-nav a.sub-link {
-            padding-left: 15px;
-            font-size: 0.9em;
-        }
-
-        /* Add scroll margin to sections for better navigation */
-        section {
-            scroll-margin-top: 100px;
-        }
 
         @media (max-width: 768px) {
             .image-container1 img {
@@ -217,11 +186,6 @@
 
             .gap-8 {
                 gap: 1.5rem;
-            }
-            
-            /* Hide side navigation on mobile */
-            .side-nav {
-                display: none;
             }
         }
 
@@ -267,62 +231,6 @@
         .usability-table tr:hover {
             background-color: #edf2f7;
         }
-
-        /* Add these styles to your CSS to fix the side navigation gap */
-
-/* Adjust the side navigation width and positioning */
-/* Fix the side navigation */
-.side-nav {
-    position: fixed;
-    left: 0;
-    top: 100px;
-    width: 200px;
-    padding: 20px;
-    background-color: white;
-    z-index: 100;
-    border-right: 1px solid #f0f0f0;
-    overflow-y: auto;
-    height: calc(100vh - 100px);
-    box-sizing: border-box;
-}
-
-/* Main content positioning to avoid overlap with side nav */
-main.container {
-    margin-left: 220px; /* Width of side-nav + some padding */
-    width: calc(100% - 220px);
-    overflow-x: hidden;
-}
-
-
-/* For mobile, reset these values */
-@media (max-width: 768px) {
-    main.container {
-        margin-left: 0;
-    }
-    
-    .side-nav {
-        display: none;
-    }
-}
-
-/* Make sure the side-nav content is properly aligned */
-.side-nav a {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Add gap between icon and text */
-    width: 100%;
-    padding: 8px 0;
-    color: #4B5563;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-/* Fix icon alignment if needed */
-.side-nav a img, 
-.side-nav a i {
-    width: 20px; /* Consistent width for icons */
-    text-align: center;
-}
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -376,29 +284,43 @@ main.container {
         </div>
     </nav>
 
-    <!-- Side Navigation -->
-    <div class="side-nav hidden md:block">
-        <a href="#overview" class="font-medium">Overview</a>
-        <a href="#problem-statement" class="font-medium">Problem Statement</a>
-        <a href="#work-flow" class="font-medium">Work Flow</a>
-        <a href="#interview-questions" class="font-medium">Interview Questions</a>
-        <a href="#user-personas" class="font-medium">User Personas</a>
-        <a href="#prototypes" class="font-medium">Prototypes</a>
-        <a href="#cognitive-walkthrough" class="font-medium">Cognitive Walkthrough</a>
-        <a href="#my-learnings" class="font-medium">My Learnings</a>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const closeMenu = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:ml-64">
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.getElementsByTagName('a');
+            Array.from(mobileLinks).forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        });
+    </script>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <h1 class="text-4xl md:text-5xl font-bold text-center section-heading mb-12">Craigslist Case Study</h1>
-        <div class="w-full max-w-5xl mx-auto">
-            <img src="images/Emrcover.png" alt="Figma Design" class="w-full rounded-xl shadow-lg mb-12 max-w-8xl mx-auto">
-        </div>
+        <img src="images/maincraig.png" alt="Figma Design" class="w-full rounded-xl shadow-lg mb-12">
+
         <!-- Project Overview -->
-        <section id="overview" class="bg-white p-8 rounded-xl shadow-md mb-16">
+        <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-3xl font-bold mb-6 text-blue-600">OVERVIEW</h2>
             <p class="text-lg mb-4">At a glance, this website contains over 20 pages, and has a few functionally embedded elements. Its complex and confusing UI can make it challenging for visitors to browse and locate the content they're looking for. Individuals seeking to exchange, purchase, sell, or rent different products and services go to Craigslist to locate listings in their neighborhood.</p>
            
-            <h2 class="text-xl font-bold mb-4 text-orange-600">Focus Areas</h2>
+            <h2 class="text-xl font-bold mb-4 text-black-600">Focus Areas</h2>
             <p class="text-lg mb-6">Through this project, I deepened my understanding of user experience design and research. Leading user interviews helped me develop skills in gathering and analyzing user feedback, which I then applied to create more user-centered design solutions.</p>
             
             <ul class="list-disc list-inside text-lg mb-8 space-y-2">
@@ -408,17 +330,17 @@ main.container {
                 </li>
             </ul>
             <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-red  -600">Roles and responsibilities</h3>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-black-600">Roles and responsibilities</h3>
                     <p class="text-gray-600">This is my academic project and I worked on the scripts of user interviews & usability testing, creating personas, and writing learnings & analysis.</p>
                 </div>
 
-                <div >
+                <div class="bg-white p-6 rounded-xl shadow-md">
                     <h3 class="text-xl font-bold mb-4 text-black-600">Design</h3>
                     <p class="text-gray-600">I worked on the internal architecture of the application, wireframes, and both low & mid-fidelity prototypes.</p>
                 </div>
 
-                <div >
+                <div class="bg-white p-6 rounded-xl shadow-md">
                     <h3 class="text-xl font-bold mb-4 text-black-600">Skills & Tools</h3>
                     <ul class="space-y-2 text-gray-600">
                         <li class="flex items-center"><span class="mr-2">🎨</span> Prototyping</li>
@@ -436,7 +358,7 @@ main.container {
         </section>
         
         <!-- Problem Statement -->
-        <section id="problem-statement" class="bg-white p-8 rounded-xl shadow-md mb-16">
+        <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-3xl font-bold mb-6 text-blue-600">PROBLEM STATEMENT</h2>
             <p class="text-lg mb-4">Users struggle with finding relevant listings as category mappings don't align with their expectations, while the lack of feedback mechanisms causes uncertainty in interactions. These issues hinder the overall user experience, making it difficult to efficiently browse and interact with the platform</p>
             <p class="text-lg mb-4 bg-yellow-100 p-4 rounded-lg italic">"How can Craigslist's user interface and experience be improved to enhance the visibility of critical information, provide clearer feedback to users, ensure intuitive affordances, and better align category structures with users' expectations, thereby making the site easier to navigate and use for its diverse audience?"</p>
@@ -451,18 +373,18 @@ main.container {
                 <strong>Mappings</strong>: The mapping of categories and subcategories may not necessarily correspond to users' mental models or expectations, making it difficult to browse the site effectively.
                 
                 </p>
-            <img src="images/Stikies.png" alt="Common Issues">
+            <img src="images/Stikies.png" alt="Common Issues" class="w-full rounded-lg shadow-lg mb-4">
         </section>
 
         <!-- Work Flow Section -->
-        <section id="work-flow" class="bg-white p-8 rounded-xl shadow-md mb-16">
+        <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-3xl font-bold mb-6 text-blue-600">WORK FLOW</h2>
             <p class="text-lg mb-4">The UX design process I employed for this project follows a comprehensive, user-centered approach. It begins with in-depth research through user interviews, followed by a synthesis phase where I develop user personas. The ideation stage involves sketching potential screen designs, which are then refined based on feedback from initial user testing. This leads to the creation of high-fidelity wireframe prototypes. The process concludes with a cognitive walkthrough, involving detailed user testing to ensure the final design meets user needs and expectations. This iterative methodology ensures that user insights inform every stage of the design process, resulting in a product that truly resonates with its intended audience.</p>
             <img src="images/napkin-selection.png" alt="Work Flow" class="w-full max-w-4xl mx-auto rounded-xl shadow-lg mb-8">
         </section>
        
         <!-- Interview Questions Section -->
-        <section id="interview-questions" class="bg-white p-8 rounded-xl shadow-md mb-16">
+        <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-3xl font-bold mb-6 text-blue-600">INTERVIEW QUESTIONS</h2>
             <p class="text-lg mb-4">I led the user interviews as the only member on the team with prior experience in conducting user research.</p>
             
@@ -490,13 +412,13 @@ main.container {
         </section>
 
         <!-- User Personas Section -->
-        <section id="user-personas" class="bg-white p-8 rounded-xl shadow-md mb-16">
+        <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-3xl font-bold mb-6 text-blue-600">USER PERSONAS</h2>
             <p class="text-lg mb-6">The study focuses on two primary user groups: buyers seeking efficient communication and explorers looking for streamlined search functionality. By examining their unique needs, I aim to propose innovative solutions that enhance the user experience on Craigslist.</p>
             
             <div class="image-container mb-8">
-                <img src="images/Untitled.png" alt="Persona 1" >
-                <img src="images/Untitled (1).png" alt="Persona 2" >
+                <img src="images/Untitled.png" alt="Persona 1" class="rounded-xl shadow-lg">
+                <img src="images/Untitled (1).png" alt="Persona 2" class="rounded-xl shadow-lg">
             </div>
 
             <p class="text-lg mb-4">These insights have led to the development of two distinct prototypes: one focusing on live chat functionality and the other on enhanced filtering capabilities.</p>
@@ -504,29 +426,26 @@ main.container {
         </section>
 
         <!-- Prototypes Section -->
-        <section id="prototypes" class="bg-white p-8 rounded-xl shadow-md mb-16">
+        <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-3xl font-bold mb-6 text-blue-600">PROTOTYPES</h2>
             <p class="text-lg mb-4">The prototype design looks to be a basic sketch or wireframe that depicts several layout and interaction aspects for a website or application. I started with a paper and pencil sketches for our screen designs. We wanted to map out what features each screen will have, the number of steps the user will have to take to achieve a goal and task flows.</p>
             
             <!-- Low Fidelity Prototyping -->
             <div class="mb-12">
                 <h3 class="text-2xl font-semibold mb-4 text-black-600">Low Fidelity Prototyping</h3>
-            
                 <p class="text-lg mb-4">The prototype design looks to be a basic sketch or wireframe that depicts several layout and interaction aspects for a website or application. I started with paper and pencil sketches for our screen designs.</p>
                 
                 <div class="bg-gray-50 p-6 rounded-lg mb-8">
                     <h4 class="text-xl font-semibold mb-4 text-red-600">Task 1: Support Ticket Submission</h4>
-                    <img src="images/Prototype 1.png" alt="Support Ticket Flow" >
-                    <br>
+                    <img src="images/Prototype 1.png" alt="Support Ticket Flow" class="w-full rounded-xl shadow-lg mb-4">
                     <p class="text-lg mb-6">This prototype addresses a design issue found through heuristic review while also incorporating insights from competition analysis to ensure alignment with industry standards and user expectations. Screen 1 displays the home page, with options for assistance, safety, privacy, and terms. Clicking the assistance button takes you to screen 2, where you can "contact us" and "raise tickets" before moving on to screen 3, which has a form for entering personal information and a "Concern box". Following submission, the last screen shows the ticket number and feedback. 
                         Finally, I find this to be the most effective website because many customers like a simple user experience, therefore creating a ticket may be the easiest approach. The simplicity of the design, with clearly labeled buttons and forms, reflects an understanding of users' preferences for straightforward navigation. </p>
                 </div>
             
                 <div class="bg-gray-50 p-6 rounded-lg">
                     <h4 class="text-xl font-semibold mb-4 text-red-600">Task 2: Product Filtering Implementation</h4>
-                    <img src="images/Prototype 2.png" alt="Product Filtering Flow">
-                    <br>
-                    <p class="text-lg mb-6">The design choices in the prototype were made intentionally to address specific design issues identified through competitive analysis. Many popular websites feature filtering tools that allow users to restrict their search parameters, making it easier to find relevant products or information. In this prototype, there are a total of three screens where 2 filters have been added. When the user goes to the services section. In screen 2 when the user clicks on the filters dropdown there are few options namely "low to high" and "newest to oldest". This helps users to understand how to select the required products based on their interest. This method makes the prototype more accessible than other alternatives since it streamlines the user experience, allowing consumers to easily explore and obtain the information or items they require. The usage of filters demonstrates an awareness of user behavior and preferences, which improves the prototype's overall usability.</p>
+                    <img src="images/Prototype 2.png" alt="Product Filtering Flow" class="w-full rounded-xl shadow-lg mb-4">
+                    <p class="text-lg mb-6">The design choices in the prototype were made intentionally to address specific design issues identified through competitive analysis. Many popular websites feature filtering tools that allow users to restrict their search parameters, making it easier to find relevant products or information. In this prototype, there are a total of three screens where 2 filters have been added. When the user goes to the services section. In screen 2 when the user clicks on the filters dropdown there are few options namely “low to high” and “newest to oldest”. This helps users to understand how to select the required products based on their interest. This method makes the prototype more accessible than other alternatives since it streamlines the user experience, allowing consumers to easily explore and obtain the information or items they require. The usage of filters demonstrates an awareness of user behavior and preferences, which improves the prototype's overall usability.</p>
                 </div>
             </div>
 
@@ -549,15 +468,14 @@ main.container {
         
                             Below screenshot shows the high fidelity prototype done in figma.</p>
                             <p class="text-lg mb-4"><a href="https://motiff.com/proto/gqAhAYbhQfDlZcWeXqXSp6I?nodeId=1016%3A34&pageId=56%3A11&startingPointNodeId=1016%3A34&scaling=scale-down " target="_blank" class="text-blue-600 hover:text-blue-600">Click Here</a> to view the prototype.</p>
-                            
-                        <div class="image-row">
-                            <img src="images/Screen1.jpg" alt="Screen 1" >
-                            <img src="images/Screen2.jpg" alt="Screen 2" >
-                            <img src="images/Screen3.jpg" alt="Screen 3" >
-                            <img src="images/Screen4.jpg" alt="Screen 4" >
-                            <img src="images/Screen5.jpg" alt="Screen 5" >
-                            <img src="images/Screen6.jpg" alt="Screen 6" >
-                            <img src="images/Screen7.jpg" alt="Screen 7" >
+                        <div class="image-container1">
+                            <img src="images/Screen1.jpg" alt="Screen 1" class="rounded-xl shadow-lg">
+                            <img src="images/Screen2.jpg" alt="Screen 2" class="rounded-xl shadow-lg">
+                            <img src="images/Screen3.jpg" alt="Screen 3" class="rounded-xl shadow-lg">
+                            <img src="images/Screen4.jpg" alt="Screen 4" class="rounded-xl shadow-lg">
+                            <img src="images/Screen5.jpg" alt="Screen 5" class="rounded-xl shadow-lg">
+                            <img src="images/Screen6.jpg" alt="Screen 6" class="rounded-xl shadow-lg">
+                            <img src="images/Screen7.jpg" alt="Screen 7" class="rounded-xl shadow-lg">
                         </div>
                     </div>
 
@@ -571,7 +489,7 @@ main.container {
                         
                         <p class="text-lg mb-4">User 2 suggested adding a "rating" option, underlining its importance in providing users with vital information about seller reliability and reputation. 
                             By presenting profile ratings, consumers may make informed judgments based on previous customer experiences. This tool promotes transparency and trust among the platform's community by allowing users to rate vendors based on their performance and customer happiness. 
-                            Furthermore, the rating system encourages merchants to maintain high levels of service and reliability. With this update, users can confidently traverse the marketplace, knowing they have access to relevant information to help them make informed purchasing decisions.
+                            Furthermore, the rating system encourages merchants to maintain high levels of service and reliability. With this update, consumers can confidently traverse the marketplace, knowing they have access to relevant information to help them make informed purchasing decisions.
                         </p>
         
                         <div class="image-row">
@@ -587,7 +505,7 @@ main.container {
         </section>
 
         <!-- Cognitive Walkthrough Section -->
-        <section id="cognitive-walkthrough" class="bg-white p-8 rounded-xl shadow-md mb-16">
+        <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-3xl font-bold mb-6 text-blue-600">COGNITIVE WALKTHROUGH</h2>
             
             <ul class="list-disc list-inside text-lg mb-8 space-y-2">
@@ -650,7 +568,7 @@ main.container {
         </section>
 
         <!-- Learnings Section -->
-        <section id="my-learnings" class="bg-white p-8 rounded-xl shadow-md mb-16">
+        <section class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-3xl font-bold mb-6 text-blue-600">MY LEARNINGS</h2>
             <p class="text-lg mb-6">Through this project, I deepened my understanding of user experience design and research. Leading user interviews helped me develop skills in gathering and analyzing user feedback, which I then applied to create more user-centered design solutions.</p>
             
@@ -676,134 +594,5 @@ main.container {
             &copy; 2024 Sai Rajesh Rapelli. All rights reserved.
         </div>
     </footer>
- <!-- Mobile Menu JavaScript -->
- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-// Your existing mobile menu code
-const menuToggle = document.getElementById('menu-toggle');
-const closeMenu = document.getElementById('close-menu');
-const mobileMenu = document.getElementById('mobile-menu');
-
-menuToggle.addEventListener('click', function() {
-    mobileMenu.classList.add('active');
-    document.body.style.overflow = 'hidden';
-});
-
-closeMenu.addEventListener('click', function() {
-    mobileMenu.classList.remove('active');
-    document.body.style.overflow = 'auto';
-});
-
-// Close menu when clicking on a link
-const mobileLinks = mobileMenu.getElementsByTagName('a');
-Array.from(mobileLinks).forEach(link => {
-    link.addEventListener('click', function() {
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-});
-
-// FIXED SIDE NAVIGATION HIGHLIGHTING
-
-// Get all sections that need to be observed
-const sections = document.querySelectorAll('section[id]');
-
-// Get all navigation links in the side nav
-const sideNavLinks = document.querySelectorAll('.side-nav a');
-
-// Function to highlight active link
-function setActiveLink() {
-    // Get current scroll position
-    let scrollPosition = window.scrollY;
-    
-    // Find the section that's currently in view
-    sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100; // Adjust offset as needed
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        
-        // Check if user has scrolled to this section
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            // Remove active class from all links
-            sideNavLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Add active class to corresponding link
-            const activeLink = document.querySelector(`.side-nav a[href="#${sectionId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-        }
-    });
-    
-    // Handle case where user is at the bottom of the page
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
-        // We're at the bottom of the page - highlight the last link
-        sideNavLinks.forEach(link => {
-            link.classList.remove('active');
-        });
-        sideNavLinks[sideNavLinks.length - 1].classList.add('active');
-    }
-}
-
-// Initial call to set the active link based on the current position
-setActiveLink();
-
-// Add scroll event listener
-window.addEventListener('scroll', setActiveLink);
-
-// Add click event listeners to nav links for smooth scrolling
-sideNavLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-            // Remove active class from all links first
-            sideNavLinks.forEach(link => link.classList.remove('active'));
-            
-            // Add active class to clicked link
-            this.classList.add('active');
-            
-            // Scroll to the target element
-            window.scrollTo({
-                top: targetElement.offsetTop - 80, // Adjust offset based on fixed header height
-                behavior: 'smooth'
-            });
-            
-            // Update URL without page refresh
-            history.pushState(null, null, `#${targetId}`);
-        }
-    });
-});
-
-// Add style for active nav link
-const style = document.createElement('style');
-style.textContent = `
-    .side-nav a.active {
-        color: #2563EB !important;
-        font-weight: 600;
-        position: relative;
-    }
-    
-    .side-nav a.active::before {
-        content: '';
-        position: absolute;
-        left: -10px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 4px;
-        height: 16px;
-        background-color: #2563EB;
-        border-radius: 2px;
-    }
-`;
-document.head.appendChild(style);
-});
-</script>
 </body>
 </html>
-    
