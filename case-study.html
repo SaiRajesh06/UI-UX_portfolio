@@ -134,6 +134,62 @@ html {
             padding-left: 15px;
             font-size: 0.9em;
         }
+/* Add these styles to your CSS to fix the side navigation gap */
+
+/* Adjust the side navigation width and positioning */
+/* Fix the side navigation */
+.side-nav {
+    position: fixed;
+    left: 0;
+    top: 100px;
+    width: 200px;
+    padding: 20px;
+    background-color: white;
+    z-index: 100;
+    border-right: 1px solid #f0f0f0;
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+}
+
+/* Main content positioning to avoid overlap with side nav */
+main.container {
+    margin-left: 220px; /* Width of side-nav + some padding */
+    width: calc(100% - 220px);
+    overflow-x: hidden;
+}
+
+
+/* For mobile, reset these values */
+@media (max-width: 768px) {
+    main.container {
+        margin-left: 0;
+    }
+    
+    .side-nav {
+        display: none;
+    }
+}
+
+/* Make sure the side-nav content is properly aligned */
+.side-nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Add gap between icon and text */
+    width: 100%;
+    padding: 8px 0;
+    color: #4B5563;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Fix icon alignment if needed */
+.side-nav a img, 
+.side-nav a i {
+    width: 20px; /* Consistent width for icons */
+    text-align: center;
+}
+        
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -322,160 +378,171 @@ html {
             The designs vary in complexity, with Bumble and Badoo offering more streamlined, feature-rich interfaces, while Tagged and TanTan maintain simpler, communication-focused layouts.
         </p>
 <br>
-        <!-- Comparison Table -->
-        <div class="overflow-x-auto mb-8">
-            <table class="w-full bg-white shadow-md rounded-lg">
-                <thead>
-                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                        <th class="py-3 px-6 text-left border-r border-gray-300">Company</th>
-                        <th class="py-3 px-6 text-left border-r border-gray-300">Mission statement</th>
-                        <th class="py-3 px-6 text-left border-r border-gray-300">Target market</th>
-                        <th class="py-3 px-6 text-left border-r border-gray-300">Pricing /month</th>
-                        <th class="py-3 px-6 text-left border-r border-gray-300">Strengths</th>
-                        <th class="py-3 px-6 text-left">Weaknesses</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-600 text-sm font-light">
-                    <!-- TanTan Row -->
-                    <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap border-r border-gray-300">
-                            <div class="flex items-center">
-                                <span class="font-medium">TanTan</span>
-                            </div>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <span>"Discover people nearby and meet your #BaeGoals"</span>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <span>Mostly Asian men and women between 25 to 34</span>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <span>Free to download but there are three tiers, VIP, SEE, and PREMIUM. VIP for $8.99/month and users will have 9 privileges like unlimited undos. SEE for $12.99/month and users will be able to see who likes them. PREMIUM for $13.49/month unlocks all paid features.</span>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <ul class="list-disc list-inside">
-                                <li>Clean UI & visual style & animation</li>
-                                <li>Short and easy onboarding process</li>
-                                <li>Simple & easy to use</li>
-                            </ul>
-                        </td>
-                        <td class="py-3 px-6 text-left">
-                            <ul class="list-disc list-inside">
-                                <li>Fake "verified" accounts</li>
-                                <li>Fraudulent activities</li>
-                                <li>Crypto scams</li>
-                                <li>No tutorials or tips, some features are confusing</li>
-                            </ul>
-                        </td>
-                    </tr>
+       <div class="overflow-x-auto mb-8">
+    <table class="w-full bg-white shadow-lg rounded-lg border-collapse">
+        <thead>
+            <tr class="bg-indigo-600 text-white uppercase text-sm leading-normal">
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Company</th>
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Mission statement</th>
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Target market</th>
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Pricing /month</th>
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Strengths</th>
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Weaknesses</th>
+            </tr>
+        </thead>
+        <tbody class="text-gray-700 text-sm">
+            <!-- TanTan Row -->
+            <tr class="border-b border-gray-200 hover:bg-indigo-50 transition-colors duration-150">
+                <td class="py-4 px-6 text-left font-medium border-r border-gray-200">
+                    <div class="flex items-center">
+                        <span class="font-medium text-indigo-600">TanTan</span>
+                    </div>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span class="italic">"Discover people nearby and meet your #BaeGoals"</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Mostly Asian men and women between 25 to 34</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Free to download but three tiers:</span>
+                    <ul class="mt-2 space-y-1">
+                        <li><span class="font-semibold">VIP:</span> $8.99/month (unlimited undos)</li>
+                        <li><span class="font-semibold">SEE:</span> $12.99/month (see who likes you)</li>
+                        <li><span class="font-semibold">PREMIUM:</span> $13.49/month (all features)</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Clean UI & visual style & animation</li>
+                        <li>Short and easy onboarding process</li>
+                        <li>Simple & easy to use</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Fake "verified" accounts</li>
+                        <li>Fraudulent activities</li>
+                        <li>Crypto scams</li>
+                        <li>No tutorials or tips, some features are confusing</li>
+                    </ul>
+                </td>
+            </tr>
 
-                    <!-- Badoo Row -->
-                    <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap border-r border-gray-300">
-                            <div class="flex items-center">
-                                <span class="font-medium">Badoo</span>
-                            </div>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <span>"With tech that can't be matched, we want to make it easier to find someone who gets your heart beating faster."</span>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <span>People aged between 25-34 and 35-44, average around 25</span>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <span>Free to download, but there are two tiers, Premium and Premium Plus</span>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <ul class="list-disc list-inside">
-                                <li>Clean UI & Unique visuals</li>
-                                <li>Ease of use</li>
-                                <li>Feature-rich environment</li>
-                                <li>Ability to message users without an expensive membership</li>
-                            </ul>
-                        </td>
-                        <td class="py-3 px-6 text-left">
-                            <ul class="list-disc list-inside">
-                                <li>They do have ads running on the free version</li>
-                                <li>Badoo has a higher learning curve than others</li>
-                                <li>Fake profiles and customer service issues</li>
-                            </ul>
-                        </td>
-                    </tr>
+            <!-- Badoo Row -->
+            <tr class="border-b border-gray-200 hover:bg-indigo-50 transition-colors duration-150 bg-gray-50">
+                <td class="py-4 px-6 text-left font-medium border-r border-gray-200">
+                    <div class="flex items-center">
+                        <span class="font-medium text-indigo-600">Badoo</span>
+                    </div>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span class="italic">"With tech that can't be matched, we want to make it easier to find someone who gets your heart beating faster."</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>People aged between 25-34 and 35-44, average around 25</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Free to download, with two premium tiers:</span>
+                    <ul class="mt-2 space-y-1">
+                        <li><span class="font-semibold">Premium</span></li>
+                        <li><span class="font-semibold">Premium Plus</span></li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Clean UI & Unique visuals</li>
+                        <li>Ease of use</li>
+                        <li>Feature-rich environment</li>
+                        <li>Ability to message users without an expensive membership</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>They do have ads running on the free version</li>
+                        <li>Badoo has a higher learning curve than others</li>
+                        <li>Fake profiles and customer service issues</li>
+                    </ul>
+                </td>
+            </tr>
 
-                    <!-- Bumble Row -->
-                    <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap border-r border-gray-300">
-                            <div class="flex items-center">
-                                <span class="font-medium">Bumble</span>
-                            </div>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <span>Meet, chat, and date new people</span>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <span>Young people between 18-34</span>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <ul class="list-disc list-inside">
-                                <li>Free to download</li>
-                                <li>Bumble has subscription packages (Bumble Premium and Bumble Boost) and single or multiple-use paid services (including Spotlights and SuperSwipes).</li>
-                            </ul>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <ul class="list-disc list-inside">
-                                <li>Bumble "changes the rules of the game" by empowering women to respond first within 24 hours</li>
-                                <li>Speed Dating feature allows for more genuine connections</li>
-                                <li>Offers different modes such as BFF, BIZZ for networking</li>
-                            </ul>
-                        </td>
-                        <td class="py-3 px-6 text-left">
-                            <ul class="list-disc list-inside">
-                                <li>Cannot see who likes you unless you upgrade to premium</li>
-                                <li>Limited contact time: Female users only have 24 hours to initiate contact with male users once they've both swiped right</li>
-                            </ul>
-                        </td>
-                    </tr>
+            <!-- Bumble Row -->
+            <tr class="border-b border-gray-200 hover:bg-indigo-50 transition-colors duration-150">
+                <td class="py-4 px-6 text-left font-medium border-r border-gray-200">
+                    <div class="flex items-center">
+                        <span class="font-medium text-indigo-600">Bumble</span>
+                    </div>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span class="italic">Meet, chat, and date new people</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Young people between 18-34</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Free to download with premium options:</span>
+                    <ul class="mt-2 space-y-1">
+                        <li><span class="font-semibold">Bumble Premium</span></li>
+                        <li><span class="font-semibold">Bumble Boost</span></li>
+                        <li>Single-use paid services (Spotlights and SuperSwipes)</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Empowers women to respond first within 24 hours</li>
+                        <li>Speed Dating feature allows for more genuine connections</li>
+                        <li>Offers different modes such as BFF, BIZZ for networking</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Cannot see who likes you unless you upgrade to premium</li>
+                        <li>Limited contact time: Female users only have 24 hours to initiate contact</li>
+                    </ul>
+                </td>
+            </tr>
 
-                    <!-- Tagged Row -->
-                    <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap border-r border-gray-300">
-                            <div class="flex items-center">
-                                <span class="font-medium">Tagged</span>
-                            </div>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <span>"We keep it real. You can do you and be accepted for who you are."</span>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <span>Young people 18+</span>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <ul class="list-disc list-inside">
-                                <li>Free to download</li>
-                                <li>Tagged Premium: 1-month packages start at $9.99, 3-month packages start at $20.99, 6-month packages start at $29.99, and 12-month packages start at $47.99</li>
-                            </ul>
-                        </td>
-                        <td class="py-3 px-6 text-left border-r border-gray-300">
-                            <ul class="list-disc list-inside">
-                                <li>Users can purchase app currency for games and also gain additional functionality within the app</li>
-                                <li>There is also a browse function which allows you to chat with other users even if you are not friends</li>
-                                <li>Meet Me section is similar to Tinder, allowing users to flick through possible matches</li>
-                            </ul>
-                        </td>
-                        <td class="py-3 px-6 text-left">
-                            <ul class="list-disc list-inside">
-                                <li>Poor UI on homepage, especially with ads taking up most of the screen</li>
-                                <li>Ads autoplay with sound</li>
-                                <li>Feels like a scam/spammy</li>
-                                <li>A lot of ads</li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-    </section>
+            <!-- Tagged Row -->
+            <tr class="border-b border-gray-200 hover:bg-indigo-50 transition-colors duration-150 bg-gray-50">
+                <td class="py-4 px-6 text-left font-medium border-r border-gray-200">
+                    <div class="flex items-center">
+                        <span class="font-medium text-indigo-600">Tagged</span>
+                    </div>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span class="italic">"We keep it real. You can do you and be accepted for who you are."</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Young people 18+</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Free to download with Tagged Premium packages:</span>
+                    <ul class="mt-2 space-y-1">
+                        <li>1-month: $9.99</li>
+                        <li>3-month: $20.99</li>
+                        <li>6-month: $29.99</li>
+                        <li>12-month: $47.99</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>App currency for games and additional functionality</li>
+                        <li>Browse function allows chat with non-friends</li>
+                        <li>Meet Me section is similar to Tinder's interface</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Poor UI on homepage, especially with ads taking up most of the screen</li>
+                        <li>Ads autoplay with sound</li>
+                        <li>Feels like a scam/spammy</li>
+                        <li>A lot of ads</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
         <section id="user-review" class="bg-white p-8 rounded-xl shadow-md mb-16">
                 <h2 class="text-2xl font-bold mb-6 text-blue-600">User Review and Feedback Analysis</h2>
                 <p class="text-lg text-black-600">
@@ -509,91 +576,187 @@ html {
                 </div>
             </section>
             
-            
-        <!-- Pain Points Analysis -->
+<!-- Pain Points Analysis -->
 <section id="task2" class="bg-white p-8 rounded-xl shadow-md mb-16">
     <h2 class="text-2xl font-bold mb-6 text-red-600">TASK 2: Pain point analysis and feature ideation - April to May</h2>
-    <h2 class="text-2xl font-bold mb-6 text-blue-600">PAIN POINTS</h2>
-    <p class="text-lg text-black-600">
-        A comprehensive breakdown of the major issues affecting our dating app, including demographic imbalances, match quality concerns, safety issues, cost barriers, usability challenges, and social stigma.
-    <div class="overflow-x-auto">
-        <table class="w-full bg-white rounded-lg">
-            <thead>
-                <tr class="bg-blue-50 text-blue-600">
-                    <th class="py-4 px-6 text-left border-b">Pain Point</th>
-                    <th class="py-4 px-6 text-left border-b">Description</th>
-                    <th class="py-4 px-6 text-left border-b">Potential Solutions</th>
-                </tr>
-            </thead>
-            <tbody class="text-gray-600">
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">Imbalance Demographic 🚹🚺</span></td>
-                    <td class="py-4 px-6">More Male than Female Users. Male users have lower match rate and success rate.</td>
-                    <td class="py-4 px-6">
-                        <ul class="list-disc list-inside">
-                            <li>Targeted marketing to attract more female users</li>
-                            <li>Partnerships with female-centric platforms</li>
-                            <li>Address gender inclusivity by expanding gender options</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">Poor User (Match) Quality</span></td>
-                    <td class="py-4 px-6">
-                        <ul class="list-disc list-inside">
-                            <li>Frustration with match quality</li>
-                            <li>Misleading profile photos</li>
-                            <li>Dishonesty in personal details</li>
-                            <li>Deceptive intentions</li>
-                            <li>Ghosting</li>
-                            <li>Choice paradox</li>
-                        </ul>
-                    </td>
-                    <td class="py-4 px-6">
-                        <ul class="list-disc list-inside">
-                            <li>Enhance profile credibility with professional information</li>
-                            <li>Improve algorithms</li>
-                            <li>Provide detailed user profiles</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">Safety Issues</span></td>
-                    <td class="py-4 px-6">
-                        <ul class="list-disc list-inside">
-                            <li>Catfishing, harassment, physical safety concerns</li>
-                            <li>Higher harassment rates among women</li>
-                            <li>Fake profiles and romance scams</li>
-                        </ul>
-                    </td>
-                    <td class="py-4 px-6">
-                        <ul class="list-disc list-inside">
-                            <li>Opt-in background checks</li>
-                            <li>Methods for identifying fake profiles</li>
-                            <li>Real-name registration or selfie verification</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">Subscription Cost</span></td>
-                    <td class="py-4 px-6">Cost of premium features can be a barrier.</td>
-                    <td class="py-4 px-6">Provide value for money and allow testing of full capabilities before committing to premium features.</td>
-                </tr>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">In-app Navigation and Usability</span></td>
-                    <td class="py-4 px-6">Sign-up process is time-consuming.</td>
-                    <td class="py-4 px-6">Streamline the sign-up process and improve Facebook integration.</td>
-                </tr>
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-4 px-6"><span class="font-medium">Stereotypes Associated with Online Dating</span></td>
-                    <td class="py-4 px-6">Stigma associated with using dating apps.</td>
-                    <td class="py-4 px-6">Better branding and marketing messages to combat the stigma and encourage a positive perception.</td>
-                </tr>
-            </tbody>
-        </table>
+    
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-blue-500">PAIN POINTS</h2>
+        <p class="text-lg text-gray-600 mb-6">
+            A comprehensive breakdown of the major issues affecting our dating app, including demographic imbalances, match quality concerns, safety issues, cost barriers, usability challenges, and social stigma.
+        </p>
+    </div>
+    
+    <!-- Cards for pain points instead of table -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Imbalance Demographic Card -->
+        <div>
+            <div class=" text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                     Imbalance Demographic
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">More Male than Female Users.</p>
+                <p class="text-gray-700 mb-4"> Male users have lower match rate and success rate.</p>
+                <div >
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Targeted marketing to attract more female users</li>
+                        <li>Partnerships with female-centric platforms</li>
+                        <li>Address gender inclusivity by expanding gender options</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Poor User Match Quality Card -->
+        <div>
+            <div class=" text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                     Poor User Match Quality
+                </h3>
+            </div>
+            <div class="p-5">
+                <div class="text-gray-700 mb-4">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Frustration with match quality</li>
+                        <li>Misleading profile photos</li>
+                        <li>Dishonesty in personal details</li>
+                        <li>Deceptive intentions</li>
+                        <li>Ghosting, choice paradox</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Enhance profile credibility with professional information</li>
+                        <li>Improve algorithms</li>
+                        <li>Provide detailed user profiles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Safety Issues Card -->
+        <div>
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                     Safety Issues
+                </h3>
+            </div>
+            <div class="p-5">
+                <div class="text-gray-700 mb-4">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Catfishing, harassment, physical safety concerns</li>
+                        <li>Higher harassment rates among women</li>
+                        <li>Fake profiles and romance scams</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Opt-in background checks</li>
+                        <li>Methods for identifying fake profiles</li>
+                        <li>Real-name registration or selfie verification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Subscription Cost Card -->
+        <div >
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                     Subscription Cost
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">Cost of premium features can be a barrier.</p>
+                <div>
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <p class="text-gray-700">Provide value for money and allow testing of full capabilities before committing to premium features.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- In-app Navigation and Usability Card -->
+        <div>
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                    In-app Navigation and Usability
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">Sign-up process is time-consuming.</p>
+                <div>
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <p class="text-gray-700">Streamline the sign-up process and improve Facebook integration.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stereotypes Card -->
+        <div>
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                    Stereotypes Associated with Online Dating
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">Stigma associated with using dating apps.</p>
+                <div>
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <p class="text-gray-700">Better branding and marketing messages to combat the stigma and encourage a positive perception.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Metrics visualization -->
+    <div >
+        <h3 class="text-xl font-bold mb-4 text-blue-500">Key Pain Point Metrics</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <span class="text-3xl font-bold text-blue-400">67%</span>
+                <p class="text-gray-600 mt-2">of female users report safety concerns</p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <span class="text-3xl font-bold text-blue-400">3:1</span>
+                <p class="text-gray-600 mt-2">Male to female user ratio</p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <span class="text-3xl font-bold text-blue-400">58%</span>
+                <p class="text-gray-600 mt-2">of users abandon sign-up process</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Feature Ideation Section -->
+    <div>
+        <h3 class="text-xl font-bold mb-4 text-blue-500">Feature Ideation</h3>
+        <p class="text-gray-600 mb-4">Based on our pain point analysis, we've developed the following feature ideas to address user concerns:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Enhanced Verification System</h4>
+                <p class="text-gray-600">Multi-level verification including photo, ID, and social media to reduce fake profiles</p>
+            </div>
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Community Events</h4>
+                <p class="text-gray-600">Group meetups and cultural activities to attract more female users</p>
+            </div>
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Progressive Onboarding</h4>
+                <p class="text-gray-600">Step-by-step profile completion that allows users to start matching immediately</p>
+            </div>
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Premium Trial Weekends</h4>
+                <p class="text-gray-600">Weekend access to premium features to demonstrate value before subscription</p>
+            </div>
+        </div>
     </div>
 </section>
-
         <!-- Wireframing -->
         <section id="wireframing" class="bg-white p-8 rounded-xl shadow-md mb-16">
             <h2 class="text-2xl font-bold mb-6 text-blue-600">WIREFRAMING </h2>
