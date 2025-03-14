@@ -176,6 +176,22 @@
             scroll-margin-top: 100px;
         }
 
+        /* Adjust main content container for mobile */
+        main.container {
+            margin-left: 0;
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Desktop specific styles */
+        @media (min-width: 769px) {
+            main.container {
+                margin-left: 220px;
+                width: calc(100% - 220px);
+            }
+        }
+
         @media (max-width: 768px) {
             .image-container1 img {
                 width: 100%;
@@ -268,61 +284,54 @@
             background-color: #edf2f7;
         }
 
-        /* Add these styles to your CSS to fix the side navigation gap */
+        /* Side navigation */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 100px;
+            width: 200px;
+            padding: 20px;
+            background-color: white;
+            z-index: 100;
+            border-right: 1px solid #f0f0f0;
+            overflow-y: auto;
+            height: calc(100vh - 100px);
+            box-sizing: border-box;
+        }
 
-/* Adjust the side navigation width and positioning */
-/* Fix the side navigation */
-.side-nav {
-    position: fixed;
-    left: 0;
-    top: 100px;
-    width: 200px;
-    padding: 20px;
-    background-color: white;
-    z-index: 100;
-    border-right: 1px solid #f0f0f0;
-    overflow-y: auto;
-    height: calc(100vh - 100px);
-    box-sizing: border-box;
-}
+        /* Make sure the side-nav content is properly aligned */
+        .side-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Add gap between icon and text */
+            width: 100%;
+            padding: 8px 0;
+            color: #4B5563;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-/* Main content positioning to avoid overlap with side nav */
-main.container {
-    margin-left: 220px; /* Width of side-nav + some padding */
-    width: calc(100% - 220px);
-    overflow-x: hidden;
-}
+        /* Fix icon alignment if needed */
+        .side-nav a img, 
+        .side-nav a i {
+            width: 20px; /* Consistent width for icons */
+            text-align: center;
+        }
 
-
-/* For mobile, reset these values */
-@media (max-width: 768px) {
-    main.container {
-        margin-left: 0;
-    }
-    
-    .side-nav {
-        display: none;
-    }
-}
-
-/* Make sure the side-nav content is properly aligned */
-.side-nav a {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Add gap between icon and text */
-    width: 100%;
-    padding: 8px 0;
-    color: #4B5563;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-/* Fix icon alignment if needed */
-.side-nav a img, 
-.side-nav a i {
-    width: 20px; /* Consistent width for icons */
-    text-align: center;
-}
+        /* Mobile menu full screen overlay */
+        @media (max-width: 768px) {
+            .mobile-menu.active {
+                transform: translateX(0);
+                width: 100%;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+                background-color: white;
+                overflow-y: auto;
+            }
+        }
     </style>
 
 </head>
