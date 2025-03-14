@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joopi Case Study - Sai Rajesh Rapelli</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+html {
+    scroll-padding-top: 80px; /* Modern browsers - adjust based on navbar height */
+}
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #2563EB, #1D4ED8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #2563EB;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #2563EB;
+            margin: 1rem auto;
+        }
+
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .image-item {
+            width: calc(50% - 20px);
+            text-align: center;
+        }
+        
+        .grid-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-caption {
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .image-item {
+                width: 100%;
+            }
+        }
+        /* Side navigation styles */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 100px;
+            width: 250px;
+            padding: 20px;
+            z-index: 100;
+        }
+        
+        .side-nav a {
+            display: block;
+            padding: 8px 0;
+            color: #4B5563;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .side-nav a:hover, .side-nav a.active {
+            color: #2563EB;
+        }
+        
+        .side-nav a.sub-link {
+            padding-left: 15px;
+            font-size: 0.9em;
+        }
+/* Add these styles to your CSS to fix the side navigation gap */
+
+/* Adjust the side navigation width and positioning */
+/* Fix the side navigation */
+.side-nav {
+    position: fixed;
+    left: 0;
+    top: 100px;
+    width: 200px;
+    padding: 20px;
+    background-color: white;
+    z-index: 100;
+    border-right: 1px solid #f0f0f0;
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+}
+
+/* Main content positioning to avoid overlap with side nav */
+main.container {
+    margin-left: 220px; /* Width of side-nav + some padding */
+    width: calc(100% - 220px);
+    overflow-x: hidden;
+}
+
+
+/* For mobile, reset these values */
+@media (max-width: 768px) {
+    main.container {
+        margin-left: 0;
+    }
+    
+    .side-nav {
+        display: none;
+    }
+}
+
+/* Make sure the side-nav content is properly aligned */
+.side-nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Add gap between icon and text */
+    width: 100%;
+    padding: 8px 0;
+    color: #4B5563;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Fix icon alignment if needed */
+.side-nav a img, 
+.side-nav a i {
+    width: 20px; /* Consistent width for icons */
+    text-align: center;
+}
+        
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <!-- <a href="blogs.html" class="nav-link text-gray-600 hover:text-blue-600">Blogs</a> -->
+                    <a href="https://drive.google.com/file/d/1eDAVk59CxYivPIE__pNj0H10hKn1bhjR/view?usp=share_link" 
+                       target="_blank"
+                       class="nav-link text-gray-600 hover:text-blue-600 ">
+                        Resume
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-600" id="menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-8">
+                        <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                        <button class="text-gray-600" id="close-menu">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex flex-col space-y-6">
+                        <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
+                        <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                        <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                        <!-- <a href="blogs.html" class="text-gray-600 hover:text-blue-600">Blogs</a> -->
+                        <a href="https://drive.google.com/file/d/1eDAVk59CxYivPIE__pNj0H10hKn1bhjR/view?usp=share_link" 
+                           target="_blank"
+                           class="nav-link text-gray-600 hover:text-blue-600 ">
+                            Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Navigation -->
+    <div class="side-nav hidden md:block">
+        <a href="#overview" class="font-medium">Project Overview</a>
+        <!-- <a href="#skills-tools" class="font-medium">Skills & Tools</a> -->
+        <a href="#korean-apps" class="font-medium">Korean Dating Apps</a>
+        <a href="#task1" class="font-medium">Task 1: Profile Screens</a>
+        <a href="#competitive-analysis" class="font-medium">Competitive Analysis</a>
+        <a href="#swot-analysis" class="font-medium">SWOT Analysis</a>
+        <a href="#user-review" class="font-medium">User Review</a>
+        <a href="#task2" class="font-medium">Task 2: Pain Points</a>
+        <a href="#wireframing" class="font-medium">Wireframing</a>
+        <a href="#conclusion" class="font-medium">Conclusion</a>
+    </div>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:ml-64">
+        <h1 class="text-4xl md:text-5xl font-bold text-center section-heading mb-12">Joopi Case Study</h1>
+        <img src="images/Joopi.png" alt="Figma Design" class="w-full rounded-xl shadow-lg mb-12 max-w-4xl mx-auto">
+
+        <!-- Project Overview -->
+        <section id="overview" class="bg-white p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">OVERVIEW</h2>
+                <p class="text-lg text-gray-600">
+                    Joopi emphasizes community-focused features for Asian(Korean) Americans, group events, and cultural activities that help users connect over shared interests and values. This not only helps in finding a partner but also in building a network of like-minded individuals.
+                </p>
+                <br>
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div>
+                <h3 class="text-xl font-bold mb-4 text-black-600">Skills & Tools Used</h2>
+                <ul class="space-y-2">
+                    <li class="flex items-center"><span class="mr-2">🎨</span> Prototyping</li>
+                    <li class="flex items-center"><span class="mr-2">💻</span> Figma</li>
+                    <li class="flex items-center"><span class="mr-2">📝</span> Notion</li>
+                    <li class="flex items-center"><span class="mr-2">🔍</span> User Research</li>
+                    <li class="flex items-center"><span class="mr-2">📊</span> Competitive Analysis</li>
+                    <li class="flex items-center"><span class="mr-2">📋</span> Storyboarding</li>
+                    <li class="flex items-center"><span class="mr-2">✏️</span> Wireframing</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-black-600">Design Process</h2>
+                <p class="text-lg text-gray-600">
+                    The design process involved conducting extensive user research and testing to guide design decisions, ensuring that the app's features aligned with user needs and preferences. By gathering feedback through user interviews and usability testing, the team iterated on designs to improve the overall user experience.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-red  -600">Roles and responsibilities</h3>
+                <p class="text-gray-600">I led the UX/UI design for Joopi, an Asian American dating app, managing research through implementation. 
+                    I conducted competitor and SWOT analyses, researched user pain points, and designed culturally-relevant profile screens with step-by-step onboarding. 
+                    I created solutions for gender imbalance, match quality, and safety concerns using Figma for prototyping and Notion for documentation, delivering designs that prioritized community and cultural connection.</p>
+            </div>
+
+        </div>
+    </section>
+
+        <!-- Korean Popular Dating Apps -->
+        <section id="korean-apps" class="bg-white p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">Korean Popular Dating Apps 🇰🇷</h2>
+            <ol class="list-decimal list-inside space-y-2 text-lg text-black-600">
+                <li>Noondate 정오의 데이트: Focused on serious relationships</li>
+                <li>Amanda 아만다: Women-focused</li>
+                <li>Boo: Focus on personality compatibility in finding meaningful connections</li>
+                <li>MEEFF: Cultural adaptability and tailored features in Korea</li>
+            </ol>
+        </section>
+
+        <!-- Task 1: Profile Screens -->
+        <section id="task1" class="bg-white p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-red-600">TASK 1: Initial task focussed on profile screens - March to April</h2>
+            <p class="text-lg text-black-600">
+                This project showcases a comprehensive user profile system I designed for a mobile application. 
+                The screens demonstrate a thoughtful approach to gathering and displaying user information, with a focus on creating an intuitive and engaging user experience.
+            </p>
+            <p class="text-lg text-black-600">
+                The design includes various sections for users to input their personal details, preferences, and interests. Key features of the profile system include:
+            </p>
+            <ul class="list-disc list-inside text-lg text-black-600 mb-6 space-y-2">
+                <li>Customizable photo gallery</li>
+                <li>Demographic information input (education, languages, ethnicity)</li>
+                <li>Interactive prompts to encourage user engagement</li>
+                <li>Detailed preference selectors (star sign, religion, personality type)</li>
+                <li>Lifestyle indicators (smoking and drinking status)</li>
+                <li>Interest selection with a wide range of options</li>
+            </ul>
+            <p class="text-lg text-black-600">
+                The UI maintains a clean, modern aesthetic with a consistent color scheme and layout across all screens. The step-by-step approach to profile completion allows users to easily navigate through different sections, making the process of creating a detailed profile less overwhelming.
+            </p>
+            <img src="images/Profile.png" alt="Profile Screens">
+        </section>
+
+        <!-- Competitive Analysis -->
+        <section id="competitive-analysis" class="bg-white p-8 rounded-xl shadow-md mb-16">
+            <div class="overflow-x-auto mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">COMPETITIVE ANALYSIS 📊</h2>
+            <p class="text-lg text-black-600">
+                For the competitive analysis, I examined the websites and apps of several direct and indirect competitors, focusing on popular dating platforms as well as social networking apps with dating functionalities. 
+                I also explored trends in online dating, particularly the increasing demand for more personalized matches and enhanced safety features. 
+                The analysis aimed to uncover design strategies that effectively address common user pain points during the matchmaking and onboarding process, while identifying areas where competitors fall short in meeting user needs, such as better filtering options and improving user trust.
+
+                Additionally, I created provisional personas based on the competitors' likely target audience. This helped establish a foundation for understanding who the ideal personas for our dating app would be. With these insights, I then moved on to conducting user interviews to dive deeper into specific needs and preferences.
+               </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-black-800">Direct Competitors</h3>
+                    <p class="text-lg text-black-600">
+                        The direct competitors such as TanTan, 2RedBeans, and Lovevite are dating apps that target a specific demographic—Asian singles, offering various features to enhance the user experience for this group. 
+                        The direct competition revealed strategies like a strong focus on user profiles, easy swiping mechanisms, and tailored search filters. 
+                        However, there were areas for improvement, such as limited user engagement features and relatively basic interaction designs.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-black-800">Indirect Competitors</h3>
+                    <p class="text-lg text-black-600">
+                        On the other hand, indirect competitors like Bumble, Tagged, and Badoo serve a broader dating audience but share similar functionalities. 
+                        These apps highlight global trends in dating, such as the rising popularity of gamification, location-based matching, and community-oriented events. 
+                        Their strengths include user-friendly interfaces, well-executed brand identity, and innovative features like Bumble's women-first approach and Badoo's integrated social networking aspects.
+                    </p>
+                </div>
+            </div>
+            </section>
+            
+        <!-- SWOT Analysis -->
+        <section id="swot-analysis" class="bg-white p-8 rounded-xl shadow-md mb-16">
+        <h2 class="text-2xl font-bold mb-6 text-blue-600">SWOT ANALYSIS 📊</h2>
+        <img src="images/SWOT.png" alt="SWOT Analysis">
+        <br>
+        <p class="text-lg text-black-600">
+            The screenshots display interfaces from four dating apps—TanTan, Badoo, Bumble, and Tagged—highlighting various sections such as home screens, profiles, messages, and additional features. 
+            Each app offers distinct user experiences: TanTan emphasizes communication with live chat and video options, Badoo focuses on social discovery through features like nearby users and "Encounters," Bumble stands out with its female-first messaging approach and versatile Bizz modes for dating, friendships, and professional networking, while Tagged blends social networking with dating, allowing for more profile customization and community interaction. 
+            The designs vary in complexity, with Bumble and Badoo offering more streamlined, feature-rich interfaces, while Tagged and TanTan maintain simpler, communication-focused layouts.
+        </p>
+<br>
+       <div class="overflow-x-auto mb-8">
+    <table class="w-full bg-white shadow-lg rounded-lg border-collapse">
+        <thead>
+            <tr class="bg-indigo-600 text-white uppercase text-sm leading-normal">
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Company</th>
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Mission statement</th>
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Target market</th>
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Pricing /month</th>
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Strengths</th>
+                <th class="py-4 px-6 text-left border-b border-indigo-800 font-bold">Weaknesses</th>
+            </tr>
+        </thead>
+        <tbody class="text-gray-700 text-sm">
+            <!-- TanTan Row -->
+            <tr class="border-b border-gray-200 hover:bg-indigo-50 transition-colors duration-150">
+                <td class="py-4 px-6 text-left font-medium border-r border-gray-200">
+                    <div class="flex items-center">
+                        <span class="font-medium text-indigo-600">TanTan</span>
+                    </div>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span class="italic">"Discover people nearby and meet your #BaeGoals"</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Mostly Asian men and women between 25 to 34</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Free to download but three tiers:</span>
+                    <ul class="mt-2 space-y-1">
+                        <li><span class="font-semibold">VIP:</span> $8.99/month (unlimited undos)</li>
+                        <li><span class="font-semibold">SEE:</span> $12.99/month (see who likes you)</li>
+                        <li><span class="font-semibold">PREMIUM:</span> $13.49/month (all features)</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Clean UI & visual style & animation</li>
+                        <li>Short and easy onboarding process</li>
+                        <li>Simple & easy to use</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Fake "verified" accounts</li>
+                        <li>Fraudulent activities</li>
+                        <li>Crypto scams</li>
+                        <li>No tutorials or tips, some features are confusing</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <!-- Badoo Row -->
+            <tr class="border-b border-gray-200 hover:bg-indigo-50 transition-colors duration-150 bg-gray-50">
+                <td class="py-4 px-6 text-left font-medium border-r border-gray-200">
+                    <div class="flex items-center">
+                        <span class="font-medium text-indigo-600">Badoo</span>
+                    </div>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span class="italic">"With tech that can't be matched, we want to make it easier to find someone who gets your heart beating faster."</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>People aged between 25-34 and 35-44, average around 25</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Free to download, with two premium tiers:</span>
+                    <ul class="mt-2 space-y-1">
+                        <li><span class="font-semibold">Premium</span></li>
+                        <li><span class="font-semibold">Premium Plus</span></li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Clean UI & Unique visuals</li>
+                        <li>Ease of use</li>
+                        <li>Feature-rich environment</li>
+                        <li>Ability to message users without an expensive membership</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>They do have ads running on the free version</li>
+                        <li>Badoo has a higher learning curve than others</li>
+                        <li>Fake profiles and customer service issues</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <!-- Bumble Row -->
+            <tr class="border-b border-gray-200 hover:bg-indigo-50 transition-colors duration-150">
+                <td class="py-4 px-6 text-left font-medium border-r border-gray-200">
+                    <div class="flex items-center">
+                        <span class="font-medium text-indigo-600">Bumble</span>
+                    </div>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span class="italic">Meet, chat, and date new people</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Young people between 18-34</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Free to download with premium options:</span>
+                    <ul class="mt-2 space-y-1">
+                        <li><span class="font-semibold">Bumble Premium</span></li>
+                        <li><span class="font-semibold">Bumble Boost</span></li>
+                        <li>Single-use paid services (Spotlights and SuperSwipes)</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Empowers women to respond first within 24 hours</li>
+                        <li>Speed Dating feature allows for more genuine connections</li>
+                        <li>Offers different modes such as BFF, BIZZ for networking</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Cannot see who likes you unless you upgrade to premium</li>
+                        <li>Limited contact time: Female users only have 24 hours to initiate contact</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <!-- Tagged Row -->
+            <tr class="border-b border-gray-200 hover:bg-indigo-50 transition-colors duration-150 bg-gray-50">
+                <td class="py-4 px-6 text-left font-medium border-r border-gray-200">
+                    <div class="flex items-center">
+                        <span class="font-medium text-indigo-600">Tagged</span>
+                    </div>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span class="italic">"We keep it real. You can do you and be accepted for who you are."</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Young people 18+</span>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <span>Free to download with Tagged Premium packages:</span>
+                    <ul class="mt-2 space-y-1">
+                        <li>1-month: $9.99</li>
+                        <li>3-month: $20.99</li>
+                        <li>6-month: $29.99</li>
+                        <li>12-month: $47.99</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left border-r border-gray-200">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>App currency for games and additional functionality</li>
+                        <li>Browse function allows chat with non-friends</li>
+                        <li>Meet Me section is similar to Tinder's interface</li>
+                    </ul>
+                </td>
+                <td class="py-4 px-6 text-left">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Poor UI on homepage, especially with ads taking up most of the screen</li>
+                        <li>Ads autoplay with sound</li>
+                        <li>Feels like a scam/spammy</li>
+                        <li>A lot of ads</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+        <section id="user-review" class="bg-white p-8 rounded-xl shadow-md mb-16">
+                <h2 class="text-2xl font-bold mb-6 text-blue-600">User Review and Feedback Analysis</h2>
+                <p class="text-lg text-black-600">
+                    I conducted an in-depth user review analysis on popular dating apps—Badoo, Bumble, Tantan, and Tagged.
+                    I systematically categorized the feedback to highlight areas of strength, such as user interface design and ease of use,
+                    as well as areas that need improvement, like filtering options, performance, and user safety features.
+                    This comprehensive review allowed me to present actionable insights that can guide potential enhancements
+                    and optimize the overall user experience for these platforms.
+                </p>
+                <div class="image-grid">
+                    <div class="image-item">
+                        <p class="image-caption">Badoo</p>
+                        <img src="images/Badoo.png" alt="Figma Design">
+                        
+                    </div>
+                    <div class="image-item">
+                        <p class="image-caption">Bumble</p>
+                        <img src="images/Bumble.png" alt="Figma Design">
+                        
+                    </div>
+                    <div class="image-item">
+                        <p class="image-caption">Tagged</p>
+                        <img src="images/Tagged.png" alt="Figma Design">
+                        
+                    </div>
+                    <div class="image-item">
+                        <p class="image-caption">TanTan</p>
+                        <img src="images/TanTan.png" alt="Figma Design">
+                        
+                    </div>
+                </div>
+            </section>
+            
+<!-- Pain Points Analysis -->
+<section id="task2" class="bg-white p-8 rounded-xl shadow-md mb-16">
+    <h2 class="text-2xl font-bold mb-6 text-red-600">TASK 2: Pain point analysis and feature ideation - April to May</h2>
+    
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-blue-500">PAIN POINTS</h2>
+        <p class="text-lg text-gray-600 mb-6">
+            A comprehensive breakdown of the major issues affecting our dating app, including demographic imbalances, match quality concerns, safety issues, cost barriers, usability challenges, and social stigma.
+        </p>
+    </div>
+    
+    <!-- Cards for pain points instead of table -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Imbalance Demographic Card -->
+        <div>
+            <div class=" text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                     Imbalance Demographic
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">More Male than Female Users.</p>
+                <p class="text-gray-700 mb-4"> Male users have lower match rate and success rate.</p>
+                <div >
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Targeted marketing to attract more female users</li>
+                        <li>Partnerships with female-centric platforms</li>
+                        <li>Address gender inclusivity by expanding gender options</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Poor User Match Quality Card -->
+        <div>
+            <div class=" text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                     Poor User Match Quality
+                </h3>
+            </div>
+            <div class="p-5">
+                <div class="text-gray-700 mb-4">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Frustration with match quality</li>
+                        <li>Misleading profile photos</li>
+                        <li>Dishonesty in personal details</li>
+                        <li>Deceptive intentions</li>
+                        <li>Ghosting, choice paradox</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Enhance profile credibility with professional information</li>
+                        <li>Improve algorithms</li>
+                        <li>Provide detailed user profiles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Safety Issues Card -->
+        <div>
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                     Safety Issues
+                </h3>
+            </div>
+            <div class="p-5">
+                <div class="text-gray-700 mb-4">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Catfishing, harassment, physical safety concerns</li>
+                        <li>Higher harassment rates among women</li>
+                        <li>Fake profiles and romance scams</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Opt-in background checks</li>
+                        <li>Methods for identifying fake profiles</li>
+                        <li>Real-name registration or selfie verification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Subscription Cost Card -->
+        <div >
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                     Subscription Cost
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">Cost of premium features can be a barrier.</p>
+                <div>
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <p class="text-gray-700">Provide value for money and allow testing of full capabilities before committing to premium features.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- In-app Navigation and Usability Card -->
+        <div>
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                    In-app Navigation and Usability
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">Sign-up process is time-consuming.</p>
+                <div>
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <p class="text-gray-700">Streamline the sign-up process and improve Facebook integration.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stereotypes Card -->
+        <div>
+            <div class="text-black-800 py-3 px-4">
+                <h3 class="font-bold text-xl flex items-center">
+                    Stereotypes Associated with Online Dating
+                </h3>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-700 mb-4">Stigma associated with using dating apps.</p>
+                <div>
+                    <h4 class="font-semibold text-green-700 mb-2">Potential Solutions:</h4>
+                    <p class="text-gray-700">Better branding and marketing messages to combat the stigma and encourage a positive perception.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Metrics visualization -->
+    <div >
+        <h3 class="text-xl font-bold mb-4 text-blue-500">Key Pain Point Metrics</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <span class="text-3xl font-bold text-blue-400">67%</span>
+                <p class="text-gray-600 mt-2">of female users report safety concerns</p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <span class="text-3xl font-bold text-blue-400">3:1</span>
+                <p class="text-gray-600 mt-2">Male to female user ratio</p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                <span class="text-3xl font-bold text-blue-400">58%</span>
+                <p class="text-gray-600 mt-2">of users abandon sign-up process</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Feature Ideation Section -->
+    <div>
+        <h3 class="text-xl font-bold mb-4 text-blue-500">Feature Ideation</h3>
+        <p class="text-gray-600 mb-4">Based on our pain point analysis, we've developed the following feature ideas to address user concerns:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Enhanced Verification System</h4>
+                <p class="text-gray-600">Multi-level verification including photo, ID, and social media to reduce fake profiles</p>
+            </div>
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Community Events</h4>
+                <p class="text-gray-600">Group meetups and cultural activities to attract more female users</p>
+            </div>
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Progressive Onboarding</h4>
+                <p class="text-gray-600">Step-by-step profile completion that allows users to start matching immediately</p>
+            </div>
+            <div class="border-l-4 border-blue-300 pl-4 py-2">
+                <h4 class="font-semibold text-gray-800">Premium Trial Weekends</h4>
+                <p class="text-gray-600">Weekend access to premium features to demonstrate value before subscription</p>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- Wireframing -->
+        <section id="wireframing" class="bg-white p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">WIREFRAMING </h2>
+            <p class="text-lg text-black-600">
+                Based on one of the pain points like how to attract more female users. This wireframe description outlines how the dating app integrates a status feature to enhance user engagement and attract more users by providing familiar social media functionalities within the dating context.
+            </p>
+            <p class="text-lg text-black-600">
+                Key aspects include the ability to share photos and short videos as status updates. Privacy controls ensure that users can see each other's status only after a match, providing a sense of security. Interactive elements, such as reactions and quick replies, foster engagement. This feature allows users to showcase their personality and hobbies in a fun way beyond profile photos, helping to build trust and a sense of community.</p>
+          
+            <img src="images/Homepage.png" alt="Wireframe">
+        </section>
+
+        <!-- Conclusion -->
+        <section id="conclusion" class="bg-white p-8 rounded-xl shadow-md mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">CONCLUSION</h2>
+            <p class="text-lg text-black-600">
+                If the Joopi app intends to attract Asian Americans seeking long-term, serious relationships, it must navigate a competitive landscape dominated by established platforms known for fostering meaningful connections. 
+                To differentiate itself, Joopi should prioritize quality over quantity, leveraging innovative matching algorithms and effective engagement strategies that resonate with users in search of genuine, committed partnerships.
+            </p>
+            
+        </section>
+    </main>
+    <div class="flex justify-center gap-4 mt-12">
+        <a href="index.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+            Back to Home
+        </a>
+        <a href="Craigslist.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+            View Craigslist Project
+        </a>
+    </div>
+    <footer class="bg-white py-8 mt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+            &copy; 2024 Sai Rajesh Rapelli. All rights reserved.
+        </div>
+    </footer>
+ <!-- Mobile Menu JavaScript -->
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+// Your existing mobile menu code
+const menuToggle = document.getElementById('menu-toggle');
+const closeMenu = document.getElementById('close-menu');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuToggle.addEventListener('click', function() {
+    mobileMenu.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+closeMenu.addEventListener('click', function() {
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+// Close menu when clicking on a link
+const mobileLinks = mobileMenu.getElementsByTagName('a');
+Array.from(mobileLinks).forEach(link => {
+    link.addEventListener('click', function() {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+});
+
+// FIXED SIDE NAVIGATION HIGHLIGHTING
+
+// Get all sections that need to be observed
+const sections = document.querySelectorAll('section[id]');
+
+// Get all navigation links in the side nav
+const sideNavLinks = document.querySelectorAll('.side-nav a');
+
+// Function to highlight active link
+function setActiveLink() {
+    // Get current scroll position
+    let scrollPosition = window.scrollY;
+    
+    // Find the section that's currently in view
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100; // Adjust offset as needed
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        // Check if user has scrolled to this section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            // Remove active class from all links
+            sideNavLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to corresponding link
+            const activeLink = document.querySelector(`.side-nav a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+    
+    // Handle case where user is at the bottom of the page
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+        // We're at the bottom of the page - highlight the last link
+        sideNavLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+        sideNavLinks[sideNavLinks.length - 1].classList.add('active');
+    }
+}
+
+// Initial call to set the active link based on the current position
+setActiveLink();
+
+// Add scroll event listener
+window.addEventListener('scroll', setActiveLink);
+
+// Add click event listeners to nav links for smooth scrolling
+sideNavLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            // Remove active class from all links first
+            sideNavLinks.forEach(link => link.classList.remove('active'));
+            
+            // Add active class to clicked link
+            this.classList.add('active');
+            
+            // Scroll to the target element
+            window.scrollTo({
+                top: targetElement.offsetTop - 80, // Adjust offset based on fixed header height
+                behavior: 'smooth'
+            });
+            
+            // Update URL without page refresh
+            history.pushState(null, null, `#${targetId}`);
+        }
+    });
+});
+
+// Add style for active nav link
+const style = document.createElement('style');
+style.textContent = `
+    .side-nav a.active {
+        color: #2563EB !important;
+        font-weight: 600;
+        position: relative;
+    }
+    
+    .side-nav a.active::before {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 16px;
+        background-color: #2563EB;
+        border-radius: 2px;
+    }
+`;
+document.head.appendChild(style);
+});
+</script>
+</body>
+</html>
+    
