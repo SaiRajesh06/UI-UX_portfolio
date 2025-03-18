@@ -1,35 +1,14 @@
-Landed by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+This repository contains the source code for the "About" page of my personal portfolio website, showcasing my journey as a UX designer and researcher. Built with HTML, Tailwind CSS, and Font Awesome, this page highlights my professional experience, skills, and personal interests in a clean, modern design.
 
-
-A dark, slick, modern, responsive, adjective-drenched design built around an extremely
-dynamic landing page (scroll that mofo!). Inspired by Big Picture, another design
-of mine with a similarish feel/flow, only this time I took it waaaaaay further and
-actually made it multipurpose (versus copping out and making it a one pager like I
-did last time ;) Includes multiple pages, a bunch of pre-styled elements, and all
-its Sass sources.
-
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
-
-(* = Not included)
-
-Feedback, bug reports, and comments are not only welcome, but strongly encouraged :)
-
-AJ
-aj@lkn.io | @ajlkn
-
-
-Credits:
-
-	Demo Images:
-		Unsplash (unsplash.com)
-
-	Icons:
-		Font Awesome (fontawesome.io)
-
-	Other:
-		jQuery (jquery.com)
-		Scrollex (github.com/ajlkn/jquery.scrollex)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+Features
+Responsive Design: Fully optimized for desktop and mobile devices with a hamburger menu for smaller screens.
+Professional Layout: Includes a two-column bio section with an image, a stylized timeline of my career journey, and clear calls-to-action.
+Personal Touch: Mentions my interest in learning Spanish via Duolingo, adding a relatable element.
+Custom Styling: Uses Tailwind CSS for rapid development, enhanced with custom CSS for gradients, animations, and a unique timeline with arrow icons.
+Smooth Navigation: Links to other portfolio sections (index.html) with smooth scrolling behavior.
+Technologies Used
+HTML5: Core structure of the page.
+Tailwind CSS (v2.2.19): Utility-first CSS framework for styling.
+Font Awesome (v6.0.0): Icons for navigation and timeline markers.
+Google Fonts (Poppins): Modern typography for a professional look.
+JavaScript: Basic interactivity for mobile menu toggle.
