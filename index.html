@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sai Rajesh Rapelli - UX Designer</title>
@@ -49,17 +48,19 @@
 
         .project-card {
             transition: all 0.3s ease;
+            display: block; /* Make the entire card a clickable link */
+            text-decoration: none;
+            color: inherit;
         }
 
         .project-card:hover {
             transform: translateY(-8px);
         }
 
-        /* Updated image container styles */
         .project-image-container {
             position: relative;
             width: 100%;
-            padding-top: 66.67%; /* 3:2 aspect ratio */
+            padding-top: 66.67%;
             overflow: hidden;
         }
 
@@ -73,7 +74,6 @@
             object-position: center;
         }
 
-        /* Hero image responsive styles */
         .hero-image-container {
             position: relative;
             width: 100%;
@@ -129,6 +129,17 @@
         .nav-link.active::after {
             width: 100%;
         }
+
+        /* Style for the View Case Study link inside the card */
+        .case-study-link {
+            display: inline-flex;
+            align-items: center;
+            color: #2563EB;
+            font-weight: 500;
+        }
+        .case-study-link:hover {
+            color: #1D4ED8;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -137,8 +148,6 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="#" class="text-2xl font-bold gradient-text">Sai Rajesh Rapelli</a>
-                
-                <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
                     <a href="about.html" class="nav-link text-gray-600 hover:text-blue-600">About</a>
@@ -150,15 +159,11 @@
                         Resume
                     </a>
                 </div>
-
-                <!-- Mobile Menu Button -->
                 <button class="md:hidden text-gray-600" id="menu-toggle">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
         <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-8">
@@ -207,137 +212,137 @@
                     <div class="hero-image-container">
                         <img src="images/indexblue.png" 
                              alt="Sai Rajesh Rapelli" 
-                             >
+                            >
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <!-- Update this section in your HTML file -->
-<section id="work" class="py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="selected-works" class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Selected Works</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Project 1 -->
-            <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
-                <div class="project-image-container">
-                    <img src="/images/coverjoopi.png"
-                         alt="A Round Entertainment"
-                         class="project-image">
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-bold mb-2">A Round Entertainment</h3>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        A dating app facilitating cultural exchange between South Korea and the United States.
-                    </p>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        Role: UX Designer & Researcher Intern
-                    </p>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        Duration: March 2024 - May 2024
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">UX Research</span>
-                        <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">UI Design</span>
+    <!-- Work Section -->
+    <section id="work" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 id="selected-works" class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Selected Works</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Project 1 -->
+                <a href="Joopi.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="project-image-container">
+                        <img src="/images/coverjoopi.png"
+                             alt="A Round Entertainment"
+                             class="project-image">
                     </div>
-                    <a href="Joopi.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm">
-                        View Case Study 
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </article>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-2">A Round Entertainment</h3>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            A dating app facilitating cultural exchange between South Korea and the United States.
+                        </p>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Role: UX Designer & Researcher Intern
+                        </p>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Duration: March 2024 - May 2024
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">UX Research</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">UI Design</span>
+                        </div>
+                        <!-- <span class="case-study-link text-sm">
+                            View Case Study 
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </span> -->
+                    </div>
+                </a>
 
-            <!-- Project 2 -->
-            <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
-                <div class="project-image-container">
-                    <img src="/images/covercraig.png"
-                         alt="Craigslist Redesign"
-                         class="project-image">
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-bold mb-2">Craigslist Redesign</h3>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        Craigslist is an antiquated and classified ads website.
-                    </p>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        Modernizing the platform for enhanced user experience.
-                    </p>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        Duration: Feb 2024 - May 2024
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Redesign</span>
-                        <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">User Testing</span>
+                <!-- Project 2 -->
+                <a href="craigs.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="project-image-container">
+                        <img src="/images/covercraig.png"
+                             alt="Craigslist Redesign"
+                             class="project-image">
                     </div>
-                    <a href="craigs.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm">
-                        View Case Study 
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </article>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-2">Craigslist Redesign</h3>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Craigslist is an antiquated and classified ads website.
+                        </p>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Modernizing the platform for enhanced user experience.
+                        </p>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Duration: Feb 2024 - May 2024
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Redesign</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">User Testing</span>
+                        </div>
+                        <!-- <span class="case-study-link text-sm">
+                            View Case Study 
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </span> -->
+                    </div>
+                </a>
 
-            <!-- Project 3 -->
-            <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
-                <div class="project-image-container">
-                    <img src="/images/coveryale.png"
-                         alt="Yale School of Art"
-                         class="project-image">
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-bold mb-2">Yale School of Art</h3>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        Redesigning the Yale School of Art website to improve usability.
-                    </p>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        Focused on transforming the digital presence with intuitive navigation.
-                    </p>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        Duration: Sept 2024 - Dec 2024
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Visual Design</span>
-                        <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Graphic Design</span>
+                <!-- Project 3 -->
+                <a href="Yale.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="project-image-container">
+                        <img src="/images/coveryale.png"
+                             alt="Yale School of Art"
+                             class="project-image">
                     </div>
-                    <a href="Yale.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm">
-                        View Case Study 
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </article>
-            
-            <!-- Project 4 -->
-            <article class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
-                <div class="project-image-container">
-                    <img src="/images/coveremr.png"
-                         alt="EMR Healthcare App"
-                         class="project-image">
-                </div>
-                <div class="p-5">
-                    <h3 class="text-lg font-bold mb-2">EMR Healthcare App</h3>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        A React Native Expo mobile application for patients to manage medical records.
-                    </p>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        Role: UI React Intern
-                    </p>
-                    <p class="text-gray-600 mb-3 text-sm">
-                        Duration: Jan 2025 - Present
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">React Native</span>
-                        <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Tailwind CSS</span>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-2">Yale School of Art</h3>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Redesigning the Yale School of Art website to improve usability.
+                        </p>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Focused on transforming the digital presence with intuitive navigation.
+                        </p>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Duration: Sept 2024 - Dec 2024
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Visual Design</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Graphic Design</span>
+                        </div>
+                        <!-- <span class="case-study-link text-sm">
+                            View Case Study 
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </span> -->
                     </div>
-                    <a href="Emrapp.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm">
-                        View Case Study 
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </article>
+                </a>
+                
+                <!-- Project 4 -->
+                <a href="Emrapp.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="project-image-container">
+                        <img src="/images/coveremr.png"
+                             alt="EMR Healthcare App"
+                             class="project-image">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-2">EMR Healthcare App</h3>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            A React Native Expo mobile application for patients to manage medical records.
+                        </p>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Role: UI React Intern
+                        </p>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Duration: Jan 2025 - Present
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">React Native</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Tailwind CSS</span>
+                        </div>
+                        <!-- <span class="case-study-link text-sm">
+                            View Case Study 
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </span> -->
+                    </div>
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-16 md:py-24 bg-gray-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -362,6 +367,16 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-600">
+                © 2024
+            </p>
+        </div>
+    </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('menu-toggle');
@@ -389,7 +404,7 @@
             // Highlight active navigation item
             let currentPage = window.location.pathname.split('/').pop();
             if (!currentPage || currentPage === '') {
-                currentPage = 'index.html'; // Default to index.html if no path
+                currentPage = 'index.html';
             }
             const currentHash = window.location.hash || '#home';
             const navLinks = document.querySelectorAll('.nav-link');
@@ -406,13 +421,5 @@
             });
         });
     </script>
-    <!-- Footer -->
-    <footer class="py-8 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-gray-600">
-                © 2024
-            </p>
-        </div>
-    </footer>
 </body>
 </html>
