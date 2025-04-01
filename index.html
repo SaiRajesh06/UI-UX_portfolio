@@ -48,7 +48,7 @@
 
         .project-card {
             transition: all 0.3s ease;
-            display: block; /* Make the entire card a clickable link */
+            display: block;
             text-decoration: none;
             color: inherit;
         }
@@ -130,7 +130,6 @@
             width: 100%;
         }
 
-        /* Style for the View Case Study link inside the card */
         .case-study-link {
             display: inline-flex;
             align-items: center;
@@ -211,8 +210,7 @@
                 <div class="md:w-1/2 mt-12 md:mt-0">
                     <div class="hero-image-container">
                         <img src="images/indexblue.png" 
-                             alt="Sai Rajesh Rapelli" 
-                            >
+                             alt="Sai Rajesh Rapelli">
                     </div>
                 </div>
             </div>
@@ -246,10 +244,6 @@
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">UX Research</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">UI Design</span>
                         </div>
-                        <!-- <span class="case-study-link text-sm">
-                            View Case Study 
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </span> -->
                     </div>
                 </a>
 
@@ -275,10 +269,6 @@
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Redesign</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">User Testing</span>
                         </div>
-                        <!-- <span class="case-study-link text-sm">
-                            View Case Study 
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </span> -->
                     </div>
                 </a>
 
@@ -304,15 +294,11 @@
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Visual Design</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Graphic Design</span>
                         </div>
-                        <!-- <span class="case-study-link text-sm">
-                            View Case Study 
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </span> -->
                     </div>
                 </a>
-                
-                <!-- Project 4 -->
-                <a href="Emrapp.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+
+                <!-- Project 4 (EMR Healthcare App - Normal Card with Password on Click) -->
+                <a href="Emrapp.html" id="emr-project-link" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
                         <img src="/images/coveremr.png"
                              alt="EMR Healthcare App"
@@ -333,10 +319,6 @@
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">React Native</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Tailwind CSS</span>
                         </div>
-                        <!-- <span class="case-study-link text-sm">
-                            View Case Study 
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </span> -->
                     </div>
                 </a>
             </div>
@@ -419,6 +401,24 @@
                     link.classList.remove('active');
                 }
             });
+
+            // Password protection for EMR Healthcare App
+            const emrProjectLink = document.getElementById('emr-project-link');
+            const correctPassword = 'E2025MR'; // Set your password here
+
+            // Check if the project is already unlocked (using localStorage)
+            if (localStorage.getItem('emrUnlocked') !== 'true') {
+                emrProjectLink.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent navigation until password is correct
+                    const userPassword = prompt('Please enter the password to view the EMR Healthcare App project:');
+                    if (userPassword === correctPassword) {
+                        localStorage.setItem('emrUnlocked', 'true'); // Store unlock state
+                        window.location.href = emrProjectLink.href; // Navigate to the project page
+                    } else {
+                        alert('Incorrect password. Please try again.');
+                    }
+                });
+            }
         });
     </script>
 </body>
