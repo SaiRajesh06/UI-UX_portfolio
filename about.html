@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sai Rajesh Rapelli - UX Designer</title>
@@ -122,14 +121,62 @@
             background: #2563EB;
             margin: 1rem auto;
         }
-        .nav-link.active {
-    color: #2563EB; /* Or any color you prefer for the active state */
-    font-weight: 600; /* Optional: makes it bold */
-}
 
-.nav-link.active::after {
-    width: 100%; /* Shows the underline by default for active link */
-}
+        .nav-link.active {
+            color: #2563EB;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Slide Path Animation with Fade */
+        @keyframes slidePath {
+            0% {
+                opacity: 0;
+                transform: translateX(-50vw); /* Start further left for a noticeable slide */
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-slide-path {
+            animation: slidePath 0.8s ease-out forwards;
+        }
+
+        .tool-item, .skill-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool-item:hover, .skill-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Ensure overflow is hidden to prevent sliding items from showing outside the container */
+        .overflow-hidden {
+            overflow: hidden;
+        }
+
+        /* Match the screenshot styling */
+        .tool-item i {
+            margin-right: 0.5rem;
+        }
+
+        .skill-item {
+            background-color: #e0f2fe; /* Light blue background to match screenshot */
+            color: #2563eb; /* Blue text to match screenshot */
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px; /* Fully rounded */
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Ensure Font Awesome icons are loaded */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -139,27 +186,27 @@
             <div class="flex justify-between items-center h-16">
                 <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
 
-             <!-- Desktop Navigation -->
-<div class="hidden md:flex items-center space-x-8">
-    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
-    <a href="#about" class="nav-link text-gray-600 hover:text-blue-600 active">About</a>
-    <a href="index.html#selected-works" class="text-gray-600 hover:text-blue-600">Work</a>
-    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
-    <a href="https://drive.google.com/file/d/1f5SVfgbslp84DZZbyTBklPWTSCsKFV3q/view?usp=share_link" 
-       target="_blank"
-       class="nav-link text-gray-600 hover:text-blue-600">
-        Resume
-    </a>
-</div>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-blue-600 active">About</a>
+                    <a href="index.html#selected-works" class="text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="https://drive.google.com/file/d/1rt0hXcgYSfPlaQCyINOy3F2TOHUD96fM/view?usp=sharing" 
+                       target="_blank"
+                       class="nav-link text-gray-600 hover:text-blue-600">
+                        Resume
+                    </a>
+                </div>
 
-  <!-- Mobile Menu Button -->
-  <button class="md:hidden text-gray-600" id="menu-toggle">
-    <i class="fas fa-bars text-xl"></i>
-</button>
-</div>
-</div>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-600" id="menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
 
-  <!-- Mobile Menu -->
+        <!-- Mobile Menu -->
         <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-8">
@@ -173,7 +220,7 @@
                     <a href="#about" class="nav-link text-gray-600 hover:text-blue-600 active">About</a>
                     <a href="index.html#selected-works" class="text-gray-600 hover:text-blue-600">Work</a>
                     <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
-                    <a href="https://drive.google.com/file/d/1f5SVfgbslp84DZZbyTBklPWTSCsKFV3q/view?usp=share_link" 
+                    <a href="https://drive.google.com/file/d/1rt0hXcgYSfPlaQCyINOy3F2TOHUD96fM/view?usp=sharing" 
                        target="_blank"
                        class="nav-link text-gray-600 hover:text-blue-600">
                         Resume
@@ -203,9 +250,6 @@
                         <a href="index.html#selected-works" class="px-8 py-3 bg-blue-600 text-white rounded-full font-medium btn-primary">
                             Explore My Work
                         </a>
-                        <!-- <a href="index.html#contact" class="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-full font-medium btn-outline transition">
-                            Let’s Connect
-                        </a> -->
                     </div>
                 </div>
                 <div class="md:w-1/2 mt-12 md:mt-0 animate-fadeUp" style="animation-delay: 0.2s;">
@@ -217,60 +261,111 @@
                 </div>
             </div>
 
-         
-       <!-- Journey Timeline -->
+            <!-- Tool Stack & Skills -->
+            <div class="mt-16 toolkit-section">
+                <h3 class="text-3xl font-semibold text-center text-gray-800 mb-12">My Toolkit & Skills</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Tools -->
+                    <div class="overflow-hidden">
+                        <h4 class="text-xl font-semibold text-blue-600 mb-4">Design Tools</h4>
+                        <div class="flex flex-wrap gap-6">
+                            <div class="flex items-center space-x-2 tool-item" style="animation-delay: 0.1s;">
+                                <i class="fab fa-figma text-2xl text-gray-700"></i>
+                                <span class="text-gray-600">Figma</span>
+                            </div>
+                            <div class="flex items-center space-x-2 tool-item" style="animation-delay: 0.2s;">
+                                <i class="fab fa-adobe text-2xl text-gray-700"></i>
+                                <span class="text-gray-600">Adobe XD</span>
+                            </div>
+                            <div class="flex items-center space-x-2 tool-item" style="animation-delay: 0.3s;">
+                                <i class="fas fa-paint-brush text-2xl text-gray-700"></i>
+                                <span class="text-gray-600">Sketch</span>
+                            </div>
+                            <div class="flex items-center space-x-2 tool-item" style="animation-delay: 0.4s;">
+                                <i class="fas fa-palette text-2xl text-gray-700"></i>
+                                <span class="text-gray-600">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Skills -->
+                    <div class="overflow-hidden">
+                        <h4 class="text-xl font-semibold text-blue-600 mb-4">UI/UX Skills</h4>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium skill-item" style="animation-delay: 0.1s;">User Research</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium skill-item" style="animation-delay: 0.2s;">Wireframing</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium skill-item" style="animation-delay: 0.3s;">Prototyping</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium skill-item" style="animation-delay: 0.4s;">Usability Testing</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium skill-item" style="animation-delay: 0.5s;">Interaction Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          <!-- Journey Timeline -->
 <div class="mt-20">
     <h3 class="text-3xl font-semibold text-center text-gray-800 mb-12">My Journey</h3>
     <div class="max-w-4xl mx-auto space-y-10">
         <div class="timeline-item animate-fadeUp" style="animation-delay: 0.1s;">
-            <h4 class="font-bold text-xl text-gray-800 mb-3">Sept 2021 - Dec 2022</h4>
-            <p class="text-gray-600 text-base leading-relaxed">Began as an Application Analyst Trainee at Cognizant, optimizing ticket booking flows, then joined Accenture to enhance digital banking features—reducing customer support tickets by 45%.</p>
+            <h4 class="font-bold text-xl text-gray-800 mb-3">Jun 2019 – Jul 2021</h4>
+            <p class="text-gray-600 text-base leading-relaxed">Started my career at Wipro as a UX/UI Designer, where I designed the CareConnect Portal, improving patient experience and reducing call center queries by 35%. I also created responsive healthcare apps and design systems that enhanced engagement by 30%.</p>
         </div>
         <div class="timeline-item animate-fadeUp" style="animation-delay: 0.2s;">
-            <h4 class="font-bold text-xl text-gray-800 mb-3">Jan 2023 - Dec 2024</h4>
-            <p class="text-gray-600 text-base leading-relaxed">Started my Master’s in Information Systems at University of Maryland Baltimore County, mastering in Information Systems and earning a track in UX</p>
+            <h4 class="font-bold text-xl text-gray-800 mb-3">Aug 2021 – Jan 2023</h4>
+            <p class="text-gray-600 text-base leading-relaxed">Joined HCL Tech as a UX/UI Designer, leading the redesign of a financial analytics dashboard. My work improved task efficiency by 35% and boosted product adoption by 20% through data visualization and accessibility enhancements.</p>
         </div>
-    
         <div class="timeline-item animate-fadeUp" style="animation-delay: 0.3s;">
-            <h4 class="font-bold text-xl text-gray-800 mb-3">March 2024 - Dec 2024</h4>
-            <p class="text-gray-600 text-base leading-relaxed">Interned at A Round Entertainment, increasing user engagement by 15% with innovative features, and redesigned Craigslist and Yale School of Art, boosting usability by up to 40%.</p>
+            <h4 class="font-bold text-xl text-gray-800 mb-3">Jan 2023 – Dec 2024</h4>
+            <p class="text-gray-600 text-base leading-relaxed">Completed my Master’s in Information Systems at the University of Maryland Baltimore County, specializing in human-centric design and advanced interaction design while developing UX case studies like the EMR Health App, Craigslist, and Yale School of Art redesigns.</p>
         </div>
         <div class="timeline-item animate-fadeUp" style="animation-delay: 0.4s;">
-            <h4 class="font-bold text-xl text-gray-800 mb-3">Jan 2025 - Present</h4>
-            <p class="text-gray-600 text-base leading-relaxed">Currently a UI React Intern at Soaper LLC, developing healthcare tools that improve patient engagement—focused on driving impactful design forward.</p>
-        </div>
-        <div class="timeline-item animate-fadeUp" style="animation-delay: 0.4s;">
-            <h4 class="font-bold text-xl text-gray-800 mb-3">March 2025 - Present</h4>
-            <p class="text-gray-600 text-base leading-relaxed">Currently a Youth Lead UI/UX Designer, creating 40+ interactive screens for "Zinged," mentoring peers, and driving a 20% clarity boost through user research.</p>
+            <h4 class="font-bold text-xl text-gray-800 mb-3">Jan 2024 – Present</h4>
+            <p class="text-gray-600 text-base leading-relaxed">Working as a UX/UI Designer at IBM, where I lead UX strategy for a secure user access portal, enhance accessibility (achieving 100% compliance), and collaborate closely with developers to implement designs using React and the Carbon Design System.</p>
         </div>
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.getElementById('menu-toggle');
-        const closeMenu = document.getElementById('close-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
 
-        menuToggle.addEventListener('click', function() {
-            mobileMenu.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const closeMenu = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-        closeMenu.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
 
-        // Close menu when clicking on a link
-        const mobileLinks = mobileMenu.getElementsByTagName('a');
-        Array.from(mobileLinks).forEach(link => {
-            link.addEventListener('click', function() {
+            closeMenu.addEventListener('click', function() {
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
+
+            const mobileLinks = mobileMenu.getElementsByTagName('a');
+            Array.from(mobileLinks).forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Intersection Observer for Toolkit & Skills animation
+            const toolkitSection = document.querySelector('.toolkit-section');
+            const toolItems = document.querySelectorAll('.tool-item');
+            const skillItems = document.querySelectorAll('.skill-item');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        toolItems.forEach(item => item.classList.add('animate-slide-path'));
+                        skillItems.forEach(item => item.classList.add('animate-slide-path'));
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(toolkitSection);
         });
-    });
-</script>
+    </script>
 </body>
 </html>
