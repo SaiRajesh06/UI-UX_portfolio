@@ -72,22 +72,24 @@
             object-position: center;
         }
 
-        /* Hero image responsive styles */
-        .hero-image-container {
-            position: relative;
-            width: 100%;
-            max-width: 320px;
-            margin: 0 auto;
-        }
+       /* Hero image responsive styles */
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-width: 320px;
+    margin: 0 auto;
+}
 
-        .hero-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            border-radius: 1rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+.hero-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* or remove this line if not needed */
+    border-radius: 1rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
 
         .mobile-menu {
             transform: translateX(-100%);
@@ -256,10 +258,15 @@
                 </div>
                 <div class="md:w-1/2 mt-12 md:mt-0 animate-fadeUp" style="animation-delay: 0.2s;">
                     <div class="hero-image-container">
-                        <img src="images/B17C2DCA-15FF-469D-B347-5A6197885BF7.JPG" 
-                             alt="Sai Rajesh Rapelli" 
-                             class="hero-image">
+                        <img 
+                            src="images/edf8ea52-f830-4e12-afcd-41d6d0067d5e.JPG" 
+                            alt="Sai Rajesh Rapelli" 
+                            class="hero-image rounded-xl shadow-lg object-cover"
+                            style="width: 500%; max-width: 400px; height: auto;"
+                        >
                     </div>
+                </div>
+                
                 </div>
             </div>
         </div>
