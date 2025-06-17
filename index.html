@@ -12,6 +12,55 @@
         * {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-padding-top: 80px; /* Modern browsers - adjust based on navbar height */
+        }
+        
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: white;
+            z-index: 1050;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Hamburger menu icon */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
         }
 
         .gradient-text {
@@ -19,10 +68,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        .nav-link {
-            position: relative;
-        }
+        
         nav {
             position: fixed;
             top: 0;
@@ -31,6 +77,11 @@
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        
+        .nav-link {
+            position: relative;
+        }
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -46,74 +97,6 @@
             width: 100%;
         }
 
-        .project-card {
-            transition: all 0.3s ease;
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .project-image-container {
-            position: relative;
-            width: 100%;
-            padding-top: 66.67%;
-            overflow: hidden;
-        }
-
-        .project-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .hero-image-container {
-            position: relative;
-            width: 100%;
-            max-width: 320px;
-            margin: 0 auto;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            border-radius: 1rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .mobile-menu {
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fadeUp {
-            animation: fadeUp 0.6s ease forwards;
-        }
-
         .section-heading::after {
             content: '';
             display: block;
@@ -122,32 +105,196 @@
             background: #2563EB;
             margin: 1rem auto;
         }
-        .nav-link.active {
-            color: #2563EB;
-            font-weight: 600;
+
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
-        .nav-link.active::after {
+        
+        .image-item {
+            width: calc(50% - 20px);
+            text-align: center;
+        }
+        
+        .grid-image {
             width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-caption {
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .image-item {
+                width: 100%;
+            }
+        }
+        
+        /* Side navigation styles */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 100px;
+            width: 200px;
+            padding: 20px;
+            background-color: white;
+            z-index: 100;
+            border-right: 1px solid #f0f0f0;
+            overflow-y: auto;
+            height: calc(100vh - 100px);
+            box-sizing: border-box;
+        }
+        
+        /* Main content positioning to avoid overlap with side nav */
+        main.container {
+            margin-left: 220px; /* Width of side-nav + some padding */
+            width: calc(100% - 220px);
+            overflow-x: hidden;
         }
 
-        .case-study-link {
-            display: inline-flex;
-            align-items: center;
-            color: #2563EB;
-            font-weight: 500;
+        /* For mobile, reset these values */
+        @media (max-width: 768px) {
+            main.container {
+                margin-left: 0;
+                width: 100%;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .side-nav {
+                display: none;
+            }
         }
-        .case-study-link:hover {
-            color: #1D4ED8;
+
+        /* Make sure the side-nav content is properly aligned */
+        .side-nav a {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Add gap between icon and text */
+            width: 100%;
+            padding: 8px 0;
+            color: #4B5563;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* Fix icon alignment if needed */
+        .side-nav a img, 
+        .side-nav a i {
+            width: 20px; /* Consistent width for icons */
+            text-align: center;
+        }
+        
+        /* Active navigation styles */
+        .side-nav a.active {
+            color: #2563EB !important;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .side-nav a.active::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 16px;
+            background-color: #2563EB;
+            border-radius: 2px;
+        }
+        
+        /* Section scroll margin for better navigation */
+        section {
+            scroll-margin-top: 100px;
+        }
+        
+        /* Image row container for prototype screens */
+        .image-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .image-row img {
+            width: 200px;
+            height: auto;
+            max-height: 800px;
+            flex-shrink: 0;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Responsive typography */
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+            }
+
+            .text-4xl {
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+            }
+
+            .text-3xl {
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+
+            .text-2xl {
+                font-size: 1.25rem;
+                line-height: 1.75rem;
+            }
+
+            .text-xl {
+                font-size: 1.125rem;
+                line-height: 1.75rem;
+            }
+
+            .p-8 {
+                padding: 1.5rem;
+            }
+
+            .mb-12 {
+                margin-bottom: 2rem;
+            }
+
+            .gap-8 {
+                gap: 1.5rem;
+            }
+        }
+
+        /* Adjust hero image to utilize space */
+        .hero-image-container img {
+            max-width: 100%; /* Ensure image doesn't overflow */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+            margin-left: auto; /* Push image to the right within its container on larger screens */
+            margin-right: 0;
         }
     </style>
 </head>
 <body class="bg-white text-gray-800">
-    <!-- Navigation -->  
     <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="#" class="text-2xl font-bold gradient-text">Sai Rajesh Rapelli</a>
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden md:flex items-center space-x-8 desktop-nav">
                     <a href="#home" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
                     <a href="about.html" class="nav-link text-gray-600 hover:text-blue-600">About</a>
                     <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
@@ -158,46 +305,39 @@
                         Resume
                     </a>
                 </div>
-                <button class="md:hidden text-gray-600" id="menu-toggle">
+                <button class="md:hidden text-gray-600 hamburger" id="menu-toggle">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
 
-         <!-- Mobile Menu Button -->
-         <button class="md:hidden text-gray-600" id="menu-toggle">
-            <i class="fas fa-bars text-xl"></i>
-        </button>
-    </div>
-    
-<!-- Mobile Menu -->
-        <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-8">
-                    <span class="text-2xl font-bold gradient-text">Sai Rajesh</span>
-                    <button class="text-gray-600" id="close-menu">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="flex flex-col space-y-6">
-                    <a href="#home" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
-                    <a href="about.html" class="nav-link text-gray-600 hover:text-blue-600">About</a>
-                    <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
-                    <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
-                    <a href="https://drive.google.com/file/d/1l0EzjBH78IFJBFlZJgkh4_9r9rVuLX3D/view?usp=sharing" 
-                       target="_blank"
-                       class="nav-link text-gray-600 hover:text-blue-600">
-                        Resume
-                    </a>
-                </div>
+    <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                <button class="text-gray-600" id="close-menu">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-6">
+                <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
+                <a href="about.html" class="nav-link text-gray-600 hover:text-blue-600">About</a>
+                <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                <a href="https://drive.google.com/file/d/1l0EzjBH78IFJBFlZJgkh4_9r9rVuLX3D/view?usp=sharing" 
+                   target="_blank"
+                   class="nav-link text-gray-600 hover:text-blue-600 ">
+                    Resume
+                </a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Hero Section -->
     <section id="home" class="pt-24 md:pt-32 pb-16 md:pb-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="flex flex-col md:flex-row-reverse items-center justify-between">
+
                 <div class="md:w-1/2 animate-fadeUp">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                         UX Designer & <span class="gradient-text">Researcher</span>
@@ -206,31 +346,21 @@
                         Creating meaningful digital experiences through research-driven design.
                         With expertise in user research, prototyping, and interaction design, I focus on creating intuitive and impactful digital experiences that solve real user problems.
                     </p>
-                    <div class="flex flex-wrap gap-4">
-                        <!-- <a href="#work" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
-                            View Projects
-                        </a> -->
-                        <!-- <a href="#contact" class="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">
-                            Get in Touch
-                        </a> -->
-                    </div>
-                </div>
-                <div class="md:w-1/2 mt-12 md:mt-0">
-                    <div class="hero-image-container">
-                        <img src="images/indexblue.png" 
-                             alt="Sai Rajesh Rapelli">
+                    <div class="md:w-1/2 mt-12 md:mt-0 flex justify-end"> 
+                        <div class="hero-image-container">
+                            <img src="images/indexblue.png" 
+                                 alt="Sai Rajesh Rapelli">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Work Section -->
     <section id="work" class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="selected-works" class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Selected Works</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Project 1 -->
                 <a href="Joopi.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
                         <img src="/images/coverjoopi.png"
@@ -242,9 +372,6 @@
                         <p class="text-gray-600 mb-3 text-sm">
                             A dating app facilitating cultural exchange between South Korea and the United States.
                         </p>
-                        <!-- <p class="text-gray-600 mb-3 text-sm">
-                            Role: UX Designer & Researcher Intern
-                        </p> -->
                         <p class="text-gray-600 mb-3 text-sm">
                             Duration: March 2024 - May 2024
                         </p>
@@ -255,7 +382,6 @@
                     </div>
                 </a>
 
-                <!-- Project 2 -->
                 <a href="craigs.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
                         <img src="/images/covercraig.png"
@@ -280,7 +406,6 @@
                     </div>
                 </a>
 
-                <!-- Project 3 -->
                 <a href="Yale.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
                         <img src="/images/coveryale.png"
@@ -305,7 +430,6 @@
                     </div>
                 </a>
 
-                <!-- Project 4 (EMR Healthcare App - Normal Card with Password on Click) -->
                 <a href="Emrapp.html" id="emr-project-link" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
                         <img src="/images/coveremr.png"
@@ -317,10 +441,7 @@
                         <p class="text-gray-600 mb-3 text-sm">
                             A React Native Expo mobile application for patients to manage medical records.
                         </p>
-                        <!-- <p class="text-gray-600 mb-3 text-sm">
-                            Role: UI React Intern
-                        </p> -->
-                        <p class="text-gray-600 mb-3 text-sm">
+                        <p class="text-600 mb-3 text-sm">
                             Duration: Jan 2025 - Present
                         </p>
                         <div class="flex flex-wrap gap-2 mb-3">
@@ -333,7 +454,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="py-16 md:py-24 bg-gray-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Let's Connect</h2>
@@ -347,18 +467,11 @@
                         <i class="fas fa-envelope mr-2"></i>
                         Email Me
                     </a>
-                    <!-- <a href="https://www.linkedin.com/in/rapellisairajesh" 
-                       target="_blank"
-                       class="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">
-                        <i class="fab fa-linkedin mr-2"></i>
-                        LinkedIn
-                    </a> -->
-                </div>
+                    </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-8 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-gray-600">
@@ -374,12 +487,12 @@
     
             menuToggle.addEventListener('click', function() {
                 mobileMenu.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
             });
     
             closeMenu.addEventListener('click', function() {
                 mobileMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
             });
     
             const mobileLinks = mobileMenu.getElementsByTagName('a');
@@ -422,7 +535,7 @@
         //             alert('Incorrect password. Please try again.');
         //         }
         //     });
-        // });
+        });
     </script>
 </body>
 </html>
