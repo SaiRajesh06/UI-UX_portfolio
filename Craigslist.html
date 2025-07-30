@@ -144,36 +144,18 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* Side navigation styles */
-        .side-nav {
-            position: fixed;
-            left: 0;
-            top: 100px;
-            width: 250px;
-            padding: 20px;
-            z-index: 100;
-        }
-        
-        .side-nav a {
-            display: block;
-            padding: 8px 0;
-            color: #4B5563;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .side-nav a:hover, .side-nav a.active {
-            color: #2563EB;
-        }
-        
-        .side-nav a.sub-link {
-            padding-left: 15px;
-            font-size: 0.9em;
-        }
-
         /* Add scroll margin to sections for better navigation */
         section {
             scroll-margin-top: 100px;
+        }
+
+        /* Main content container - properly centered */
+        main.container {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1200px;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
         @media (max-width: 768px) {
@@ -295,34 +277,7 @@ main.container {
 
 
 /* For mobile, reset these values */
-@media (max-width: 768px) {
-    main.container {
-        margin-left: 0;
-    }
-    
-    .side-nav {
-        display: none;
-    }
-}
 
-/* Make sure the side-nav content is properly aligned */
-.side-nav a {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Add gap between icon and text */
-    width: 100%;
-    padding: 8px 0;
-    color: #4B5563;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-/* Fix icon alignment if needed */
-.side-nav a img, 
-.side-nav a i {
-    width: 20px; /* Consistent width for icons */
-    text-align: center;
-}
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -375,19 +330,7 @@ main.container {
         </div>
     </nav>
 
-    <!-- Side Navigation -->
-    <div class="side-nav hidden md:block">
-        <a href="#overview" class="font-medium">Overview</a>
-        <a href="#problem-statement" class="font-medium">Problem Statement</a>
-        <a href="#work-flow" class="font-medium">Work Flow</a>
-        <a href="#interview-questions" class="font-medium">Interview Questions</a>
-        <a href="#user-personas" class="font-medium">User Personas</a>
-        <a href="#prototypes" class="font-medium">Prototypes</a>
-        <a href="#cognitive-walkthrough" class="font-medium">Cognitive Walkthrough</a>
-        <a href="#my-learnings" class="font-medium">My Learnings</a>
-    </div>
-
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:ml-64">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <h1 class="text-4xl md:text-5xl font-bold text-center section-heading mb-12">Craigslist Case Study</h1>
         <div class="w-full max-w-5xl mx-auto">
             <img src="images/Emrcover.png" alt="Figma Design" class="w-full rounded-xl shadow-lg mb-12 max-w-8xl mx-auto">
@@ -707,100 +650,7 @@ Array.from(mobileLinks).forEach(link => {
 // Get all sections that need to be observed
 const sections = document.querySelectorAll('section[id]');
 
-// Get all navigation links in the side nav
-const sideNavLinks = document.querySelectorAll('.side-nav a');
 
-// Function to highlight active link
-function setActiveLink() {
-    // Get current scroll position
-    let scrollPosition = window.scrollY;
-    
-    // Find the section that's currently in view
-    sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100; // Adjust offset as needed
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        
-        // Check if user has scrolled to this section
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            // Remove active class from all links
-            sideNavLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Add active class to corresponding link
-            const activeLink = document.querySelector(`.side-nav a[href="#${sectionId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-        }
-    });
-    
-    // Handle case where user is at the bottom of the page
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
-        // We're at the bottom of the page - highlight the last link
-        sideNavLinks.forEach(link => {
-            link.classList.remove('active');
-        });
-        sideNavLinks[sideNavLinks.length - 1].classList.add('active');
-    }
-}
-
-// Initial call to set the active link based on the current position
-setActiveLink();
-
-// Add scroll event listener
-window.addEventListener('scroll', setActiveLink);
-
-// Add click event listeners to nav links for smooth scrolling
-sideNavLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-            // Remove active class from all links first
-            sideNavLinks.forEach(link => link.classList.remove('active'));
-            
-            // Add active class to clicked link
-            this.classList.add('active');
-            
-            // Scroll to the target element
-            window.scrollTo({
-                top: targetElement.offsetTop - 80, // Adjust offset based on fixed header height
-                behavior: 'smooth'
-            });
-            
-            // Update URL without page refresh
-            history.pushState(null, null, `#${targetId}`);
-        }
-    });
-});
-
-// Add style for active nav link
-const style = document.createElement('style');
-style.textContent = `
-    .side-nav a.active {
-        color: #2563EB !important;
-        font-weight: 600;
-        position: relative;
-    }
-    
-    .side-nav a.active::before {
-        content: '';
-        position: absolute;
-        left: -10px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 4px;
-        height: 16px;
-        background-color: #2563EB;
-        border-radius: 2px;
-    }
-`;
-document.head.appendChild(style);
 });
 </script>
 </body>

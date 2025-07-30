@@ -145,81 +145,24 @@
             }
         }
 
-        /* Side navigation styles */
-        .side-nav {
-            position: fixed;
-            left: 0;
-            top: 100px;
-            width: 200px;
-            padding: 20px;
-            background-color: white;
-            z-index: 100;
-            border-right: 1px solid #f0f0f0;
-            overflow-y: auto;
-            height: calc(100vh - 100px);
-            box-sizing: border-box;
-        }
-
-        /* Main content positioning to avoid overlap with side nav */
+        /* Main content container - properly centered */
         main.container {
-            margin-left: 220px;
-            /* Width of side-nav + some padding */
-            width: calc(100% - 220px);
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1200px;
+            padding-left: 15px;
+            padding-right: 15px;
             overflow-x: hidden;
         }
 
-        /* For mobile, reset these values */
         @media (max-width: 768px) {
             main.container {
-                margin-left: 0;
+                margin: 0 auto;
                 width: 100%;
+                max-width: 1200px;
                 padding-left: 15px;
                 padding-right: 15px;
             }
-
-            .side-nav {
-                display: none;
-            }
-        }
-
-        /* Make sure the side-nav content is properly aligned */
-        .side-nav a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            /* Add gap between icon and text */
-            width: 100%;
-            padding: 8px 0;
-            color: #4B5563;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        /* Fix icon alignment if needed */
-        .side-nav a img,
-        .side-nav a i {
-            width: 20px;
-            /* Consistent width for icons */
-            text-align: center;
-        }
-
-        /* Active navigation styles */
-        .side-nav a.active {
-            color: #2563EB !important;
-            font-weight: 600;
-            position: relative;
-        }
-
-        .side-nav a.active::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 16px;
-            background-color: #2563EB;
-            border-radius: 2px;
         }
 
         /* Section scroll margin for better navigation */
@@ -343,21 +286,7 @@
         </div>
     </nav>
 
-    <!-- Side Navigation -->
-    <div class="side-nav hidden md:block">
-        <a href="#overview" class="font-medium">Project Overview</a>
-        <!-- <a href="#skills-tools" class="font-medium">Skills & Tools</a> -->
-        <a href="#korean-apps" class="font-medium">Korean Dating Apps</a>
-        <a href="#task1" class="font-medium">Task 1: Profile Screens</a>
-        <a href="#competitive-analysis" class="font-medium">Competitive Analysis</a>
-        <a href="#swot-analysis" class="font-medium">SWOT Analysis</a>
-        <a href="#user-review" class="font-medium">User Review</a>
-        <a href="#task2" class="font-medium">Task 2: Pain Points</a>
-        <!-- <a href="#wireframing" class="font-medium">Wireframing</a> -->
-        <a href="#conclusion" class="font-medium">Conclusion</a>
-    </div>
-
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:ml-64">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <h1 class="text-4xl md:text-5xl font-bold text-center section-heading mb-12">Joopi Case Study</h1>
         <div class="w-full max-w-4xl mx-auto">
             <img src="images/Joopi.png" alt="Figma Design">
@@ -459,7 +388,7 @@
                     <iframe
                         style="border: 1px solid #ccc; border-radius: 12px; width:100%; max-width:900px; min-height:600px;"
                         allowfullscreen
-                        src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/zWyTTyimN6WhbrVKnVAjEP/Dating-app?node-id=72-150&p=f&t=9HRJAZOIXwpt9814-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=9396%3A58477&show-proto-sidebar">
+                        src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/zWyTTyimN6WhbrVKnVAjEP/Dating-app?node-id=72-150&p=f&t=9HRJAZOIXwpt9814-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=9396%3A58477&show-proto-sidebar&hide-ui=1">
                     </iframe>
                 </div>
             </div>
