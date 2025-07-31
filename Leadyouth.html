@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Youth Case study - Sai Rajesh Rapelli</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #2563EB, #1D4ED8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #2563EB;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #2563EB;
+            margin: 1rem auto;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add scroll margin to section headings */
+        section {
+            scroll-margin-top: 100px;
+            /* This creates space above the section when scrolled to */
+        }
+
+        /* Image containers */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            object-fit: contain;
+        }
+
+        /* Content containers with text and image */
+        .content-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            width: 100%;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .content-container img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .content-container .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Main content container - properly centered */
+        main.container {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1200px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1440px) {
+
+            /* MacBook Pro 14" and similar */
+            .content-container {
+                gap: 25px;
+            }
+
+            .content-container img {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 1280px) {
+
+            /* MacBook Air 13" and similar */
+            .content-container {
+                gap: 20px;
+            }
+
+            .content-container img {
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+
+            /* MacBook 12" and similar */
+            .content-container {
+                gap: 20px;
+            }
+
+            .content-container img {
+                max-width: 320px;
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            /* Smaller Mac screens */
+            .content-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .content-container img {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Mobile devices */
+            /* Container adjustments */
+            .content-container {
+                flex-direction: column;
+                padding: 0 1rem;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .content-container img {
+                width: 100%;
+                max-width: 100%;
+                margin: 1rem auto;
+                order: -1;
+            }
+
+            .content-container .text-content {
+                width: 100%;
+            }
+
+            .image-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .image-container img {
+                max-width: 100%;
+            }
+
+            /* Typography adjustments */
+            h1 {
+                font-size: 2rem;
+                line-height: 2.5rem;
+                padding: 0 1rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+                line-height: 2.25rem;
+                padding: 0 1rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                line-height: 2rem;
+                padding: 0 1rem;
+            }
+
+            p {
+                font-size: 1rem;
+                line-height: 1.625rem;
+                padding: 0 1rem;
+            }
+
+            /* Layout adjustments */
+            section {
+                margin-bottom: 3rem;
+                padding: 0 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            main.container {
+                margin: 0 auto;
+                width: 100%;
+                max-width: 1200px;
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-container img {
+                max-width: 90%;
+            }
+
+            section.bg-white {
+                padding: 1.5rem;
+            }
+
+            .mx-auto.max-w-4xl {
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            .mx-auto.max-w-4xl img {
+                width: 100%;
+            }
+        }
+
+        /* Adjust the main container positioning */
+        .container {
+            width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+
+
+        /* Ensure all content stays within viewport */
+        body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+    </style>
+</head>
+</style>
+</head>
+
+<body class="FFFFFF">
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="https://drive.google.com/file/d/1f5SVfgbslp84DZZbyTBklPWTSCsKFV3q/view?usp=share_link"
+                        target="_blank" class="nav-link text-gray-600 hover:text-blue-600">
+                        Resume
+                    </a>
+                </div>
+
+                <button class="md:hidden text-gray-600" id="menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+                <div class="p-4">
+                    <div class="flex justify-between items-center mb-8">
+                        <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                        <button class="text-gray-600" id="close-menu">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex flex-col space-y-4">
+                        <a href="index.html" class="text-gray-600 hover:text-blue-600 py-2">Home</a>
+                        <a href="index.html#work" class="text-gray-600 hover:text-blue-600 py-2">Work</a>
+                        <a href="index.html#contact" class="text-gray-600 hover:text-blue-600 py-2">Contact</a>
+                        <a href="https://drive.google.com/file/d/1f5SVfgbslp84DZZbyTBklPWTSCsKFV3q/view?usp=share_link"
+                            target="_blank" class="text-gray-600 hover:text-blue-600 py-2">
+                            Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <h1 class="text-4xl md:text-5xl font-bold text-center section-heading mb-12">Lead Youth</h1>
+
+        <div>
+            <img src="images/Music App Instagram Post.png" alt="Figma Design" width="700" height="700"
+                style="display: block; margin: 0 auto;">
+        </div>
+
+        <section id="overview">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">OVERVIEW</h2>
+            <p class="text-lg mb-4">Zinged is an innovative speaking exercise application from a burgeoning startup,
+                currently in development, specifically designed to empower students across grades 3-12 to master
+                confident public speaking. Leveraging advanced AI analysis, Zinged provides personalized, actionable
+                feedback on user speech and integrates it into tailored practice sessions and guided lessons. From
+                comprehensive courses on effective speaking to project-specific support for assignments like book
+                reports and debates , Zinged offers a complete ecosystem to build fluency and confidence for any
+                communication challenge, supported by detailed progress tracking and speech analysis.
+
+            </p>
+
+
+
+            <h2 id="goal" class="text-xl font-bold mb-4">Focus Areas</h2>
+            <ul class="list-disc list-inside text-lg mb-8 space-y-2">
+                <li>Designing an intuitive and visually engaging user interface (UI) and user experience (UX)
+                    specifically tailored to motivate and support young learners.</li>
+                <li>Developing and integrating an advanced AI speech analysis system to deliver highly personalized,
+                    actionable feedback and drive continuous skill improvement.</li>
+                <li>Crafting a comprehensive learning curriculum complemented by robust project-specific support</li>
+            </ul>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Roles and responsibilities</h3>
+                    <p class="text-gray-600">
+                        I led user research to understand the needs of students, parents, and educators in public
+                        speaking. Based on this, I defined user flows and information architecture for core features
+                        like courses, practice sessions, and project help. I also designed the AI-powered feedback
+                        experience, including speech analysis visuals and personalized practice suggestions.
+                        Additionally, I created a vibrant and accessible UI tailored to students across different grade
+                        levels.
+
+
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Design</h3>
+                    <p class="text-gray-600">
+
+                        Zinged is designed to create an engaging, supportive learning environment for public speaking.
+                        It features a colorful, friendly aesthetic to make young learners feel comfortable, while
+                        maintaining clear, intuitive navigation. Students can easily access lessons, practice
+                        activities, and tools for assignments like book reports or debates. A key highlight is the
+                        AI-driven feedback system, which uses visual speech analysis to recommend personalized
+                        lessons—helping learners improve with confidence and enjoyment.
+
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-black-600">Skills & Tools</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center"><span class="mr-2">🎨 Figma</span></li>
+                        <li class="flex items-center"><span class="mr-2">💻 Sitemaps<span></li>
+                        <li class="flex items-center"><span class="mr-2">📝 Prototyping</span></li>
+                        <li class="flex items-center"><span class="mr-2">🔍 User Research</span></li>
+                        <li class="flex items-center"><span class="mr-2">✏️ Wireframing</span></li>
+                        <li class="flex items-center"><span class="mr-2">🛠️ Information Architecture</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mx-auto max-w-4xl">
+            </div>
+        </section>
+        <section id="problem-statement">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">PROBLEM STATEMENT</h2>
+            <p class="text-lg mb-4"></p>
+            <p class="text-lg mb-4 bg-purple-100 p-4 rounded-lg italic">Students frequently encounter significant
+                anxiety
+                and a lack of confidence when faced with public speaking opportunities, academic presentations, or
+                formal communication in various settings.
+                They currently struggle to find accessible, personalized, and effective tools that provide objective,
+                AI-driven feedback and structured practice, leading to persistent communication challenges that hinder
+                their academic performance and overall personal development.</p>
+        </section>
+        <br>
+        <section id="design-process">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">SITE MAP</h2>
+            <p id="users-feel" class="text-lg mb-4">
+                I created a structured and user-friendly sitemap for a public speaking training app that guides users
+                through different interactive learning paths.
+                Starting from the landing and authentication screens (Login, Sign Up, Birthdate), users can choose a
+                learning path such as “Test My Speech,” “Learn Public Speaking,” “Help with Project,” or “Mix It Up.”
+                Each path is supported by detailed flows — for example, in the “Test My Speech” track, users can upload
+                recordings, record live via mic or camera, or get help with scripting and feedback.
+                I mapped out interactions like stage setup, audience selection, and speech duration input, ensuring
+                logical transitions between each task. The flow also incorporates AI-powered feedback tools, with
+                features like speech analysis, editing, and saving progress.
+                This sitemap lays a clear foundation for a modular and personalized user experience, optimizing both
+                guidance and flexibility in the learning journey.
+            </p>
+            <div class="mx-auto max-w-4xl">
+                <img src="images/zingedsitemap.png" alt="Common Issues">
+            </div>
+        </section>
+
+        <br>
+        <!-- <section id="userresearch">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">USER RESEARCH & SURVEY</h2>
+            <p class="text-lg mb-4"></p>
+            <p class="text-lg mb-4"></p>
+            <p class="text-lg mb-4"></p>
+            <div class="mx-auto max-w-4xl">
+                <img src="" alt="Common Issues">
+            </div>
+        </section> -->
+
+        <section id="empathy-mapping">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">EMPATHY MAPPING</h2>
+            <p id="users-feel" class="text-lg mb-4">
+                I created a structured and user-friendly sitemap for a public speaking training app that guides users
+                through different interactive learning paths.
+                Starting from the landing and authentication screens (Login, Sign Up, Birthdate), users can choose a
+                learning path such as “Test My Speech,” “Learn Public Speaking,” “Help with Project,” or “Mix It Up.”
+                Each path is supported by detailed flows — for example, in the “Test My Speech” track, users can upload
+                recordings, record live via mic or camera, or get help with scripting and feedback.
+                I mapped out interactions like stage setup, audience selection, and speech duration input, ensuring
+                logical transitions between each task. The flow also incorporates AI-powered feedback tools, with
+                features like speech analysis, editing, and saving progress.
+                This sitemap lays a clear foundation for a modular and personalized user experience, optimizing both
+                guidance and flexibility in the learning journey.
+            </p>
+            <div class="mx-auto" style="max-width: none;">
+                <img src="images/Empathy Map.jpg" alt="Common Issues" width="1100"
+                    style="display: block; margin: 0 auto; max-width: none; max-height: none;">
+            </div>
+        </section>
+        <br>
+
+
+        <section id="story-board">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">STORY BOARD</h2>
+            <div class="text-lg mb-4 space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-2"><strong>Story Title: Conquering the Podium with Zinged</strong>
+                    </h3>
+
+                    <p class="mb-4"><strong>Characters:</strong> A student (portrayed with varying gender
+                        characteristics across panels to represent a universal user experience)</p>
+
+                    <p class="mb-6"><strong>Overall Story:</strong> This storyboard illustrates a student's
+                        transformative journey from anxiety and uncertainty about public speaking to confident delivery
+                        and mastery, all facilitated by the "Zinged" mobile application.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- First 4 screens (above image) -->
+                    <div>
+                        <h4 class="text-lg font-bold mb-2"><strong>Screen 1: The Blank Page Dilemma</strong></h4>
+                        <ul class="list-disc list-inside space-y-1 ml-4">
+                            <li><strong>Visual:</strong> A student sits at a desk, looking stressed and overwhelmed.
+                                They are hunched over a laptop with a completely blank presentation screen. A thought
+                                bubble above their head clearly expresses their distress.</li>
+                            <li><strong>Text (in thought bubble):</strong> "HELP! WHERE DO I BEGIN?"</li>
+                            <li><strong>Story Point:</strong> Introduces the core problem: the fear and difficulty of
+                                starting a public speaking task, a common challenge for students.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-bold mb-2"><strong>Screen 2: A Glimmer of Hope - Discovering
+                                Zinged</strong></h4>
+                        <ul class="list-disc list-inside space-y-1 ml-4">
+                            <li><strong>Visual:</strong> The student is now holding a mobile phone. The screen displays
+                                the "Zinged" app's vibrant onboarding or splash screen, featuring a minimalist app
+                                interface.</li>
+                            <li><strong>Text (on phone screen):</strong> "YOUR PUBLIC SPEAKING JOURNEY Starts Here!"
+                            </li>
+                            <li><strong>Story Point:</strong> Introduces "Zinged" as the accessible and promising
+                                solution, offering a clear path forward from the initial anxiety.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-bold mb-2"><strong>Screen 3: Taking the First Step - Practice Mode
+                                Initiation</strong></h4>
+                        <ul class="list-disc list-inside space-y-1 ml-4">
+                            <li><strong>Visual:</strong> The student is still holding the mobile phone, looking at its
+                                screen. A microphone icon is visible in the top right, indicating that a recording
+                                feature is active or about to be used. The student's expression shows a mix of
+                                nervousness and initial determination as they prepare to speak.</li>
+                            <li><strong>Story Point:</strong> The user takes the crucial first step into interacting
+                                with the app's core function – beginning to practice their speech.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-bold mb-2"><strong>Screen 4: Hesitation and Early Attempts</strong></h4>
+                        <ul class="list-disc list-inside space-y-1 ml-4">
+                            <li><strong>Visual:</strong> The student is still looking at their phone, their expression
+                                showing concern or perhaps mild frustration. Behind them, a subtle visual element (like
+                                a simplified bar graph or abstract visual) indicates an early, perhaps less than ideal,
+                                performance or struggle, representing common initial difficulties.</li>
+                            <li><strong>Story Point:</strong> Acknowledges the initial challenges and struggles that can
+                                occur when starting to practice public speaking, normalizing the learning curve.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image in the middle -->
+            <div class="mx-auto my-8" style="max-width: none;">
+                <img src="images/storyboard.png" alt="Zinged Storyboard" width="800" height="100"
+                    style="display: block; margin: 0 auto; max-width: none; max-height: none;">
+            </div>
+
+            <!-- Last 4 screens (below image) -->
+            <div class="space-y-4">
+                <div>
+                    <h4 class="text-lg font-bold mb-2"><strong>Screen 5: Receiving Positive Feedback</strong></h4>
+                    <ul class="list-disc list-inside space-y-1 ml-4">
+                        <li><strong>Visual:</strong> The mobile phone screen clearly displays a positive feedback
+                            summary from "Zinged." There's a prominent green box indicating "Excellent Progress!"
+                            followed by green checkmarks next to "Pacing" and "Clarity."</li>
+                        <li><strong>Text (on phone screen):</strong> "Excellent Progress!", "Pacing [checkmark]",
+                            "Clarity [checkmark]"</li>
+                        <li><strong>Story Point:</strong> Highlights the app's immediate, positive, and constructive
+                            feedback mechanism, which motivates the user and validates their efforts.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-2"><strong>Screen 6: Applying Feedback - Continued
+                            Improvement</strong></h4>
+                    <ul class="list-disc list-inside space-y-1 ml-4">
+                        <li><strong>Visual:</strong> The student is still holding the mobile phone, but their body
+                            language is noticeably more confident. They are pointing or gesturing confidently,
+                            indicating they are actively using the app's insights to refine their delivery during
+                            continued practice.</li>
+                        <li><strong>Story Point:</strong> Illustrates the iterative process of practice and improvement,
+                            showing the user actively implementing the app's guidance to build their skills.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-2"><strong>Screen 7: Mastering the Presentation</strong></h4>
+                    <ul class="list-disc list-inside space-y-1 ml-4">
+                        <li><strong>Visual:</strong> The student is now confidently standing at the front of a
+                            classroom, giving a presentation. They are holding a microphone and gesturing naturally,
+                            engaging with the audience (represented by seated classmates). A thought bubble above their
+                            head clearly conveys their newfound confidence.</li>
+                        <li><strong>Text (in thought bubble):</strong> "I'M DOING GREAT!"</li>
+                        <li><strong>Story Point:</strong> The climax of the journey, where the student successfully
+                            applies their learned skills in a real-world, high-stakes scenario.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-2"><strong>Screen 8: Triumph and Accomplishment</strong></h4>
+                    <ul class="list-disc list-inside space-y-1 ml-4">
+                        <li><strong>Visual:</strong> The student, with a beaming smile, is looking at a laptop screen.
+                            The screen prominently displays a congratulatory message from "Zinged" and a "Skills Growth"
+                            chart showing a significant upward trend. A subtle burst of light or stars surrounds the
+                            laptop, emphasizing success and achievement.</li>
+                        <li><strong>Text (on laptop screen):</strong> "Zinged", "Congratulations! Presentation
+                            Mastered!", "Skills Growth [chart]"</li>
+                        <li><strong>Story Point:</strong> The ultimate outcome – the student has mastered public
+                            speaking and feels a profound sense of accomplishment and growth, demonstrating the
+                            long-term impact of using Zinged.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <br>
+
+
+        <section id="empathy-mapping">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">VISUAL DESIGN SYSTEM</h2>
+            <p id="users-feel" class="text-lg mb-4">
+                The visual design system for Zinged was meticulously crafted to establish a cohesive and engaging brand
+                identity, crucial for an educational application targeting young learners. It defines a vibrant color
+                palette that evokes energy and approachability, complemented by a clear typography scale that ensures
+                optimal readability across various content types. Core interactive elements like button styles and a
+                consistent iconography set are meticulously defined, alongside standard input field styling. This system
+                extends to a comprehensive component library covering elements such as cards, form elements, and
+                navigation patterns, ensuring design consistency and development efficiency. Furthermore, it
+                incorporates spacing and layout guidelines, data visualization standards for AI-powered feedback, and
+                principles for shadows and motion, all working in harmony to create an intuitive, trustworthy, and
+                visually delightful user experience that supports students in their journey to confident public speaking
+            </p>
+            <div class="mx-auto" style="max-width: none;">
+                <img src="images/systemdesign.png" alt="Common Issues" width="1100"
+                    style="display: block; margin: 0 auto; max-width: none; max-height: none;">
+            </div>
+        </section>
+        <br>
+
+        <section id="figma-prototypes">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">INTERACTIVE PROTOTYPE</h2>
+            <div class="mb-12">
+                <div class="w-full flex justify-center mb-8">
+                    <iframe
+                        style="border: 1px solid #ccc; border-radius: 12px; width:100%; max-width:900px; min-height:600px;"
+                        allowfullscreen
+                        src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/D5P3fIcxvDjYTnCRtdx9mo/LeadYouth?node-id=69-1812&t=ve80NPS9IPIiB7MD-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&hide-ui=1">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+        <div class="flex justify-center gap-4 mt-12">
+            <a href="Yale.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                View EMR Project
+            </a>
+            <a href="index.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                Back to Home
+            </a>
+        </div>
+
+
+
+        <footer class="py-8 bg-white mt-12">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+                <p>&copy; 2024 Sai Rajesh Rapelli. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Your existing mobile menu code
+                const menuToggle = document.getElementById('menu-toggle');
+                const closeMenu = document.getElementById('close-menu');
+                const mobileMenu = document.getElementById('mobile-menu');
+
+                menuToggle.addEventListener('click', function () {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                closeMenu.addEventListener('click', function () {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+
+                // Close menu when clicking on a link
+                const mobileLinks = mobileMenu.getElementsByTagName('a');
+                Array.from(mobileLinks).forEach(link => {
+                    link.addEventListener('click', function () {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    });
+                });
+
+                // FIXED SIDE NAVIGATION HIGHLIGHTING
+
+                // Get all sections that need to be observed
+                const sections = document.querySelectorAll('section[id]');
+
+
+            });
+        </script>
+</body>
+
+</html>

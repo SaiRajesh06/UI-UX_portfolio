@@ -143,7 +143,7 @@
             position: fixed;
             left: 0;
             top: 100px;
-            width: 200px;
+            width: 220px;
             padding: 20px;
             background-color: white;
             z-index: 100;
@@ -155,9 +155,58 @@
         
         /* Main content positioning to avoid overlap with side nav */
         main.container {
-            margin-left: 220px; /* Width of side-nav + some padding */
-            width: calc(100% - 220px);
+            margin-left: 240px; /* Width of side-nav + some padding */
+            width: calc(100% - 240px);
             overflow-x: hidden;
+        }
+
+        /* Mac-specific responsive breakpoints */
+        @media (max-width: 1440px) {
+            /* MacBook Pro 14" and similar */
+            .side-nav {
+                width: 200px;
+            }
+            
+            main.container {
+                margin-left: 220px;
+                width: calc(100% - 220px);
+            }
+        }
+
+        @media (max-width: 1280px) {
+            /* MacBook Air 13" and similar */
+            .side-nav {
+                width: 180px;
+            }
+            
+            main.container {
+                margin-left: 200px;
+                width: calc(100% - 200px);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            /* MacBook 12" and similar */
+            .side-nav {
+                width: 160px;
+            }
+            
+            main.container {
+                margin-left: 180px;
+                width: calc(100% - 180px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            /* Smaller Mac screens */
+            .side-nav {
+                width: 140px;
+            }
+            
+            main.container {
+                margin-left: 160px;
+                width: calc(100% - 160px);
+            }
         }
 
         /* For mobile, reset these values */
@@ -291,6 +340,7 @@
         /* Project Card Enhancements */
         .project-card {
             transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+            margin-bottom: 20px; /* Add bottom margin to prevent overlap */
         }
 
         .project-card:hover {
@@ -300,7 +350,7 @@
 
         .project-image-container {
             width: 100%;
-            height: 200px; /* Fixed height for all image containers */
+            height: 220px; /* Increased height to prevent cutting */
             overflow: hidden; /* Ensures image doesn't overflow rounded corners */
             display: flex;
             justify-content: center;
@@ -387,7 +437,7 @@
     <section id="work" class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="selected-works" class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Selected Works</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
                 
                 <a href="Joopi.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
@@ -475,6 +525,31 @@
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">React Native</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="Leadyouth.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="project-image-container">
+                        <img src="/images/zingedcoerpic.png"
+                             alt="Zinged - Public Speaking App"
+                             class="project-image">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-2">Zinged - Public Speaking App</h3>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            An innovative AI-powered speaking exercise application designed for students grades 3-12.
+                        </p>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Features personalized feedback, guided lessons, and project-specific support.
+                        </p>
+                        <!-- <p class="text-gray-600 mb-3 text-sm">
+                            Duration: Jan 2024 - Mar 2024
+                        </p> -->
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">UX Research</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">AI Integration</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Prototyping</span>
                         </div>
                     </div>
                 </a>
