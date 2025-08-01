@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+
         * {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
@@ -23,6 +24,7 @@
         .nav-link {
             position: relative;
         }
+
         nav {
             position: fixed;
             top: 0;
@@ -31,6 +33,7 @@
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -58,7 +61,8 @@
         .project-image-container {
             position: relative;
             width: 100%;
-            padding-top: 66.67%; /* 3:2 aspect ratio */
+            padding-top: 66.67%;
+            /* 3:2 aspect ratio */
             overflow: hidden;
         }
 
@@ -72,24 +76,23 @@
             object-position: center;
         }
 
-       /* Hero image responsive styles */
-.hero-image-container {
-    position: relative;
-    width: 100%;
-    height: auto;
-    max-width: 320px;
-    margin: 0 auto;
-}
+        /* Hero image responsive styles */
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            max-width: 320px;
+            margin: 0 auto;
+        }
 
-.hero-image {
-    width: 100%;
-    height: auto;
-    object-fit: contain; /* or remove this line if not needed */
-    border-radius: 1rem;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        .hero-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
                 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
+        }
 
         .mobile-menu {
             transform: translateX(-100%);
@@ -105,6 +108,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -137,8 +141,9 @@
         @keyframes slidePath {
             0% {
                 opacity: 0;
-                transform: translateX(-50vw); /* Start further left for a noticeable slide */
+                transform: translateX(-50px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateX(0);
@@ -149,40 +154,107 @@
             animation: slidePath 0.8s ease-out forwards;
         }
 
-        .tool-item, .skill-item {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .tool-item,
+        .skill-item {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
         }
 
-        .tool-item:hover, .skill-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .tool-item.animate-slide-path,
+        .skill-item.animate-slide-path {
+            opacity: 1;
+            transform: translateX(0);
         }
+
+        .tool-item:hover,
+        .skill-item:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+        }
+
+        .tool-item {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 140px;
+        }
+
+        .tool-item i {
+            font-size: 1.5rem;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);
+            color: #1565c0;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid #81d4fa;
+        }
+
+        /* Custom tool colors */
+        .figma-color { color: #f24e1e; }
+        .adobe-color { color: #ff0000; }
+        .sketch-color { color: #f7b500; }
+        .miro-color { color: #050038; }
+        .balsamiq-color { color: #a60000; }
+        .photoshop-color { color: #31a8ff; }
+        .illustrator-color { color: #ff9a00; }
+        .invision-color { color: #ff3366; }
+        .principle-color { color: #6c5ce7; }
+        .zeplin-color { color: #fdbf00; }
 
         /* Ensure overflow is hidden to prevent sliding items from showing outside the container */
         .overflow-hidden {
             overflow: hidden;
         }
 
-        /* Match the screenshot styling */
-        .tool-item i {
-            margin-right: 0.5rem;
+        .toolkit-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 3rem 0;
+            border-radius: 24px;
+            margin-top: 4rem;
         }
 
-        .skill-item {
-            background-color: #e0f2fe; /* Light blue background to match screenshot */
-            color: #2563eb; /* Blue text to match screenshot */
-            padding: 0.5rem 1.25rem;
-            border-radius: 9999px; /* Fully rounded */
-            font-size: 0.875rem;
-            font-weight: 500;
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid #e5e7eb;
+            margin-left: 1rem;
         }
 
-        /* Ensure Font Awesome icons are loaded */
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: #2563EB;
+            border-radius: 50%;
+        }
+
+        .timeline-item:hover::before {
+            background: #1d4ed8;
+            transform: scale(1.2);
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800">
-    <!-- Navigation -->  
+    <!-- Navigation -->
     <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -194,9 +266,8 @@
                     <a href="#about" class="nav-link text-gray-600 hover:text-blue-600 active">About</a>
                     <a href="index.html#selected-works" class="text-gray-600 hover:text-blue-600">Work</a>
                     <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
-                    <a href="https://drive.google.com/file/d/1l0EzjBH78IFJBFlZJgkh4_9r9rVuLX3D/view?usp=sharing" 
-                       target="_blank"
-                       class="nav-link text-gray-600 hover:text-blue-600">
+                    <a href="https://drive.google.com/file/d/1l0EzjBH78IFJBFlZJgkh4_9r9rVuLX3D/view?usp=sharing"
+                        target="_blank" class="nav-link text-gray-600 hover:text-blue-600">
                         Resume
                     </a>
                 </div>
@@ -222,9 +293,8 @@
                     <a href="#about" class="nav-link text-gray-600 hover:text-blue-600 active">About</a>
                     <a href="index.html#selected-works" class="text-gray-600 hover:text-blue-600">Work</a>
                     <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
-                    <a href="https://drive.google.com/file/d/1l0EzjBH78IFJBFlZJgkh4_9r9rVuLX3D/view?usp=sharing" 
-                       target="_blank"
-                       class="nav-link text-gray-600 hover:text-blue-600">
+                    <a href="https://drive.google.com/file/d/1l0EzjBH78IFJBFlZJgkh4_9r9rVuLX3D/view?usp=sharing"
+                        target="_blank" class="nav-link text-gray-600 hover:text-blue-600">
                         Resume
                     </a>
                 </div>
@@ -239,129 +309,135 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-12">
                 <div class="md:w-1/2 animate-fadeUp">
                     <h3 class="text-2xl md:text-3xl font-semibold text-blue-600 mb-6">
-                        Mucho Gusto, I’m Sai Rajesh—a UX Designer with a Mission
+                        Mucho Gusto, I'm Sai Rajesh—a UX Designer with a Mission
                     </h3>
                     <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        I’m a Maryland-based UX designer and researcher passionate about designing digital experiences that solve real problems. My journey began at Wipro, designing healthcare solutions, followed by work at HCL Tech where I led financial dashboard redesigns that boosted user efficiency and product adoption.
+                        I'm a Maryland-based UX designer and researcher passionate about designing digital experiences
+                        that solve real problems. My journey began at Wipro, designing healthcare solutions, followed by
+                        work at HCL Tech where I led financial dashboard redesigns that boosted user efficiency and
+                        product adoption.
                     </p>
                     <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        I hold a Master’s in Information Systems from UMBC with a focus on human-centric and advanced interaction design. My academic work includes UX case studies like the EMR Health App and the Yale School of Art redesign. Now at IBM, I lead UX efforts for secure access portals—driving accessibility compliance and collaborating on scalable design systems.
+                        I hold a Master's in Information Systems from UMBC with a focus on human-centric and advanced
+                        interaction design. My academic work includes UX case studies like the EMR Health App and the
+                        Yale School of Art redesign. Now at IBM, I lead UX efforts for secure access portals—driving
+                        accessibility compliance and collaborating on scalable design systems.
                     </p>
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        When I’m not designing, I’m sketching, testing new tools, or catching up on podcasts. I’m also learning Spanish on Duolingo—aiming to go beyond "Hola" soon! I'm always seeking meaningful challenges where design can make a real difference.
+                        When I'm not designing, I'm sketching, testing new tools, or catching up on podcasts. I'm also
+                        learning Spanish on Duolingo—aiming to go beyond "Hola" soon! I'm always seeking meaningful
+                        challenges where design can make a real difference.
                     </p>
                     <div class="flex flex-wrap gap-6">
-                        <a href="index.html#selected-works" class="px-8 py-3 bg-blue-600 text-white rounded-full font-medium btn-primary">
+                        <a href="index.html#selected-works"
+                            class="px-8 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors">
                             Explore My Work
                         </a>
                     </div>
                 </div>
                 <div class="md:w-1/2 mt-12 md:mt-0 animate-fadeUp" style="animation-delay: 0.2s;">
                     <div class="hero-image-container">
-                        <img 
-                            src="images/edf8ea52-f830-4e12-afcd-41d6d0067d5e.JPG" 
-                            alt="Sai Rajesh Rapelli" 
+                        <img src="images/edf8ea52-f830-4e12-afcd-41d6d0067d5e.JPG" alt="Sai Rajesh Rapelli"
                             class="hero-image rounded-xl shadow-lg object-cover"
-                            style="width: 500%; max-width: 400px; height: auto;"
-                        >
+                            style="width: 500%; max-width: 400px; height: auto;">
                     </div>
                 </div>
-                
+            </div>
+            
+            <!-- Tool Stack & Skills -->
+            <div class="mt-20">
+               
+                <h3 class="text-3xl font-semibold text-center text-gray-800 mb-12">My Toolkit</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                   
+
+                    <!-- UX/UI Skills -->
+                    <!-- <div class="overflow-hidden">
+                        <h4 class="text-xl font-semibold text-blue-600 mb-6 text-center lg:text-left">UX/UI Skills</h4> -->
+                        <!-- <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+                            <span class="skill-item" style="animation-delay: 0.1s;">User Research</span>
+                            <span class="skill-item" style="animation-delay: 0.2s;">Wireframing</span>
+                            <span class="skill-item" style="animation-delay: 0.3s;">Prototyping</span>
+                            <span class="skill-item" style="animation-delay: 0.4s;">Usability Testing</span>
+                            <span class="skill-item" style="animation-delay: 0.5s;">Interaction Design</span>
+                            <span class="skill-item" style="animation-delay: 0.6s;">Information Architecture</span>
+                            <span class="skill-item" style="animation-delay: 0.7s;">Design Systems</span>
+                            <span class="skill-item" style="animation-delay: 0.8s;">Accessibility</span>
+                            <span class="skill-item" style="animation-delay: 0.9s;">Visual Design</span>
+                            <span class="skill-item" style="animation-delay: 1.0s;">User Journey Mapping</span>
+                            <span class="skill-item" style="animation-delay: 1.1s;">A/B Testing</span>
+                            <span class="skill-item" style="animation-delay: 1.2s;">Design Thinking</span>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center my-8">
+                <img src="images/toolstack.png" alt="SWOT Analysis" class="max-w-full h-auto" style="width: 100%; max-width: 1000px;">
+            </div>
+            <br>
+            <!-- Journey Timeline -->
+            <div class="mt-20">
+                <h3 class="text-3xl font-semibold text-center text-gray-800 mb-12">My Journey</h3>
+                <div class="max-w-4xl mx-auto space-y-10">
+                    <div class="timeline-item animate-fadeUp" style="animation-delay: 0.1s;">
+                        <h4 class="font-bold text-xl text-gray-800 mb-3">Jun 2019 – Jul 2021</h4>
+                        <p class="text-gray-600 text-base leading-relaxed">Started my career at Wipro as a UX/UI Designer, where
+                            I designed the CareConnect Portal, improving patient experience and reducing call center queries by
+                            35%. I also created responsive healthcare apps and design systems that enhanced engagement by 30%.
+                        </p>
+                    </div>
+                    <div class="timeline-item animate-fadeUp" style="animation-delay: 0.2s;">
+                        <h4 class="font-bold text-xl text-gray-800 mb-3">Aug 2021 – Jan 2023</h4>
+                        <p class="text-gray-600 text-base leading-relaxed">Joined HCL Tech as a UX/UI Designer, leading the
+                            redesign of a financial analytics dashboard. My work improved task efficiency by 35% and boosted
+                            product adoption by 20% through data visualization and accessibility enhancements.</p>
+                    </div>
+                    <div class="timeline-item animate-fadeUp" style="animation-delay: 0.3s;">
+                        <h4 class="font-bold text-xl text-gray-800 mb-3">Jan 2023 – Dec 2024</h4>
+                        <p class="text-gray-600 text-base leading-relaxed">Completed my Master's in Information Systems at the
+                            University of Maryland Baltimore County, specializing in human-centric design and advanced
+                            interaction design while developing UX case studies like the EMR Health App, Craigslist, and Yale
+                            School of Art redesigns.</p>
+                    </div>
+                    <div class="timeline-item animate-fadeUp" style="animation-delay: 0.4s;">
+                        <h4 class="font-bold text-xl text-gray-800 mb-3">Jan 2024 – Present</h4>
+                        <p class="text-gray-600 text-base leading-relaxed">Working as a UX/UI Designer at IBM, where I lead UX
+                            strategy for a secure user access portal, enhance accessibility (achieving 100% compliance), and
+                            collaborate closely with developers to implement designs using React and the Carbon Design System.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
 
-            <!-- Tool Stack & Skills -->
-            <!-- <div class="mt-16 toolkit-section">
-                <h3 class="text-3xl font-semibold text-center text-gray-800 mb-12">My Toolkit & Skills</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"> -->
-                    <!-- Tools -->
-                    <!-- <div class="overflow-hidden">
-                        <h4 class="text-xl font-semibold text-blue-600 mb-4">Design Tools</h4>
-                        <div class="flex flex-wrap gap-6">
-                            <div class="flex items-center space-x-2 tool-item" style="animation-delay: 0.1s;">
-                                <i class="fab fa-figma text-2xl text-gray-700"></i>
-                                <span class="text-gray-600">Figma</span>
-                            </div>
-                            <div class="flex items-center space-x-2 tool-item" style="animation-delay: 0.2s;">
-                                <i class="fab fa-adobe text-2xl text-gray-700"></i>
-                                <span class="text-gray-600">Adobe XD</span>
-                            </div>
-                            <div class="flex items-center space-x-2 tool-item" style="animation-delay: 0.3s;">
-                                <i class="fas fa-paint-brush text-2xl text-gray-700"></i>
-                                <span class="text-gray-600">Sketch</span>
-                            </div>
-                            <div class="flex items-center space-x-2 tool-item" style="animation-delay: 0.4s;">
-                                <i class="fas fa-palette text-2xl text-gray-700"></i>
-                                <span class="text-gray-600">Photoshop</span>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- Skills -->
-                    <!-- <div class="overflow-hidden">
-                        <h4 class="text-xl font-semibold text-blue-600 mb-4">UI/UX Skills</h4>
-                        <div class="flex flex-wrap gap-4">
-                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium skill-item" style="animation-delay: 0.1s;">User Research</span>
-                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium skill-item" style="animation-delay: 0.2s;">Wireframing</span>
-                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium skill-item" style="animation-delay: 0.3s;">Prototyping</span>
-                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium skill-item" style="animation-delay: 0.4s;">Usability Testing</span>
-                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium skill-item" style="animation-delay: 0.5s;">Interaction Design</span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-          <!-- Journey Timeline -->
-<div class="mt-20">
-    <h3 class="text-3xl font-semibold text-center text-gray-800 mb-12">My Journey</h3>
-    <div class="max-w-4xl mx-auto space-y-10">
-        <div class="timeline-item animate-fadeUp" style="animation-delay: 0.1s;">
-            <h4 class="font-bold text-xl text-gray-800 mb-3">Jun 2019 – Jul 2021</h4>
-            <p class="text-gray-600 text-base leading-relaxed">Started my career at Wipro as a UX/UI Designer, where I designed the CareConnect Portal, improving patient experience and reducing call center queries by 35%. I also created responsive healthcare apps and design systems that enhanced engagement by 30%.</p>
+    <footer class="py-8 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-600">
+                © 2024
+            </p>
         </div>
-        <div class="timeline-item animate-fadeUp" style="animation-delay: 0.2s;">
-            <h4 class="font-bold text-xl text-gray-800 mb-3">Aug 2021 – Jan 2023</h4>
-            <p class="text-gray-600 text-base leading-relaxed">Joined HCL Tech as a UX/UI Designer, leading the redesign of a financial analytics dashboard. My work improved task efficiency by 35% and boosted product adoption by 20% through data visualization and accessibility enhancements.</p>
-        </div>
-        <div class="timeline-item animate-fadeUp" style="animation-delay: 0.3s;">
-            <h4 class="font-bold text-xl text-gray-800 mb-3">Jan 2023 – Dec 2024</h4>
-            <p class="text-gray-600 text-base leading-relaxed">Completed my Master’s in Information Systems at the University of Maryland Baltimore County, specializing in human-centric design and advanced interaction design while developing UX case studies like the EMR Health App, Craigslist, and Yale School of Art redesigns.</p>
-        </div>
-        <div class="timeline-item animate-fadeUp" style="animation-delay: 0.4s;">
-            <h4 class="font-bold text-xl text-gray-800 mb-3">Jan 2024 – Present</h4>
-            <p class="text-gray-600 text-base leading-relaxed">Working as a UX/UI Designer at IBM, where I lead UX strategy for a secure user access portal, enhance accessibility (achieving 100% compliance), and collaborate closely with developers to implement designs using React and the Carbon Design System.</p>
-        </div>
-    </div>
-</div>
-<footer class="py-8 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-gray-600">
-            © 2024
-        </p>
-    </div>
-</footer>
+    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menu-toggle');
             const closeMenu = document.getElementById('close-menu');
             const mobileMenu = document.getElementById('mobile-menu');
 
-            menuToggle.addEventListener('click', function() {
+            menuToggle.addEventListener('click', function () {
                 mobileMenu.classList.add('active');
                 document.body.style.overflow = 'hidden';
             });
 
-            closeMenu.addEventListener('click', function() {
+            closeMenu.addEventListener('click', function () {
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
 
             const mobileLinks = mobileMenu.getElementsByTagName('a');
             Array.from(mobileLinks).forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function () {
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = 'auto';
                 });
@@ -375,15 +451,26 @@
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        toolItems.forEach(item => item.classList.add('animate-slide-path'));
-                        skillItems.forEach(item => item.classList.add('animate-slide-path'));
+                        toolItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate-slide-path');
+                            }, index * 100);
+                        });
+                        skillItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate-slide-path');
+                            }, index * 100);
+                        });
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
 
-            observer.observe(toolkitSection);
+            if (toolkitSection) {
+                observer.observe(toolkitSection);
+            }
         });
     </script>
 </body>
+
 </html>
