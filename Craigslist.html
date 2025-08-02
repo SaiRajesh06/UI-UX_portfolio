@@ -201,10 +201,7 @@
                 gap: 1.5rem;
             }
             
-            /* Hide side navigation on mobile */
-            .side-nav {
-                display: none;
-            }
+
         }
 
         /* Table responsive styles */
@@ -250,33 +247,7 @@
             background-color: #edf2f7;
         }
 
-        /* Add these styles to your CSS to fix the side navigation gap */
 
-/* Adjust the side navigation width and positioning */
-/* Fix the side navigation */
-.side-nav {
-    position: fixed;
-    left: 0;
-    top: 100px;
-    width: 200px;
-    padding: 20px;
-    background-color: white;
-    z-index: 100;
-    border-right: 1px solid #f0f0f0;
-    overflow-y: auto;
-    height: calc(100vh - 100px);
-    box-sizing: border-box;
-}
-
-/* Main content positioning to avoid overlap with side nav */
-main.container {
-    margin-left: 220px; /* Width of side-nav + some padding */
-    width: calc(100% - 220px);
-    overflow-x: hidden;
-}
-
-
-/* For mobile, reset these values */
 
     </style>
 </head>
@@ -293,7 +264,7 @@ main.container {
                     <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
                     <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
                     <!-- <a href="blogs.html" class="nav-link text-gray-600 hover:text-blue-600">Blogs</a> -->
-                    <a href="https://drive.google.com/file/d/1eDAVk59CxYivPIE__pNj0H10hKn1bhjR/view?usp=share_link" 
+                    <a href="https://drive.google.com/file/d/12mJOglpznW9A5dwDumluyygT921q3Qvm/view?usp=share_link" 
                        target="_blank"
                        class="nav-link text-gray-600 hover:text-blue-600 ">
                         Resume
@@ -319,7 +290,7 @@ main.container {
                         <a href="index.html" class="text-gray-600 hover:text-blue-600 py-2">Home</a>
                         <a href="index.html#work" class="text-gray-600 hover:text-blue-600 py-2">Work</a>
                         <a href="index.html#contact" class="text-gray-600 hover:text-blue-600 py-2">Contact</a>
-                        <a href="https://drive.google.com/file/d/1eDAVk59CxYivPIE__pNj0H10hKn1bhjR/view?usp=share_link" 
+                        <a href="https://drive.google.com/file/d/12mJOglpznW9A5dwDumluyygT921q3Qvm/view?usp=share_link" 
                            target="_blank"
                            class="text-gray-600 hover:text-blue-600 py-2">
                             Resume
@@ -644,11 +615,6 @@ Array.from(mobileLinks).forEach(link => {
         document.body.style.overflow = 'auto';
     });
 });
-
-// FIXED SIDE NAVIGATION HIGHLIGHTING
-
-// Get all sections that need to be observed
-const sections = document.querySelectorAll('section[id]');
 
 
 });
