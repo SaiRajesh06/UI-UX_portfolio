@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+
         * {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
             box-sizing: border-box;
         }
-        
+
         html {
-            scroll-padding-top: 80px; /* Modern browsers - adjust based on navbar height */
+            scroll-padding-top: 80px;
+            /* Modern browsers - adjust based on navbar height */
         }
-        
+
         /* Mobile Menu Styles */
         .mobile-menu {
             transform: translateX(-100%);
@@ -55,8 +57,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .fade-in {
@@ -68,7 +75,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         nav {
             position: fixed;
             top: 0;
@@ -77,7 +84,7 @@
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
+
         .nav-link {
             position: relative;
         }
@@ -112,32 +119,32 @@
             justify-content: center;
             gap: 20px;
         }
-        
+
         .image-item {
             width: calc(50% - 20px);
             text-align: center;
         }
-        
+
         .grid-image {
             width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
+
         .image-caption {
             font-size: 16px;
             margin-top: 10px;
             font-weight: bold;
             color: #333;
         }
-        
+
         @media (max-width: 768px) {
             .image-item {
                 width: 100%;
             }
         }
-        
+
         /* Side navigation styles */
         .side-nav {
             position: fixed;
@@ -152,21 +159,23 @@
             height: calc(100vh - 100px);
             box-sizing: border-box;
         }
-        
+
         /* Main content positioning to avoid overlap with side nav */
         main.container {
-            margin-left: 240px; /* Width of side-nav + some padding */
+            margin-left: 240px;
+            /* Width of side-nav + some padding */
             width: calc(100% - 240px);
             overflow-x: hidden;
         }
 
         /* Mac-specific responsive breakpoints */
         @media (max-width: 1440px) {
+
             /* MacBook Pro 14" and similar */
             .side-nav {
                 width: 200px;
             }
-            
+
             main.container {
                 margin-left: 220px;
                 width: calc(100% - 220px);
@@ -174,11 +183,12 @@
         }
 
         @media (max-width: 1280px) {
+
             /* MacBook Air 13" and similar */
             .side-nav {
                 width: 180px;
             }
-            
+
             main.container {
                 margin-left: 200px;
                 width: calc(100% - 200px);
@@ -186,11 +196,12 @@
         }
 
         @media (max-width: 1024px) {
+
             /* MacBook 12" and similar */
             .side-nav {
                 width: 160px;
             }
-            
+
             main.container {
                 margin-left: 180px;
                 width: calc(100% - 180px);
@@ -198,11 +209,12 @@
         }
 
         @media (max-width: 900px) {
+
             /* Smaller Mac screens */
             .side-nav {
                 width: 140px;
             }
-            
+
             main.container {
                 margin-left: 160px;
                 width: calc(100% - 160px);
@@ -217,7 +229,7 @@
                 padding-left: 15px;
                 padding-right: 15px;
             }
-            
+
             .side-nav {
                 display: none;
             }
@@ -227,7 +239,8 @@
         .side-nav a {
             display: flex;
             align-items: center;
-            gap: 8px; /* Add gap between icon and text */
+            gap: 8px;
+            /* Add gap between icon and text */
             width: 100%;
             padding: 8px 0;
             color: #4B5563;
@@ -236,19 +249,20 @@
         }
 
         /* Fix icon alignment if needed */
-        .side-nav a img, 
+        .side-nav a img,
         .side-nav a i {
-            width: 20px; /* Consistent width for icons */
+            width: 20px;
+            /* Consistent width for icons */
             text-align: center;
         }
-        
+
         /* Active navigation styles */
         .side-nav a.active {
             color: #2563EB !important;
             font-weight: 600;
             position: relative;
         }
-        
+
         .side-nav a.active::before {
             content: '';
             position: absolute;
@@ -260,12 +274,12 @@
             background-color: #2563EB;
             border-radius: 2px;
         }
-        
+
         /* Section scroll margin for better navigation */
         section {
             scroll-margin-top: 100px;
         }
-        
+
         /* Image row container for prototype screens */
         .image-row {
             display: flex;
@@ -287,7 +301,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
+
         /* Responsive typography */
         @media (max-width: 768px) {
             .section-heading {
@@ -330,62 +344,81 @@
 
         /* Adjust hero image to utilize space */
         .hero-image-container img {
-            max-width: 100%; /* Ensure image doesn't overflow */
-            height: auto; /* Maintain aspect ratio */
-            display: block; /* Remove extra space below image */
-            margin-left: auto; /* Push image to the right within its container on larger screens */
+            max-width: 100%;
+            /* Ensure image doesn't overflow */
+            height: auto;
+            /* Maintain aspect ratio */
+            display: block;
+            /* Remove extra space below image */
+            margin-left: auto;
+            /* Push image to the right within its container on larger screens */
             margin-right: 0;
         }
 
         /* Project Card Enhancements */
         .project-card {
-            transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
-            margin-bottom: 20px; /* Add bottom margin to prevent overlap */
-            height: 100%; /* Ensure all cards have equal height */
+            transition: all 0.3s ease-in-out;
+            /* Smooth transition for hover effects */
+            margin-bottom: 20px;
+            /* Add bottom margin to prevent overlap */
+            height: 100%;
+            /* Ensure all cards have equal height */
             display: flex;
             flex-direction: column;
         }
 
         .project-card:hover {
-            transform: translateY(-5px) scale(1.02); /* Slight lift and zoom on hover */
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+            transform: translateY(-5px) scale(1.02);
+            /* Slight lift and zoom on hover */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+            /* More pronounced shadow on hover */
         }
 
         .project-image-container {
             width: 100%;
-            height: 220px; /* Increased height to prevent cutting */
-            overflow: hidden; /* Ensures image doesn't overflow rounded corners */
+            height: 220px;
+            /* Increased height to prevent cutting */
+            overflow: hidden;
+            /* Ensures image doesn't overflow rounded corners */
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-shrink: 0; /* Prevent image container from shrinking */
+            flex-shrink: 0;
+            /* Prevent image container from shrinking */
         }
 
         .project-image {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures image covers the area, cropping if necessary */
-            border-radius: 8px 8px 0 0; /* Apply border-radius only to top corners */
+            object-fit: cover;
+            /* Ensures image covers the area, cropping if necessary */
+            border-radius: 8px 8px 0 0;
+            /* Apply border-radius only to top corners */
         }
 
         /* Project card content styling */
         .project-card .p-5 {
-            flex: 1; /* Make content area fill remaining space */
+            flex: 1;
+            /* Make content area fill remaining space */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .project-card p {
-            line-height: 1.6; /* Better line height for readability */
-            margin-bottom: 0.75rem; /* Consistent spacing */
+            line-height: 1.6;
+            /* Better line height for readability */
+            margin-bottom: 0.75rem;
+            /* Consistent spacing */
         }
 
         .project-card .flex.flex-wrap.gap-2 {
-            margin-top: auto; /* Push tags to bottom of card */
+            margin-top: auto;
+            /* Push tags to bottom of card */
         }
     </style>
 </head>
+
 <body class="bg-white text-gray-800">
     <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -396,9 +429,8 @@
                     <a href="about.html" class="nav-link text-gray-600 hover:text-blue-600">About</a>
                     <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
                     <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
-                    <a href="https://drive.google.com/file/d/12mJOglpznW9A5dwDumluyygT921q3Qvm/view?usp=share_link" 
-                       target="_blank"
-                       class="nav-link text-gray-600 hover:text-blue-600">
+                    <a href="https://drive.google.com/file/d/12mJOglpznW9A5dwDumluyygT921q3Qvm/view?usp=share_link"
+                        target="_blank" class="nav-link text-gray-600 hover:text-blue-600">
                         Resume
                     </a>
                 </div>
@@ -408,28 +440,27 @@
             </div>
         </div>
 
-    <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
-        <div class="p-6">
-            <div class="flex justify-between items-center mb-8">
-                <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
-                <button class="text-gray-600" id="close-menu">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            <div class="flex flex-col space-y-6">
-                <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
-                <a href="about.html" class="nav-link text-gray-600 hover:text-blue-600">About</a>
-                <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
-                <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
-                <a href="https://drive.google.com/file/d/12mJOglpznW9A5dwDumluyygT921q3Qvm/view?usp=share_link" 
-                   target="_blank"
-                   class="nav-link text-gray-600 hover:text-blue-600 ">
-                    Resume
-                </a>
+        <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                    <button class="text-gray-600" id="close-menu">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-6">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="about.html" class="nav-link text-gray-600 hover:text-blue-600">About</a>
+                    <a href="index.html#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="https://drive.google.com/file/d/12mJOglpznW9A5dwDumluyygT921q3Qvm/view?usp=share_link"
+                        target="_blank" class="nav-link text-gray-600 hover:text-blue-600 ">
+                        Resume
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <section id="home" class="pt-24 md:pt-32 pb-16 md:pb-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -440,15 +471,15 @@
                     </h1>
                     <p class="text-lg text-gray-600 mb-8 max-w-lg">
                         Creating meaningful digital experiences through research-driven design.
-                        With expertise in user research, prototyping, and interaction design, I focus on creating intuitive and impactful digital experiences that solve real user problems.
+                        With expertise in user research, prototyping, and interaction design, I focus on creating
+                        intuitive and impactful digital experiences that solve real user problems.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        </div>
+                    </div>
                 </div>
-                <div class="md:w-1/2 mt-12 md:mt-0 flex justify-end"> 
+                <div class="md:w-1/2 mt-12 md:mt-0 flex justify-end">
                     <div class="hero-image-container">
-                        <img src="images/indexblue.png" 
-                             alt="Sai Rajesh Rapelli">
+                        <img src="images/indexblue.png" alt="Sai Rajesh Rapelli">
                     </div>
                 </div>
             </div>
@@ -457,22 +488,23 @@
 
     <section id="work" class="py-16 md:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="selected-works" class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Selected Works</h2>
+            <h2 id="selected-works" class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Selected
+                Works</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
-                
+
                 <a href="Joopi.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
-                        <img src="/images/coverjoopi.png"
-                             alt="A Round Entertainment"
-                             class="project-image">
+                        <img src="/images/coverjoopi.png" alt="A Round Entertainment" class="project-image">
                     </div>
                     <div class="p-5">
                         <h3 class="text-lg font-bold mb-3 text-center">A Round Entertainment</h3>
                         <p class="text-gray-600 mb-3 text-sm">
-                            A dating app facilitating cultural exchange between South Korea and the United States. Features include language learning tools, cultural events, and community building.
+                            A dating app facilitating cultural exchange between South Korea and the United States.
+                            Features include language learning tools, cultural events, and community building.
                         </p>
                         <p class="text-gray-600 mb-3 text-sm">
-                            Comprehensive UX research and modern UI design focused on creating meaningful connections across cultures.
+                            Comprehensive UX research and modern UI design focused on creating meaningful connections
+                            across cultures.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">UX Research</span>
@@ -484,17 +516,17 @@
 
                 <a href="craigs.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
-                        <img src="/images/covercraig.png"
-                             alt="Craigslist Redesign"
-                             class="project-image">
+                        <img src="/images/covercraig.png" alt="Craigslist Redesign" class="project-image">
                     </div>
                     <div class="p-5">
                         <h3 class="text-lg font-bold mb-3 text-center">Craigslist Redesign</h3>
                         <p class="text-gray-600 mb-3 text-sm">
-                            Complete modernization of the antiquated Craigslist classified ads platform. Redesigned with focus on improved navigation, search functionality, and mobile responsiveness.
+                            Complete modernization of the antiquated Craigslist classified ads platform. Redesigned with
+                            focus on improved navigation, search functionality, and mobile responsiveness.
                         </p>
                         <p class="text-gray-600 mb-3 text-sm">
-                            Comprehensive user research and testing to ensure the redesign meets modern user expectations while maintaining the platform's core functionality.
+                            Comprehensive user research and testing to ensure the redesign meets modern user
+                            expectations while maintaining the platform's core functionality.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Redesign</span>
@@ -506,61 +538,64 @@
 
                 <a href="Yale.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
-                        <img src="/images/coveryale.png"
-                             alt="Yale School of Art"
-                             class="project-image">
+                        <img src="/images/coveryale.png" alt="Yale School of Art" class="project-image">
                     </div>
                     <div class="p-5">
                         <h3 class="text-lg font-bold mb-3 text-center">Yale School of Art</h3>
                         <p class="text-gray-600 mb-3 text-sm">
-                            Complete redesign of the Yale School of Art website focusing on improved usability, modern aesthetics, and better information architecture for students and faculty.
+                            Complete redesign of the Yale School of Art website focusing on improved usability, modern
+                            aesthetics, and better information architecture for students and faculty.
                         </p>
                         <p class="text-gray-600 mb-3 text-sm">
-                            Transformed the digital presence with intuitive navigation, enhanced visual hierarchy, and responsive design principles while maintaining the institution's prestigious identity.
+                            Transformed the digital presence with intuitive navigation, enhanced visual hierarchy, and
+                            responsive design principles while maintaining the institution's prestigious identity.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Visual Design</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Graphic Design</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Information Architecture</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Information
+                                Architecture</span>
                         </div>
                     </div>
                 </a>
 
-                <a href="Emrapp.html" id="emr-project-link" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                <a href="Emrapp.html" id="emr-project-link"
+                    class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
-                        <img src="/images/coveremr.png"
-                             alt="EMR Healthcare App"
-                             class="project-image">
+                        <img src="/images/coveremr.png" alt="EMR Healthcare App" class="project-image">
                     </div>
                     <div class="p-5">
                         <h3 class="text-lg font-bold mb-3 text-center">EMR Healthcare App</h3>
                         <p class="text-gray-600 mb-3 text-sm">
-                            A comprehensive React Native Expo mobile application empowering patients to manage their medical records, appointments, and health information securely.
+                            A comprehensive React Native Expo mobile application empowering patients to manage their
+                            medical records, appointments, and health information securely.
                         </p>
                         <p class="text-gray-600 mb-3 text-sm">
-                            Features include digital health records, appointment scheduling, medication tracking, and seamless communication with healthcare providers.
+                            Features include digital health records, appointment scheduling, medication tracking, and
+                            seamless communication with healthcare providers.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">React Native</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Tailwind CSS</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Mobile Development</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Mobile
+                                Development</span>
                         </div>
                     </div>
                 </a>
 
                 <a href="Leadyouth.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
                     <div class="project-image-container">
-                        <img src="/images/zingedcoerpic.png"
-                             alt="Zinged - Public Speaking App"
-                             class="project-image">
+                        <img src="/images/zingedcoerpic.png" alt="Zinged - Public Speaking App" class="project-image">
                     </div>
                     <div class="p-5">
                         <h3 class="text-lg font-bold mb-3 text-center">Zinged - Public Speaking App</h3>
                         <p class="text-gray-600 mb-3 text-sm">
-                            An innovative AI-powered speaking exercise application designed for students grades 3-12, helping them develop confidence and communication skills through interactive practice.
+                            An innovative AI-powered speaking exercise application designed for students grades 3-12,
+                            helping them develop confidence and communication skills through interactive practice.
                         </p>
                         <p class="text-gray-600 mb-3 text-sm">
-                            Features include personalized AI feedback, guided lessons, project-specific support, and progress tracking to enhance public speaking abilities.
+                            Features include personalized AI feedback, guided lessons, project-specific support, and
+                            progress tracking to enhance public speaking abilities.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-3">
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">UX Research</span>
@@ -569,11 +604,34 @@
                         </div>
                     </div>
                 </a>
+
+                <a href="L4L.html" class="project-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="project-image-container">
+                        <img src="/images/framel4l.png" alt="Looks for Lease - Fashion Rental Platform"
+                            class="project-image">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-3 text-center">Looks for Lease</h3>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            A pioneering fashion rental platform offering a garment-leasing model that delivers style and sustainability. 
+                            Features a white-label SaaS platform with 3PL support for fashion brands to rent high-quality pieces directly to consumers.
+                        </p>
+                        <p class="text-gray-600 mb-3 text-sm">
+                            Comprehensive admin dashboard with issue resolution system, user management, product creation, and order tracking. 
+                            Built with React.js, Next.js, and Tailwind CSS for a modern, scalable solution.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">React.js</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Next.js</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">Admin Dashboard</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-16 md:py-24 bg-gray-50">
+    <section id="contact" class="py-16 md:py-24 bg-white-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center section-heading mb-12">Let's Connect</h2>
             <div class="max-w-xl mx-auto text-center">
@@ -581,12 +639,12 @@
                     I'm always open to discussing new projects, creative ideas, or opportunities to collaborate.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="mailto:sairajjesh@gmail.com" 
-                       class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                    <a href="mailto:sairajjesh@gmail.com"
+                        class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
                         <i class="fas fa-envelope mr-2"></i>
                         Email Me
                     </a>
-                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -599,29 +657,29 @@
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menu-toggle');
             const closeMenu = document.getElementById('close-menu');
             const mobileMenu = document.getElementById('mobile-menu');
-    
-            menuToggle.addEventListener('click', function() {
+
+            menuToggle.addEventListener('click', function () {
                 mobileMenu.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
             });
-    
-            closeMenu.addEventListener('click', function() {
+
+            closeMenu.addEventListener('click', function () {
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = 'auto'; // Re-enable scrolling
             });
-    
+
             const mobileLinks = mobileMenu.getElementsByTagName('a');
             Array.from(mobileLinks).forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function () {
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = 'auto';
                 });
             });
-    
+
             // Highlight active navigation item
             let currentPage = window.location.pathname.split('/').pop();
             if (!currentPage || currentPage === '') {
@@ -629,32 +687,33 @@
             }
             const currentHash = window.location.hash || '#home';
             const navLinks = document.querySelectorAll('.nav-link');
-    
+
             navLinks.forEach(link => {
                 const href = link.getAttribute('href');
-                if ((href === currentPage) || 
-                    (currentPage === 'index.html' && href === currentHash) || 
+                if ((href === currentPage) ||
+                    (currentPage === 'index.html' && href === currentHash) ||
                     (href === 'about.html' && currentPage === 'about.html')) {
                     link.classList.add('active');
                 } else {
                     link.classList.remove('active');
                 }
             });
-    
+
             // Password protection for EMR Healthcare App
-        //     const emrProjectLink = document.getElementById('emr-project-link');
-        //     const correctPassword = 'E2025MR'; // Set your password here
-    
-        //     emrProjectLink.addEventListener('click', function(event) {
-        //         event.preventDefault(); // Prevent navigation until password is correct
-        //         const userPassword = prompt('Please enter the password to view the EMR Healthcare App project:');
-        //         if (userPassword === correctPassword) {
-        //             window.location.href = emrProjectLink.href; // Navigate to the project page
-        //         } else {
-        //             alert('Incorrect password. Please try again.');
-        //         }
-        //     });
+            //     const emrProjectLink = document.getElementById('emr-project-link');
+            //     const correctPassword = 'E2025MR'; // Set your password here
+
+            //     emrProjectLink.addEventListener('click', function(event) {
+            //         event.preventDefault(); // Prevent navigation until password is correct
+            //         const userPassword = prompt('Please enter the password to view the EMR Healthcare App project:');
+            //         if (userPassword === correctPassword) {
+            //             window.location.href = emrProjectLink.href; // Navigate to the project page
+            //         } else {
+            //             alert('Incorrect password. Please try again.');
+            //         }
+            //     });
         });
     </script>
 </body>
+
 </html>

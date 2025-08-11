@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L4L Case study - Sai Rajesh Rapelli</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #2563EB, #1D4ED8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #2563EB;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #2563EB;
+            margin: 1rem auto;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add scroll margin to section headings */
+        section {
+            scroll-margin-top: 100px;
+            /* This creates space above the section when scrolled to */
+        }
+
+        /* Image containers */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            object-fit: contain;
+        }
+
+        /* Content containers with text and image */
+        .content-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            width: 100%;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .content-container img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .content-container .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Main content container - properly centered */
+        main.container {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1200px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1440px) {
+
+            /* MacBook Pro 14" and similar */
+            .content-container {
+                gap: 25px;
+            }
+
+            .content-container img {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 1280px) {
+
+            /* MacBook Air 13" and similar */
+            .content-container {
+                gap: 20px;
+            }
+
+            .content-container img {
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+
+            /* MacBook 12" and similar */
+            .content-container {
+                gap: 20px;
+            }
+
+            .content-container img {
+                max-width: 320px;
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            /* Smaller Mac screens */
+            .content-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .content-container img {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Mobile devices */
+            /* Container adjustments */
+            .content-container {
+                flex-direction: column;
+                padding: 0 1rem;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .content-container img {
+                width: 100%;
+                max-width: 100%;
+                margin: 1rem auto;
+                order: -1;
+            }
+
+            .content-container .text-content {
+                width: 100%;
+            }
+
+            .image-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .image-container img {
+                max-width: 100%;
+            }
+
+            /* Typography adjustments */
+            h1 {
+                font-size: 2rem;
+                line-height: 2.5rem;
+                padding: 0 1rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+                line-height: 2.25rem;
+                padding: 0 1rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                line-height: 2rem;
+                padding: 0 1rem;
+            }
+
+            p {
+                font-size: 1rem;
+                line-height: 1.625rem;
+                padding: 0 1rem;
+            }
+
+            /* Layout adjustments */
+            section {
+                margin-bottom: 3rem;
+                padding: 0 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            main.container {
+                margin: 0 auto;
+                width: 100%;
+                max-width: 1200px;
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-container img {
+                max-width: 90%;
+            }
+
+            section.bg-white {
+                padding: 1.5rem;
+            }
+
+            .mx-auto.max-w-4xl {
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            .mx-auto.max-w-4xl img {
+                width: 100%;
+            }
+        }
+
+        /* Adjust the main container positioning */
+        .container {
+            width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+
+
+        /* Ensure all content stays within viewport */
+        body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+    </style>
+</head>
+</style>
+</head>
+
+<body class="FFFFFF">
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="#work" class="nav-link text-gray-600 hover:text-blue-600">Work</a>
+                    <a href="index.html#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                    <a href="https://drive.google.com/file/d/12mJOglpznW9A5dwDumluyygT921q3Qvm/view?usp=share_link"
+                        target="_blank" class="nav-link text-gray-600 hover:text-blue-600">
+                        Resume
+                    </a>
+                </div>
+
+                <button class="md:hidden text-gray-600" id="menu-toggle">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <div class="mobile-menu fixed top-0 left-0 w-full h-full bg-white z-50 md:hidden" id="mobile-menu">
+                <div class="p-4">
+                    <div class="flex justify-between items-center mb-8">
+                        <a href="index.html" class="text-2xl font-bold gradient-text">SR.</a>
+                        <button class="text-gray-600" id="close-menu">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex flex-col space-y-4">
+                        <a href="index.html" class="text-gray-600 hover:text-blue-600 py-2">Home</a>
+                        <a href="index.html#work" class="text-gray-600 hover:text-blue-600 py-2">Work</a>
+                        <a href="index.html#contact" class="text-gray-600 hover:text-blue-600 py-2">Contact</a>
+                        <a href="https://drive.google.com/file/d/12mJOglpznW9A5dwDumluyygT921q3Qvm/view?usp=share_link"
+                            target="_blank" class="text-gray-600 hover:text-blue-600 py-2">
+                            Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+        <h1 class="text-4xl md:text-5xl font-bold text-center section-heading mb-12">Looks For Lease</h1>
+
+        <div>
+            <img src="images/coverl4l.png" alt="Figma Design" width="1100" height="1100"
+                style="display: block; margin: 0 auto;">
+        </div>
+        <br>
+        <section id="overview">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">OVERVIEW</h2>
+            <p class="text-lg mb-4">Looks For Lease (L4L) is pioneering a new era in fashion, offering a garment‑leasing
+                model that delivers style and sustainability in one seamless package. Through its white‑label SaaS
+                platform and optional 3PL support, L4L empowers fashion brands and designers to rent high‑quality pieces
+                directly to consumers—turning what was once a one‑time sale into a consistent revenue stream. From item
+                tracking and order logistics to circular shipment and environment‑friendly garment care, the system is
+                designed for efficiency and brand control. By leasing rather than selling, L4L extends each garment’s
+                lifecycle, reducing waste and helping brands meet carbon reduction goals—all while offering customers
+                guilt‑free access to designer looks without ownership</p>
+
+
+            <h2 id="goal" class="text-xl font-bold mb-4">Focus Areas</h2>
+            <ul class="list-disc list-inside text-lg mb-8 space-y-2">
+                <li>Designing an intuitive Issue Resolution dashboard for seamless user experience</li>
+                <li>Developing end-to-end functionality for tracking and updating issue tickets</li>
+                <li>Creating scalable UI components and integrating backend APIs</li>
+            </ul>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Roles and responsibilities</h3>
+                    <p class="text-gray-600">
+                        I worked on the complete design and development lifecycle of the Issue Resolution module. This
+                        included low to high fidelity wireframes in Figma, building reusable UI components, handling
+                        state management with <code>useEffect</code>, integrating backend APIs, and implementing
+                        modal-based interactions for changing issue statuses. I also ensured responsiveness and
+                        performance optimization across views.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Design</h3>
+                    <p class="text-gray-600">
+                        The design process began with wireframing user flows and layout structures using Balsamiq and
+                        Figma. The final UI emphasized clarity and ease of use, showcasing key issue metrics, ticket
+                        statuses, and quick actions like "Add Issue" or "Change Issue Status." Components were styled
+                        for consistency and accessibility, and feedback modals were incorporated to confirm user
+                        actions.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-black-600">Skills & Tools</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center"><span class="mr-2">🎨 Figma</span></li>
+                        <li class="flex items-center"><span class="mr-2">🖼️ Balsamiq</span></li>
+                        <li class="flex items-center"><span class="mr-2">💻 Sitemaps</span></li>
+                        <li class="flex items-center"><span class="mr-2">📝 Prototyping</span></li>
+                        <li class="flex items-center"><span class="mr-2">🔍 User Research</span></li>
+                        <li class="flex items-center"><span class="mr-2">✏️ Wireframing</span></li>
+                        <li class="flex items-center"><span class="mr-2">📮 Postman (API Testing)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mx-auto max-w-4xl">
+            </div>
+
+        </section>
+        <section id="problem-statement">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">PROBLEM STATEMENT</h2>
+
+            <p class="text-lg mb-4 bg-purple-100 p-4 rounded-lg italic">In the context of a garment leasing platform,
+                customer service teams faced challenges managing and resolving order-related issues due to a lack of a
+                centralized, user-friendly system. The absence of a streamlined interface for tracking, updating, and
+                resolving tickets led to delayed responses, miscommunication, and reduced customer satisfaction. The
+                goal was to design and develop an efficient Issue Resolution module that allows internal teams to
+                monitor issue statuses, view detailed order information, and take quick action—ultimately improving
+                operational workflows and enhancing customer experience.</p>
+        </section>
+        <br>
+
+        <section id="project-documentation">
+            <h2 class="text-3xl font-bold mb-6 text-blue-600">TECHNICAL DOCUMENTATION</h2>
+            <h3 class="text-2xl font-bold mb-4">Updated Project: L4L Shop Admin Dashboard</h3>
+            <p class="text-lg mb-4">You developed a comprehensive admin dashboard for a luxury fashion rental platform
+                (L4L Shop) that needed to manage:</p>
+            <ul class="list-disc list-inside text-lg mb-6 space-y-2">
+                <li>User registration and management</li>
+                <li>Product creation and inventory management</li>
+                <li>Order processing and tracking</li>
+                <li>Issue resolution and customer support</li>
+                <li>Designer and collection management</li>
+                <li>Size and design cataloging</li>
+            </ul>
+
+            <h3 class="text-2xl font-bold mb-4">Technical Challenges Solved</h3>
+            <div class="space-y-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-2">1. Product Creation System - Complex Form Management & State
+                        Handling</h4>
+                    <p class="text-gray-600"><strong>Problem:</strong> Managing multiple interconnected forms with
+                        dynamic field visibility and validation.</p>
+                    <p class="text-gray-600"><strong>Solution:</strong> Implemented progressive form disclosure where
+                        fields appear based on previous selections:</p>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>// Progressive field visibility based on selections
+const [showCollectionField, setShowCollectionField] = useState(false);
+const [showDesignField, setShowDesignField] = useState(false);
+const [showSizeField, setShowSizeField] = useState(false);
+
+// Dynamic field loading based on designer selection
+const handleDesignerSelection = async (designerId) => {
+  setSelectedDesignerId(designerId);
+  if (designerId) {
+    setShowCollectionField(true);
+    // Load collections, designs, and sizes in parallel
+    await Promise.all([
+      handleGetCollections(designerId),
+      handleGetDesigns(designerId),
+      handleGetSizes(designerId)
+    ]);
+  }
+};</code></pre>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-2">2. Modal System Architecture</h4>
+                    <p class="text-gray-600"><strong>Problem:</strong> Need for multiple modal types (create, edit,
+                        delete, success) with consistent UX patterns.</p>
+                    <p class="text-gray-600"><strong>Solution:</strong> Created a reusable modal system with:</p>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2">
+                        <li><strong>Success Modals:</strong> Consistent success feedback across all operations</li>
+                        <li><strong>Form Modals:</strong> Complex forms for creating designers, collections, designs,
+                            sizes</li>
+                        <li><strong>Confirmation Modals:</strong> Delete confirmations with proper validation</li>
+                        <li><strong>Status Change Modals:</strong> Issue status management with real-time update</li>
+                    </ul>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>// Reusable success modal pattern
+function SuccessModal({ isOpen, onClose, message }) {
+    return (
+        &lt;div className="modal-overlay"&gt;
+            &lt;div className="success-modal-content"&gt;
+                &lt;h2 className="success-title"&gt;Operation Completed Successfully&lt;/h2&gt;
+                &lt;p className="success-date"&gt;{message}&lt;/p&gt;
+                &lt;button onClick={onClose} className="ok-button"&gt;Ok&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-2">3. Issue Management System</h4>
+                    <p class="text-gray-600"><strong>Problem:</strong> Complex issue tracking system requiring status
+                        management, comment threads, and export functionality.</p>
+                    <p class="text-gray-600"><strong>Solution:</strong> Built a comprehensive issue management system
+                        with:</p>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2">
+                        <li><strong>Issue Creation & Assignment:</strong></li>
+                    </ul>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>// Dynamic issue creation with department assignment
+const [assignToDept, setAssignToDept] = useState('Sales');
+const [assignToPerson, setAssignToPerson] = useState('John Doe');
+const [additionalItems, setAdditionalItems] = useState([]);
+
+// Dynamic additional items management
+const handleAddAdditionalItem = () => {
+    if (additionalItems.length < 10) {
+        setAdditionalItems([...additionalItems, '']);
+    }
+};</code></pre>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2 mt-4">
+                        <li><strong>Issue Status Management:</strong></li>
+                    </ul>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>// Real-time status updates with audit trail
+const handleChangeStatus = ({ userName, changeStatus }) => {
+    console.log(`Status changed by ${userName} to ${changeStatus}`);
+    setOrderDetails(prevDetails => ({
+        ...prevDetails,
+        issueStatus: changeStatus,
+    }));
+};</code></pre>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2 mt-4">
+                        <li><strong>Comment System with Resolution Tracking:</strong></li>
+                    </ul>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>// Comment system with resolution status
+const commonComments = [
+    {
+        id: 1,
+        author: 'Kristin Watson',
+        date: '9/18/21 12:23',
+        text: 'Great news! Your item has successfully completed the cleaning process...',
+        resolved: true, // Track resolution status
+    }
+];</code></pre>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-2">4. Data Export System</h4>
+                    <p class="text-gray-600"><strong>Problem:</strong> Need for flexible data export functionality for
+                        both users and issues.</p>
+                    <p class="text-gray-600"><strong>Solution:</strong> Implemented a robust CSV export system:</p>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>const convertToCsv = (data) => {
+    if (!data || data.length === 0) return '';
+    
+    const headers = Object.keys(data[0]).join(',');
+    const rows = data.map(row => 
+        Object.values(row).map(value => {
+            const stringValue = String(value);
+            if (stringValue.includes(',') || stringValue.includes('"') || stringValue.includes('\n')) {
+                return `"${stringValue.replace(/"/g, '""')}"`;
+            }
+            return stringValue;
+        }).join(',')
+    );
+    
+    return [headers, ...rows].join('\n');
+};
+
+// Dynamic file naming and download
+const handleExport = () => {
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.setAttribute('download', exportAll ? 'all_registered_issues.csv' : `issue_${issueId.replace('#', '')}.csv`);
+    link.click();
+};</code></pre>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-2">5. Data Relationship Management</h4>
+                    <p class="text-gray-600"><strong>Problem:</strong> Complex hierarchical data relationships (Designer
+                        → Collection → Design → Size) with cascading dependencies.</p>
+                    <p class="text-gray-600"><strong>Solution:</strong> Implemented intelligent data fetching and state
+                        management:</p>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>// Cascading data loading with proper error handling
+useEffect(() => {
+    const fetchCollectionsByDesigner = async () => {
+        if (selectedDesigner && selectedDesigner !== "") {
+            setCollectionsLoading(true);
+            try {
+                const response = await fetch('/api/get-collections-by-designer-id', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ designerId: selectedDesigner }),
+                });
+                const data = await response.json();
+                setCollectionsList(data.data || []);
+            } catch (error) {
+                console.error('Error fetching collections:', error);
+                setCollectionsList([]);
+            } finally {
+                setCollectionsLoading(false);
+            }
+        }
+    };
+    fetchCollectionsByDesigner();
+}, [selectedDesigner]);</code></pre>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-2">6. Image Management System</h4>
+                    <p class="text-gray-600"><strong>Problem:</strong> Handling multiple image uploads, previews, and
+                        associations with products/collections.</p>
+                    <p class="text-gray-600"><strong>Solution:</strong> Built a comprehensive image management system:
+                    </p>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>// Image upload with preview and validation
+const handleFileLoaded = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => setBaseImage(reader.result);
+        reader.readAsDataURL(file);
+        
+        const objectUrl = URL.createObjectURL(file);
+        setPreview(objectUrl);
+    }
+};
+
+// Image association with products
+const onHandleImageId = async (imageId) => {
+    setUploadedImageId(imageId);
+};</code></pre>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-2">7. Registered User Management System</h4>
+                    <p class="text-gray-600"><strong>Problem:</strong> Complex user registration with multiple data
+                        types (personal info, billing, documents, measurements).</p>
+                    <p class="text-gray-600"><strong>Solution:</strong> Created a comprehensive user management system
+                        with:</p>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2">
+                        <li><strong>Form Validation:</strong> Multi-step validation with proper error handling</li>
+                        <li><strong>Document Upload:</strong> File management with preview and removal</li>
+                        <li><strong>Data Persistence:</strong> Proper state management and API integration</li>
+                    </ul>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>// Comprehensive user form state management
+const [form, setForm] = useState({
+    userType: "",
+    accountStatus: "",
+    numberOfSlots: "",
+    // ... 20+ fields
+    password: "",
+    confirmPassword: "",
+});
+
+// File upload handling
+const handleFileUpload = (event) => {
+    const files = Array.from(event.target.files);
+    const newDocuments = files.map((file, index) => ({
+        id: Date.now() + index,
+        name: file.name,
+        url: URL.createObjectURL(file),
+        file: file
+    }));
+    setUploadedDocuments(prev => [...prev, ...newDocuments]);
+};</code></pre>
+                </div>
+            </div>
+
+            <hr class="my-8">
+
+            <h3 class="text-2xl font-bold mb-4">Technical Architecture Decisions</h3>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-xl font-bold mb-2">1. Context API for State Management</h4>
+                    <p class="text-gray-600"><strong>Why:</strong> Chose React Context over Redux for simpler state
+                        management across components.</p>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>// UserContext for global user state
+const UserContext = createContext();
+export const UserProvider = ({ children }) => {
+    const GetCustomers = async () => {
+        // API integration logic
+    };
+    return (
+        &lt;UserContext.Provider value={{ GetCustomers }}&gt;
+            {children}
+        &lt;/UserContext.Provider&gt;
+    );
+};</code></pre>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-2">2. Component Composition Pattern</h4>
+                    <p class="text-gray-600"><strong>Why:</strong> Used composition over inheritance for better
+                        reusability and maintainability.</p>
+                    <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mt-2"><code>// Reusable styled components
+const StyledInput = ({ label, name, placeholder, value, onChangeText }) => (
+    &lt;div className="field-group"&gt;
+        &lt;label className="label"&gt;{label.toUpperCase()}&lt;/label&gt;
+        &lt;input
+            className="text-input"
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            onChange={(e) => onChangeText && onChangeText(e.target.value)}
+        /&gt;
+    &lt;/div&gt;
+);</code></pre>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold mb-2">3. Progressive Enhancement</h4>
+                    <p class="text-gray-600"><strong>Why:</strong> Implemented progressive form disclosure to improve UX
+                        and reduce cognitive load.</p>
+                </div>
+            </div>
+
+            <hr class="my-8">
+
+            <h3 class="text-2xl font-bold mb-4">Key Features Implemented</h3>
+            <ul class="list-disc list-inside text-lg mb-6 space-y-2">
+                <li><strong>Multi-step Product Creation:</strong> Designer → Collection → Design → Size → Product</li>
+                <li><strong>Real-time Form Validation:</strong> Client-side validation with immediate feedback</li>
+                <li><strong>Image Management:</strong> Upload, preview, and association system</li>
+                <li><strong>User Management:</strong> Complete CRUD operations with document handling</li>
+                <li><strong>Modal System:</strong> Consistent UX patterns across all operations</li>
+                <li><strong>Responsive Design:</strong> Mobile-first approach with Tailwind CSS</li>
+                <li><strong>Error Handling:</strong> Comprehensive error states and user feedback</li>
+                <li><strong>Issue Management:</strong> Complete issue lifecycle with status tracking and comments</li>
+                <li><strong>Data Export:</strong> Flexible CSV export for users and issues</li>
+                <li><strong>Status Management:</strong> Real-time status updates with audit trails</li>
+            </ul>
+
+            <hr class="my-8">
+
+            <h3 class="text-2xl font-bold mb-4">Complete File Structure Covered</h3>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-xl font-bold mb-2">User Management System</h4>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2">
+                        <li><code>pages/ccc/registered_user/[id].jsx</code> - User detail view with comprehensive data
+                            display</li>
+                        <li><code>pages/ccc/registered_user/create.jsx</code> - User creation form with 20+ fields</li>
+                        <li><code>components/Users.js</code> - User listing with search, filter, and export
+                            functionality</li>
+                        <li><code>components/modals/DeleteUserModal.js</code> - User deletion with confirmation</li>
+                        <li><code>components/modals/ExportUserList.js</code> - User data export functionality</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-2">Issue Management System</h4>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2">
+                        <li><code>pages/ccc/issues/index.jsx</code> - Issue listing page with search and filters</li>
+                        <li><code>pages/ccc/issues/[id].jsx</code> - Issue detail view with comments and status
+                            management</li>
+                        <li><code>components/Issues.js</code> - Issue listing component with export functionality</li>
+                        <li><code>components/modals/AddIssueModal.js</code> - Issue creation with dynamic fields</li>
+                        <li><code>components/modals/ChangeIssueModal.js</code> - Issue status management</li>
+                        <li><code>components/modals/ExportIssueList.js</code> - Issue data export functionality</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-2">Product Management System</h4>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2">
+                        <li><code>components/CreateProduct.js</code> - Complex product creation with progressive
+                            disclosure</li>
+                        <li><code>components/modals/AddNewCollectionModal.js</code> - Collection creation</li>
+                        <li><code>components/modals/AddNewDesignModal.js</code> - Design creation with image upload</li>
+                        <li><code>components/modals/AddNewSizeModal.js</code> - Size creation with measurements</li>
+                        <li><code>components/modals/AddProductModal.js</code> - Product creation success feedback</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-2">Context & State Management</h4>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2">
+                        <li><code>context/OrderContext.js</code> - Order management context</li>
+                        <li><code>context/UserContext.js</code> - User management context</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-8">
+
+            <h3 class="text-2xl font-bold mb-4">Technologies Used</h3>
+            <ul class="list-disc list-inside text-lg mb-6 space-y-2">
+                <li><strong>Frontend:</strong> React.js, Next.js, Tailwind CSS</li>
+                <li><strong>State Management:</strong> React Context API</li>
+                <li><strong>UI Components:</strong> Custom styled components, HeroUI</li>
+                <li><strong>File Handling:</strong> FileReader API, URL.createObjectURL</li>
+                <li><strong>HTTP Client:</strong> Axios, Fetch API</li>
+                <li><strong>Icons:</strong> React Icons, FontAwesome</li>
+                <li><strong>API Testing</strong> Postman</li>
+
+            </ul>
+
+            <hr class="my-8">
+
+            <h3 class="text-2xl font-bold mb-4">Performance Optimizations</h3>
+            <ul class="list-disc list-inside text-lg mb-6 space-y-2">
+                <li><strong>Parallel Data Fetching:</strong> Used <code>Promise.all</code> for concurrent API calls</li>
+                <li><strong>Lazy Loading:</strong> Progressive field disclosure reduces initial load</li>
+                <li><strong>Image Optimization:</strong> Preview generation and proper cleanup</li>
+                <li><strong>State Optimization:</strong> Minimal re-renders through proper state management</li>
+                <li><strong>Export Optimization:</strong> Efficient CSV generation with proper error handling</li>
+            </ul>
+
+            <hr class="my-8">
+
+            <h3 class="text-2xl font-bold mb-4">Business Logic Implemented</h3>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-xl font-bold mb-2">Issue Resolution Workflow</h4>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2">
+                        <li><strong>Issue Creation:</strong> Multi-department assignment with dynamic field management
+                        </li>
+                        <li><strong>Status Tracking:</strong> Real-time status updates with user attribution</li>
+                        <li><strong>Comment System:</strong> Threaded comments with resolution tracking</li>
+                        <li><strong>Export Functionality:</strong> Individual or bulk export with proper formatting</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-2">User Management Workflow</h4>
+                    <ul class="list-disc list-inside text-gray-600 ml-4 mb-2">
+                        <li><strong>Registration:</strong> Comprehensive form with validation</li>
+                        <li><strong>Profile Management:</strong> Detailed user information with measurements</li>
+                        <li><strong>Document Management:</strong> File upload and association</li>
+                        <li><strong>Export System:</strong> Flexible data export options</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="text-lg mt-6">This project demonstrates your ability to handle complex business logic, manage
+                state effectively, create reusable components, build comprehensive admin interfaces with excellent UX
+                patterns, and implement sophisticated data management systems including issue tracking and resolution
+                workflows.</p>
+
+        </section>
+        <br>
+
+        <section id="figma-prototypes">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">WIREFRAMES</h2>
+            <h3 class="text-2xl font-bold mb-4">Issue Resolution System</h3>
+            <p class="text-lg mt-6">The interactive prototype I developed showcases a comprehensive issue resolution
+                system within an admin panel, seamlessly integrated with a user-facing website. The prototype's core
+                functionality revolves around a series of key user interactions, primarily driven by button clicks. I've
+                included a clear "Add Issue" button that triggers a modal to collect details like the order number, item
+                number, and a description of the problem. After filling out the form, clicking the "Add" button
+                successfully logs the issue. When a specific issue is selected, another button, "Change Issue Status,"
+                allows for dynamic state transitions. This button opens a dropdown menu to select new states (e.g., from
+                "Limbo" to "Cleaning"), demonstrating the logical flow of resolving an issue. These interactive
+                elements, along with the detailed issue view and the transition to the Moda Operandi website, highlight
+                a complete end-to-end user journey for both the administrators and the end customers, all within a
+                cohesive and clickable prototype.</p>
+
+            <div class="mx-auto max-w-4xl">
+                <img src="images/issues.png" alt="Common Issues">
+            </div>
+        </section>
+        <br>
+        <section id="figma-prototypes-2">
+            <h3 class="text-2xl font-bold mb-4">Registered User Management System</h3>
+            <p class="text-lg mb-6">
+                The prototype also features a robust user management system within the admin panel, again heavily
+                relying on interactive buttons. This prototype is centered on a "Registered User" dashboard where
+                administrators can manage user accounts. Clicking on a specific user, such as "Jason Wilson," brings up
+                a detailed profile view. From this view, a user can be deleted by clicking the "Delete User" button,
+                which triggers a confirmation modal to ensure the action is intentional. I've also included a "Restrict
+                User" button, which functions similarly by opening a confirmation modal before applying a restriction.
+                Additionally, the dashboard includes an "Export User List" button to simulate generating a user data
+                file and a "Create User" button to lead to a detailed form for adding new users. These buttons, along
+                with the detailed profile views and confirmation modals, demonstrate a secure and efficient way to
+                handle user data, from creation and viewing to restriction and deletion, all through a series of clear,
+                actionable prompts and controls.
+            </p>
+            <div class="mx-auto max-w-4xl">
+                <img src="images/users.png" alt="Common Issues">
+            </div>
+        </section>
+
+        <section id="figma-prototypes-3">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">Create Product System</h2>
+            <p class="text-lg mb-6">
+                This prototype is designed to demonstrate how an administrator would add a new item to the system. The
+                interaction begins on a form with multiple fields for product information, such as "Designer Name,"
+                "Collection," and "Product Information." The key interactions are driven by various clickable elements.
+                For instance, the "Add New Category / Sub-Category" button brings up a modal where an administrator can
+                define and add a new category, a process that concludes with a success message after clicking the "Add"
+                button. The prototype also includes a "Product photo" section with clickable image placeholders to
+                simulate uploading images. The ultimate goal of this form is to add a new product, and the final "Add
+                product" button at the bottom of the page would complete the process, saving all the entered
+                information. The entire flow, from filling out the product details to adding a new category on the fly,
+                is designed to be intuitive and efficient, showcasing a comprehensive product management tool
+            </p>
+            <div class="mx-auto max-w-4xl">
+                <img src="images/create product.png" alt="Common Issues">
+            </div>
+        </section>
+        <br>
+        <section id="figma-prototypes">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">INTERACTIVE PROTOTYPES</h2>
+            <h3 class="text-2xl font-bold mb-4">Issue Resolution System</h3>
+            <p class="text-lg mt-6">The interactive prototype I developed showcases a comprehensive issue resolution
+                system within an admin panel, seamlessly integrated with a user-facing website. The prototype's core
+                functionality revolves around a series of key user interactions, primarily driven by button clicks. I've
+                included a clear "Add Issue" button that triggers a modal to collect details like the order number, item
+                number, and a description of the problem. After filling out the form, clicking the "Add" button
+                successfully logs the issue. When a specific issue is selected, another button, "Change Issue Status,"
+                allows for dynamic state transitions. This button opens a dropdown menu to select new states (e.g., from
+                "Limbo" to "Cleaning"), demonstrating the logical flow of resolving an issue. These interactive
+                elements, along with the detailed issue view and the transition to the Moda Operandi website, highlight
+                a complete end-to-end user journey for both the administrators and the end customers, all within a
+                cohesive and clickable prototype.</p>
+
+            <div class="mb-12">
+                <div class="w-full flex justify-center mb-8">
+                    <iframe
+                        style="border: 1px solid #ccc; border-radius: 12px; width:100%; max-width:900px; min-height:600px;"
+                        allowfullscreen
+                        src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/r7pbfz5fOGPRPwZNpeulDH/L4L?node-id=28-9391&p=f&t=KrBn4wXUVGq3QqQU-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&hide-ui=1">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="figma-prototypes-2">
+            <h3 class="text-2xl font-bold mb-4">Registered User Management System</h3>
+            <p class="text-lg mb-6">
+                The prototype also features a robust user management system within the admin panel, again heavily
+                relying on interactive buttons. This prototype is centered on a "Registered User" dashboard where
+                administrators can manage user accounts. Clicking on a specific user, such as "Jason Wilson," brings up
+                a detailed profile view. From this view, a user can be deleted by clicking the "Delete User" button,
+                which triggers a confirmation modal to ensure the action is intentional. I've also included a "Restrict
+                User" button, which functions similarly by opening a confirmation modal before applying a restriction.
+                Additionally, the dashboard includes an "Export User List" button to simulate generating a user data
+                file and a "Create User" button to lead to a detailed form for adding new users. These buttons, along
+                with the detailed profile views and confirmation modals, demonstrate a secure and efficient way to
+                handle user data, from creation and viewing to restriction and deletion, all through a series of clear,
+                actionable prompts and controls.
+            </p>
+            <div class="mb-12">
+                <div class="w-full flex justify-center mb-8">
+                    <iframe
+                        style="border: 1px solid #ccc; border-radius: 12px; width:100%; max-width:900px; min-height:600px;"
+                        allowfullscreen
+                        src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/r7pbfz5fOGPRPwZNpeulDH/L4L?node-id=2-2833&t=tAN63fHgVGQ3X6Ys-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&hide-ui=1">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="figma-prototypes-3">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">Create Product System</h2>
+            <p class="text-lg mb-6">
+                This prototype is designed to demonstrate how an administrator would add a new item to the system. The
+                interaction begins on a form with multiple fields for product information, such as "Designer Name,"
+                "Collection," and "Product Information." The key interactions are driven by various clickable elements.
+                For instance, the "Add New Category / Sub-Category" button brings up a modal where an administrator can
+                define and add a new category, a process that concludes with a success message after clicking the "Add"
+                button. The prototype also includes a "Product photo" section with clickable image placeholders to
+                simulate uploading images. The ultimate goal of this form is to add a new product, and the final "Add
+                product" button at the bottom of the page would complete the process, saving all the entered
+                information. The entire flow, from filling out the product details to adding a new category on the fly,
+                is designed to be intuitive and efficient, showcasing a comprehensive product management tool
+            </p>
+            <div class="mb-12">
+                <div class="w-full flex justify-center mb-8">
+                    <iframe
+                        style="border: 1px solid #ccc; border-radius: 12px; width:100%; max-width:900px; min-height:600px;"
+                        allowfullscreen
+                        src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/r7pbfz5fOGPRPwZNpeulDH/L4L?node-id=6-7392&t=zICJ0j76mquasuKe-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&hide-ui=1">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+        <div class="flex justify-center gap-4 mt-12">
+            <a href="Yale.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                View Zinged Project
+            </a>
+            <a href="index.html" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+                Back to Home
+            </a>
+        </div>
+
+
+
+        <footer class="py-8 bg-white mt-12">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+            </div>
+        </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Your existing mobile menu code
+                const menuToggle = document.getElementById('menu-toggle');
+                const closeMenu = document.getElementById('close-menu');
+                const mobileMenu = document.getElementById('mobile-menu');
+
+                menuToggle.addEventListener('click', function () {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                closeMenu.addEventListener('click', function () {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+
+                // Close menu when clicking on a link
+                const mobileLinks = mobileMenu.getElementsByTagName('a');
+                Array.from(mobileLinks).forEach(link => {
+                    link.addEventListener('click', function () {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    });
+                });
+
+                // FIXED SIDE NAVIGATION HIGHLIGHTING
+
+                // Get all sections that need to be observed
+                const sections = document.querySelectorAll('section[id]');
+
+
+            });
+        </script>
+</body>
+
+</html>
