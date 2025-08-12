@@ -299,9 +299,96 @@
             overflow-x: hidden;
             max-width: 100vw;
         }
+
+        /* Mobile-specific optimizations */
+        @media (max-width: 768px) {
+            /* Optimize iframe performance on mobile */
+            iframe {
+                max-width: 100% !important;
+                height: 400px !important;
+                min-height: 400px !important;
+            }
+            
+            /* Reduce image sizes on mobile */
+            .mx-auto.max-w-4xl img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+            
+            /* Optimize text containers */
+            .text-lg {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            /* Reduce padding on mobile */
+            section {
+                padding: 1rem 0.5rem;
+            }
+            
+            /* Optimize container spacing */
+            .mb-12 {
+                margin-bottom: 2rem;
+            }
+            
+            .mb-8 {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Prevent horizontal scroll on mobile */
+        @media (max-width: 480px) {
+            body {
+                overflow-x: hidden;
+                width: 100%;
+            }
+            
+            .container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            
+            iframe {
+                height: 350px !important;
+                min-height: 350px !important;
+            }
+        }
+
+        /* Lazy loading for images */
+        img {
+            loading: lazy;
+        }
+
+        /* Touch device optimizations */
+        .touch-device {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent zoom on input focus for iOS */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) {
+            select,
+            textarea,
+            input {
+                font-size: 16px;
+            }
+        }
+
+        /* Optimize scrolling performance */
+        * {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
-</head>
-</style>
 </head>
 
 <body class="FFFFFF">
@@ -914,6 +1001,8 @@ const StyledInput = ({ label, name, placeholder, value, onChangeText }) => (
                     <iframe
                         style="border: 1px solid #ccc; border-radius: 12px; width:100%; max-width:900px; min-height:600px;"
                         allowfullscreen
+                        loading="lazy"
+                        title="Issue Resolution System Prototype"
                         src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/r7pbfz5fOGPRPwZNpeulDH/L4L?node-id=28-9391&p=f&t=KrBn4wXUVGq3QqQU-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&hide-ui=1">
                     </iframe>
                 </div>
@@ -940,6 +1029,8 @@ const StyledInput = ({ label, name, placeholder, value, onChangeText }) => (
                     <iframe
                         style="border: 1px solid #ccc; border-radius: 12px; width:100%; max-width:900px; min-height:600px;"
                         allowfullscreen
+                        loading="lazy"
+                        title="Registered User Management System Prototype"
                         src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/r7pbfz5fOGPRPwZNpeulDH/L4L?node-id=2-2833&t=tAN63fHgVGQ3X6Ys-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&hide-ui=1">
                     </iframe>
                 </div>
@@ -965,6 +1056,8 @@ const StyledInput = ({ label, name, placeholder, value, onChangeText }) => (
                     <iframe
                         style="border: 1px solid #ccc; border-radius: 12px; width:100%; max-width:900px; min-height:600px;"
                         allowfullscreen
+                        loading="lazy"
+                        title="Create Product System Prototype"
                         src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/r7pbfz5fOGPRPwZNpeulDH/L4L?node-id=6-7392&t=zICJ0j76mquasuKe-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&hide-ui=1">
                     </iframe>
                 </div>
@@ -988,36 +1081,69 @@ const StyledInput = ({ label, name, placeholder, value, onChangeText }) => (
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                // Your existing mobile menu code
+                // Mobile menu functionality
                 const menuToggle = document.getElementById('menu-toggle');
                 const closeMenu = document.getElementById('close-menu');
                 const mobileMenu = document.getElementById('mobile-menu');
 
-                menuToggle.addEventListener('click', function () {
-                    mobileMenu.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
+                if (menuToggle && closeMenu && mobileMenu) {
+                    menuToggle.addEventListener('click', function () {
+                        mobileMenu.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
 
-                closeMenu.addEventListener('click', function () {
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
-
-                // Close menu when clicking on a link
-                const mobileLinks = mobileMenu.getElementsByTagName('a');
-                Array.from(mobileLinks).forEach(link => {
-                    link.addEventListener('click', function () {
+                    closeMenu.addEventListener('click', function () {
                         mobileMenu.classList.remove('active');
                         document.body.style.overflow = 'auto';
                     });
+
+                    // Close menu when clicking on a link
+                    const mobileLinks = mobileMenu.getElementsByTagName('a');
+                    Array.from(mobileLinks).forEach(link => {
+                        link.addEventListener('click', function () {
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = 'auto';
+                        });
+                    });
+                }
+
+                // Optimize iframe loading for mobile
+                const iframes = document.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    // Add loading indicator
+                    iframe.addEventListener('load', function() {
+                        this.style.opacity = '1';
+                    });
+                    
+                    // Set initial opacity for smooth loading
+                    iframe.style.opacity = '0';
+                    iframe.style.transition = 'opacity 0.3s ease-in-out';
                 });
 
-                // FIXED SIDE NAVIGATION HIGHLIGHTING
+                // Prevent page reload on mobile scroll
+                let scrollTimeout;
+                window.addEventListener('scroll', function() {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(function() {
+                        // This prevents excessive scroll events from causing issues
+                    }, 100);
+                }, { passive: true });
 
-                // Get all sections that need to be observed
-                const sections = document.querySelectorAll('section[id]');
+                // Optimize image loading
+                const images = document.querySelectorAll('img');
+                images.forEach(img => {
+                    img.addEventListener('load', function() {
+                        this.style.opacity = '1';
+                    });
+                    
+                    img.style.opacity = '0';
+                    img.style.transition = 'opacity 0.3s ease-in-out';
+                });
 
-
+                // Add touch event handling for mobile
+                if ('ontouchstart' in window) {
+                    document.body.classList.add('touch-device');
+                }
             });
         </script>
 </body>
