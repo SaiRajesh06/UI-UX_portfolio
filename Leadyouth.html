@@ -119,6 +119,53 @@
             min-width: 300px;
         }
 
+        /* Responsive image classes */
+        .responsive-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .responsive-image-large {
+            width: 100%;
+            max-width: 1100px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .responsive-image-medium {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .responsive-image-small {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Image wrapper for better mobile handling */
+        .image-wrapper {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* Mobile menu styles */
         .mobile-menu {
             transform: translateX(-100%);
@@ -222,6 +269,29 @@
                 max-width: 100%;
             }
 
+            /* Responsive image adjustments for mobile */
+            .responsive-image,
+            .responsive-image-large,
+            .responsive-image-medium,
+            .responsive-image-small {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                padding: 0 1rem;
+            }
+
+            /* Image wrapper mobile adjustments */
+            .image-wrapper {
+                margin: 1rem 0;
+                padding: 0 1rem;
+            }
+
+            .image-wrapper img {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
+
             /* Typography adjustments */
             h1 {
                 font-size: 2rem;
@@ -283,6 +353,22 @@
             .mx-auto.max-w-4xl img {
                 width: 100%;
             }
+
+            /* Extra small screen image adjustments */
+            .responsive-image,
+            .responsive-image-large,
+            .responsive-image-medium,
+            .responsive-image-small {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                padding: 0 0.5rem;
+            }
+
+            .image-wrapper {
+                margin: 0.5rem 0;
+                padding: 0 0.5rem;
+            }
         }
 
         /* Adjust the main container positioning */
@@ -298,6 +384,29 @@
         body {
             overflow-x: hidden;
             max-width: 100vw;
+        }
+
+        /* Responsive iframe for Figma prototype */
+        .figma-iframe {
+            width: 100%;
+            max-width: 900px;
+            min-height: 600px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .figma-iframe {
+                min-height: 500px;
+                margin: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .figma-iframe {
+                min-height: 400px;
+                margin: 0 0.5rem;
+            }
         }
     </style>
 </head>
@@ -350,9 +459,8 @@
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <h1 class="text-4xl md:text-5xl font-bold text-center section-heading mb-12">Lead Youth</h1>
 
-        <div>
-            <img src="images/Music App Instagram Post.png" alt="Figma Design" width="700" height="700"
-                style="display: block; margin: 0 auto;">
+        <div class="image-wrapper">
+            <img src="images/Music App Instagram Post.png" alt="Figma Design" class="responsive-image-small">
         </div>
 
         <section id="overview">
@@ -516,9 +624,8 @@
             <section id="empathy-mapping">
                 <h2 class="text-3xl font-bold mb-6 text-blue-600">PERSONAS</h2>
                 
-                <div class="mx-auto" style="max-width: none;">
-                    <img src="images/whiteLDpersonas.png" alt="Common Issues" width="800" height="100"
-                        style="display: block; margin: 0 auto; max-width: none; max-height: none;">
+                <div class="image-wrapper">
+                    <img src="images/whiteLDpersonas.png" alt="Common Issues" class="responsive-image-medium">
                 </div>
             </div>
 
@@ -553,9 +660,8 @@
                 This sitemap lays a clear foundation for a modular and personalized user experience, optimizing both
                 guidance and flexibility in the learning journey.
             </p>
-            <div class="mx-auto" style="max-width: none;">
-                <img src="images/EM.png" alt="Common Issues" width="1100"
-                    style="display: block; margin: 0 auto; max-width: none; max-height: none;">
+            <div class="image-wrapper">
+                <img src="images/EM.png" alt="Common Issues" class="responsive-image-large">
             </div>
         </section>
         <br>
@@ -573,9 +679,8 @@
                 comprehensive overview was instrumental in designing an empathetic, intuitive, and effective learning
                 journey that guides students from hesitation to confident communication.
             </p>
-            <div class="mx-auto" style="max-width: none;">
-                <img src="images/journeymap.png" alt="Common Issues" width="1100"
-                    style="display: block; margin: 0 auto; max-width: none; max-height: none;">
+            <div class="image-wrapper">
+                <img src="images/journeymap.png" alt="Common Issues" class="responsive-image-large">
             </div>
         </section>
         <br>
@@ -652,9 +757,8 @@
             </div>
 
             <!-- Image in the middle -->
-            <div class="mx-auto my-8" style="max-width: none;">
-                <img src="images/storyboard.png" alt="Zinged Storyboard" width="800" height="100"
-                    style="display: block; margin: 0 auto; max-width: none; max-height: none;">
+            <div class="image-wrapper my-8">
+                <img src="images/storyboard.png" alt="Zinged Storyboard" class="responsive-image-medium">
             </div>
 
             <!-- Last 4 screens (below image) -->
@@ -730,8 +834,8 @@
                 This sitemap lays a clear foundation for a modular and personalized user experience, optimizing both
                 guidance and flexibility in the learning journey.
             </p>
-            <div class="mx-auto max-w-4xl">
-                <img src="images/zingedsitemap.png" alt="Common Issues">
+            <div class="image-wrapper">
+                <img src="images/zingedsitemap.png" alt="Common Issues" class="responsive-image-large">
             </div>
         </section>
         <br>
@@ -757,9 +861,8 @@
                 assumptions, ultimately creating a more effective learning experience for young users developing their
                 public speaking skills.
             </p>
-            <div class="mx-auto" style="max-width: none;">
-                <img src="images/A:B.png" alt="Common Issues" width="1100"
-                    style="display: block; margin: 0 auto; max-width: none; max-height: none;">
+            <div class="image-wrapper">
+                <img src="images/A:B.png" alt="Common Issues" class="responsive-image-large">
             </div>
         </section>
         <br>
@@ -778,9 +881,8 @@
                 principles for shadows and motion, all working in harmony to create an intuitive, trustworthy, and
                 visually delightful user experience that supports students in their journey to confident public speaking
             </p>
-            <div class="mx-auto" style="max-width: none;">
-                <img src="images/systemdesign.png" alt="Common Issues" width="1100"
-                    style="display: block; margin: 0 auto; max-width: none; max-height: none;">
+            <div class="image-wrapper">
+                <img src="images/systemdesign.png" alt="Common Issues" class="responsive-image-large">
             </div>
         </section>
 
@@ -799,7 +901,7 @@
             <div class="mb-12">
                 <div class="w-full flex justify-center mb-8">
                     <iframe
-                        style="border: 1px solid #ccc; border-radius: 12px; width:100%; max-width:900px; min-height:600px;"
+                        class="figma-iframe"
                         allowfullscreen
                         src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/D5P3fIcxvDjYTnCRtdx9mo/LeadYouth?node-id=69-1812&t=ve80NPS9IPIiB7MD-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&hide-ui=1">
                     </iframe>
